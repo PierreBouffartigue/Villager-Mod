@@ -1,7 +1,7 @@
 {
   "variants": {
     "normal": {
-      "model": "drake:epicka_block"
+      "model": "villager:copper_ore"
     }
   }
 }

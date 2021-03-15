@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "drake:blocks/epicka_block"
+    "all": "villager:blocks/epicka_block"
   }
 }

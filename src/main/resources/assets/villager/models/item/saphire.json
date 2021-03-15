@@ -1,6 +1,6 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "drake:items/saphire"
+    "layer0": "villager:items/saphire"
   }
 }

@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "drake:blocks/copper_ore"
+    "all": "villager:blocks/copper_ore"
   }
 }
