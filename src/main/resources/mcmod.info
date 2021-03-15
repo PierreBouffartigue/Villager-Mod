@@ -1,0 +1,18 @@
+[
+  {
+    "modid": "villager",
+    "name": "Mod Villager",
+    "description": "Mod Villager for Ynov project",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "wip",
+    "updateUrl": "",
+    "authorList": [
+      "wip"
+    ],
+    "credits": "",
+    "logoFile": "tuto.png",
+    "screenshots": [],
+    "dependencies": []
+  }
+]

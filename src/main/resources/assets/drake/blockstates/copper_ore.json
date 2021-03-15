@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "normal": {
+      "model": "drake:copper_ore"
+    }
+  }
+}
