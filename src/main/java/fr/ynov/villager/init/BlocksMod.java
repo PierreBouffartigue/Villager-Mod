@@ -19,11 +19,11 @@ import java.util.Objects;
 
 @Mod.EventBusSubscriber(modid = References.MODID)
 public class BlocksMod {
-    public static Block epicka_block, copper_ore, OIL;
+    public static Block epicka_block, copper_ore;
 
     public static void init() {
-        epicka_block = new BlockMod("epicka_block", Material.IRON).setLightLevel(20).setCreativeTab(Main.creativeTab);
-        copper_ore = new BlockOreMod("copper_ore", 2, 1, 8).setCreativeTab(Main.creativeTab);
+        epicka_block = new BlockMod("epicka_block", Material.ROCK).setLightLevel(20).setCreativeTab(Main.creativeTab).setHardness(5.0F);
+        copper_ore = new BlockOreMod("copper_ore", 2, 1, 8).setCreativeTab(Main.creativeTab).setHardness(5.0F);
 
     }
 
