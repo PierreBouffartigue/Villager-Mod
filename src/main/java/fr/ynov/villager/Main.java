@@ -6,6 +6,7 @@ import fr.ynov.villager.init.RecipesMod;
 import fr.ynov.villager.proxy.ServerProxy;
 import fr.ynov.villager.tabs.VillagerTab;
 import fr.ynov.villager.util.handler.RegistryHandler;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -16,9 +17,9 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 @Mod(modid = References.MODID, name = References.NAME, version = References.VERSION, acceptedMinecraftVersions = References.MINECRAFT_VERSION)
 public class Main {
-    public static final VillagerTab creativeTab = new VillagerTab();
     @Mod.Instance
     public static Main instance;
+    public static final CreativeTabs creativeTab = new VillagerTab("villager");
     @SidedProxy(clientSide = References.CLIENT_PROXY, serverSide = References.SERVER_PROXY, modId = References.MODID)
     public static ServerProxy proxy;
 
