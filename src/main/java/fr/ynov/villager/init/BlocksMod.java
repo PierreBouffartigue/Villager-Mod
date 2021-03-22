@@ -19,24 +19,27 @@ import java.util.Objects;
 
 @Mod.EventBusSubscriber(modid = References.MODID)
 public class BlocksMod {
-    public static Block ardoise_block, copper_ore;
+    public static Block ardoise_block, copper_ore, silver_ore;
 
     public static void init() {
-        ardoise_block = new BlockMod("ardoise_block", Material.ROCK).setLightLevel(20).setCreativeTab(Main.creativeTab).setHardness(5.0F);
-        copper_ore = new BlockOreMod("copper_ore", 2, 1, 8).setCreativeTab(Main.creativeTab).setHardness(5.0F);
+        ardoise_block = new BlockMod("ardoise_block", Material.ROCK,0).setLightLevel(20).setCreativeTab(Main.creativeTab).setHardness(5.0F);
+        copper_ore = new BlockMod("copper_ore", Material.IRON,1).setCreativeTab(Main.creativeTab).setHardness(3.5F);
+        silver_ore = new BlockMod("silver_ore", Material.IRON,2).setCreativeTab(Main.creativeTab).setHardness(4.5F);
+
 
     }
 
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
-        event.getRegistry().registerAll(ardoise_block, copper_ore);
+        event.getRegistry().registerAll(ardoise_block, copper_ore, silver_ore);
     }
 
     @SubscribeEvent
     public static void registerItemBlocks(RegistryEvent.Register<Item> event) {
         event.getRegistry().registerAll(
                 new ItemBlock(ardoise_block).setRegistryName(Objects.requireNonNull(ardoise_block.getRegistryName())),
-                new ItemBlock(copper_ore).setRegistryName(Objects.requireNonNull(copper_ore.getRegistryName()))
+                new ItemBlock(copper_ore).setRegistryName(Objects.requireNonNull(copper_ore.getRegistryName())),
+                new ItemBlock(silver_ore).setRegistryName(Objects.requireNonNull(silver_ore.getRegistryName()))
         );
     }
 
@@ -44,6 +47,8 @@ public class BlocksMod {
     public static void registerRenders(ModelRegistryEvent event) {
         registerRender(Item.getItemFromBlock(ardoise_block));
         registerRender(Item.getItemFromBlock(copper_ore));
+        registerRender(Item.getItemFromBlock(silver_ore));
+
     }
 
     private static void registerRender(Item item) {

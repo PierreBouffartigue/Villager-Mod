@@ -5,8 +5,9 @@ import net.minecraft.block.material.Material;
 
 public class BlockMod extends Block {
 
-    public BlockMod(String name, Material materialIn) {
+    public BlockMod(String name, Material materialIn, int harvestLevel) {
         super(materialIn);
+        setHarvestLevel("pickaxe", harvestLevel);
         setUnlocalizedName(name);
         setRegistryName(name);
     }

@@ -32,6 +32,7 @@ public class ItemsMod {
         copper_coin = new ItemMod("copper_coin").setCreativeTab(Main.creativeTab);
         copper_ingot = new ItemMod("copper_ingot").setCreativeTab(Main.creativeTab);
 
+
         //silver items
         silver_coin = new ItemMod("silver_coin").setCreativeTab(Main.creativeTab);
         silver_ingot = new ItemMod("silver_ingot").setCreativeTab(Main.creativeTab);
@@ -55,6 +56,7 @@ public class ItemsMod {
         //copper items
         registerRender(copper_coin);
         registerRender(copper_ingot);
+
 
         //silver items
         registerRender(silver_coin);
