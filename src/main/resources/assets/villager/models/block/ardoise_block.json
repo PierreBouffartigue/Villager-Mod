@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "villager:blocks/epicka_block"
+    "all": "villager:blocks/ardoise_block"
   }
 }

@@ -1,7 +1,7 @@
 {
   "variants": {
     "normal": {
-      "model": "villager:epicka_block"
+      "model": "villager:ardoise_block"
     }
   }
 }

@@ -19,30 +19,30 @@ import java.util.Objects;
 
 @Mod.EventBusSubscriber(modid = References.MODID)
 public class BlocksMod {
-    public static Block epicka_block, copper_ore;
+    public static Block ardoise_block, copper_ore;
 
     public static void init() {
-        epicka_block = new BlockMod("epicka_block", Material.ROCK).setLightLevel(20).setCreativeTab(Main.creativeTab).setHardness(5.0F);
+        ardoise_block = new BlockMod("ardoise_block", Material.ROCK).setLightLevel(20).setCreativeTab(Main.creativeTab).setHardness(5.0F);
         copper_ore = new BlockOreMod("copper_ore", 2, 1, 8).setCreativeTab(Main.creativeTab).setHardness(5.0F);
 
     }
 
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
-        event.getRegistry().registerAll(epicka_block, copper_ore);
+        event.getRegistry().registerAll(ardoise_block, copper_ore);
     }
 
     @SubscribeEvent
     public static void registerItemBlocks(RegistryEvent.Register<Item> event) {
         event.getRegistry().registerAll(
-                new ItemBlock(epicka_block).setRegistryName(Objects.requireNonNull(epicka_block.getRegistryName())),
+                new ItemBlock(ardoise_block).setRegistryName(Objects.requireNonNull(ardoise_block.getRegistryName())),
                 new ItemBlock(copper_ore).setRegistryName(Objects.requireNonNull(copper_ore.getRegistryName()))
         );
     }
 
     @SubscribeEvent
     public static void registerRenders(ModelRegistryEvent event) {
-        registerRender(Item.getItemFromBlock(epicka_block));
+        registerRender(Item.getItemFromBlock(ardoise_block));
         registerRender(Item.getItemFromBlock(copper_ore));
     }
 
