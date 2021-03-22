@@ -5,6 +5,7 @@ import fr.ynov.villager.init.ItemsMod;
 import fr.ynov.villager.init.RecipesMod;
 import fr.ynov.villager.proxy.ServerProxy;
 import fr.ynov.villager.tabs.VillagerTab;
+import fr.ynov.villager.util.handler.RegistryHandler;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -30,13 +31,16 @@ public class Main {
         BlocksMod.init();
         ItemsMod.init();
         RecipesMod.init();
+        RegistryHandler.preInitRegistries();
     }
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
+
         proxy.register();
+        RegistryHandler.initRegistries();
     }
-    /* MinecraftForge.EVENT_BUS.register(new EventHandler()); */
+
 
     @EventHandler
     public void postInit(FMLPostInitializationEvent event) {

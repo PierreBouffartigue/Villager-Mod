@@ -12,11 +12,6 @@ import net.minecraftforge.fml.common.gameevent.InputEvent;
 import org.lwjgl.input.Keyboard;
 
 public class ClientProxy extends ServerProxy {
-    @Override
-    public void register() {
-        OBJLoader.INSTANCE.addDomain(References.MODID);
-    }
-
     private static KeyBinding keyBindTest;
 
     public ClientProxy() {
@@ -25,11 +20,14 @@ public class ClientProxy extends ServerProxy {
         ClientRegistry.registerKeyBinding(keyBindTest);
     }
 
+    @Override
+    public void register() {
+        OBJLoader.INSTANCE.addDomain(References.MODID);
+    }
 
     @SubscribeEvent
     public void onEvent(InputEvent.KeyInputEvent event) {
-        if(keyBindTest.isPressed())
-        {
+        if (keyBindTest.isPressed()) {
             keyTestTyped();
         }
     }
