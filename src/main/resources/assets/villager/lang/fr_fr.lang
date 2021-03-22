@@ -1,11 +1,11 @@
-
-itemGroup.villager = Villager
+itemGroup.villager =Villager
 
 tile.epicka_block.name=Ardoise
 tile.copper_ore.name= Minerais de copper
-
 item.saphire.name=Saphire
 item.viande.name=Viande
 item.copper_coin.name=piece de cuivre
+item.copper_ingot.name=lingot de cuivre
 item.silver_coin.name=piece d argent
+item.silver_ingot.name=lingot d argent
 item.gold_coin.name=piece d or
