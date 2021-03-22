@@ -43,7 +43,7 @@ public class ItemsMod {
 
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
-        event.getRegistry().registerAll(saphire, viande, copper_coin,copper_ingot, silver_coin,silver_ingot, gold_coin);
+        event.getRegistry().registerAll(saphire, viande, copper_coin, copper_ingot, silver_coin, silver_ingot, gold_coin);
     }
 
     @SubscribeEvent
