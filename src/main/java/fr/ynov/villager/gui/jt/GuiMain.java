@@ -10,7 +10,7 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = References.MODID)
 public class GuiMain extends GuiScreen {
-    private final ResourceLocation background = new ResourceLocation("textures/gui/gui_base.png"); // 256x202
+    private final ResourceLocation background = new ResourceLocation(References.MODID, "textures/gui/gui_base.png"); // 256x202
 
     private final int xSize = 256;
     private final int ySize = 202;
