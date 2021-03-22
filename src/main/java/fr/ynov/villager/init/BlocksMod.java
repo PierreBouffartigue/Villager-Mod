@@ -9,11 +9,13 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.util.Objects;
 
@@ -48,6 +50,10 @@ public class BlocksMod {
         registerRender(Item.getItemFromBlock(ardoise_block));
         registerRender(Item.getItemFromBlock(copper_ore));
         registerRender(Item.getItemFromBlock(silver_ore));
+
+        //Adding smelting
+        GameRegistry.addSmelting(new ItemStack(copper_ore), new ItemStack(ItemsMod.copper_ingot), 1.0F);
+        GameRegistry.addSmelting(new ItemStack(silver_ore), new ItemStack(ItemsMod.silver_ingot), 2.0F);
 
     }
 
