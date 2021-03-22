@@ -18,16 +18,22 @@ import java.util.Objects;
 public class ItemsMod {
     public static Item saphire;
     public static Item viande;
+    public static Item copper_coin;
+    public static Item silver_coin;
+    public static Item gold_coin;
 
     public static void init() {
 
         saphire = new ItemMod("saphire").setCreativeTab(Main.creativeTab);
+        copper_coin = new ItemMod("copper_coin").setCreativeTab(Main.creativeTab);
+        silver_coin = new ItemMod("silver_coin").setCreativeTab(Main.creativeTab);
+        gold_coin = new ItemMod("gold_coin").setCreativeTab(Main.creativeTab);
         viande = (new ItemCustomFood("viande", 10, 0.3F, false)).setCreativeTab(Main.creativeTab);
     }
 
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
-        event.getRegistry().registerAll(saphire, viande);
+        event.getRegistry().registerAll(saphire, viande, copper_coin, silver_coin, gold_coin);
     }
 
     @SubscribeEvent
@@ -35,6 +41,9 @@ public class ItemsMod {
 
         registerRender(saphire);
         registerRender(viande);
+        registerRender(copper_coin);
+        registerRender(silver_coin);
+        registerRender(gold_coin);
     }
 
     private static void registerRender(Item item) {
