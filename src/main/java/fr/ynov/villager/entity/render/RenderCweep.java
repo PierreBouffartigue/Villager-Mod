@@ -15,7 +15,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 @SideOnly(Side.CLIENT)
 public
 class RenderCweep<T extends EntityCweep> extends RenderLiving<T> {
-    private static final ResourceLocation SPIDER_TEXTURES = new ResourceLocation(References.MODID + ":textures/models/entity/cweep.png");
+    private static final ResourceLocation SPIDER_TEXTURES = new ResourceLocation(References.MODID + ":textures/entity/cweep.png");
 
     public RenderCweep(RenderManager renderManagerIn) {
         super(renderManagerIn, new ModelCweep(), 1.0F);
