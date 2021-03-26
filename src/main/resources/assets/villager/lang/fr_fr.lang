@@ -3,6 +3,8 @@ itemGroup.villager=Villager Mod
 tile.ardoise_block.name=Ardoise
 tile.copper_ore.name= Minerais de cuivre
 tile.silver_ore.name=Minerais d argent
+tile.sign_block.name=Panneau
+
 item.saphire.name=Saphire
 item.viande.name=Viande
 item.copper_coin.name=piece de cuivre
@@ -10,11 +12,13 @@ item.copper_ingot.name=lingot de cuivre
 item.silver_coin.name=piece d argent
 item.silver_ingot.name=lingot d argent
 item.gold_coin.name=piece d or
-entity.cweep.name=Cweep
 item.copper_sword.name=Epee en cuivre
 item.copper_axe.name=Hache en cuivre
 item.copper_shovel.name=Pelle en cuivre
 item.copper_helmet.name=Casque en cuivre
-item.coper_chestplate.name=Plastron en cuivre
+item.copper_chestplate.name=Plastron en cuivre
 item.copper_leggings.name=Jambiere en cuivre
-item.copper_boots=Bottes en cuivre
+item.copper_boots.name=Bottes en cuivre
+item.steam_sword.name=Epee de vapeur
+
+entity.cweep.name=Cweep

@@ -12,7 +12,7 @@ public class VillagerTab extends CreativeTabs {
 
     @Override
     public ItemStack getTabIconItem() {
-        return new ItemStack(ItemsMod.viande);
+        return new ItemStack(ItemsMod.steam_sword);
     }
 
 }

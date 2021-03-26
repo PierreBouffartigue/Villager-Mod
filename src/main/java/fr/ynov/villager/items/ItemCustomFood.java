@@ -1,6 +1,7 @@
 package fr.ynov.villager.items;
 
 
+import fr.ynov.villager.Main;
 import net.minecraft.item.ItemFood;
 
 public class ItemCustomFood
@@ -10,5 +11,6 @@ public class ItemCustomFood
         super(amount, saturation, isWolfFood);
         setUnlocalizedName(name);
         setRegistryName(name);
+        setCreativeTab(Main.creativeTab);
     }
 }

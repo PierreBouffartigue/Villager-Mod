@@ -1,6 +1,5 @@
 package fr.ynov.villager.init;
 
-import fr.ynov.villager.Main;
 import fr.ynov.villager.References;
 import fr.ynov.villager.armor.ArmorMod;
 import fr.ynov.villager.items.ItemCustomFood;
@@ -23,44 +22,30 @@ import java.util.Objects;
 
 @Mod.EventBusSubscriber(modid = References.MODID)
 public class ItemsMod {
-    public static Item saphire;
-    public static Item viande;
-    public static Item copper_coin;
-    public static Item copper_ingot;
-    public static Item silver_coin;
-    public static Item silver_ingot;
-    public static Item gold_coin;
-    public static Item copper_pickaxe;
-    public static Item copper_sword;
-    public static Item copper_axe;
-    public static Item copper_shovel;
-    public static Item copper_helmet;
-    public static Item copper_chestplate;
-    public static Item copper_leggings;
-    public static Item copper_boots;
-
+    public static Item saphire, viande, copper_coin, copper_ingot, silver_coin, silver_ingot, gold_coin, copper_pickaxe, copper_sword, copper_axe, copper_shovel, copper_helmet, copper_chestplate, copper_leggings, copper_boots, steam_sword;
 
     public static void init() {
 
-        saphire = new ItemMod("saphire").setCreativeTab(Main.creativeTab);
+        saphire = new ItemMod("saphire");
         //copper items
-        copper_coin = new ItemMod("copper_coin").setCreativeTab(Main.creativeTab);
-        copper_ingot = new ItemMod("copper_ingot").setCreativeTab(Main.creativeTab);
+        copper_coin = new ItemMod("copper_coin");
+        copper_ingot = new ItemMod("copper_ingot");
 
 
         //silver items
-        silver_coin = new ItemMod("silver_coin").setCreativeTab(Main.creativeTab);
-        silver_ingot = new ItemMod("silver_ingot").setCreativeTab(Main.creativeTab);
+        silver_coin = new ItemMod("silver_coin");
+        silver_ingot = new ItemMod("silver_ingot");
 
         //gold items
-        gold_coin = new ItemMod("gold_coin").setCreativeTab(Main.creativeTab);
-        viande = (new ItemCustomFood("viande", 10, 0.3F, false)).setCreativeTab(Main.creativeTab);
+        gold_coin = new ItemMod("gold_coin");
+        viande = (new ItemCustomFood("viande", 10, 0.3F, false));
 
         //tools
         copper_pickaxe = new ItemPickaxeMod("copper_pickaxe", Item.ToolMaterial.DIAMOND);
         copper_sword = new ItemSwordMod("copper_sword", Item.ToolMaterial.DIAMOND);
         copper_axe = new ItemAxeMod("copper_axe", Item.ToolMaterial.DIAMOND);
         copper_shovel = new ItemShovelMod("copper_shovel", Item.ToolMaterial.DIAMOND);
+        steam_sword = new ItemSwordMod("steam_sword", Item.ToolMaterial.DIAMOND);
 
         //armor
         copper_helmet = new ArmorMod("copper_helmet", ItemArmor.ArmorMaterial.DIAMOND, 1, EntityEquipmentSlot.HEAD);
@@ -71,7 +56,7 @@ public class ItemsMod {
 
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
-        event.getRegistry().registerAll(saphire, viande, copper_coin, copper_ingot, silver_coin, silver_ingot, gold_coin, copper_pickaxe, copper_sword, copper_shovel, copper_axe, copper_helmet, copper_chestplate, copper_leggings, copper_boots);
+        event.getRegistry().registerAll(saphire, viande, copper_coin, copper_ingot, silver_coin, silver_ingot, gold_coin, copper_pickaxe, copper_sword, copper_shovel, copper_axe, copper_helmet, copper_chestplate, copper_leggings, copper_boots, steam_sword);
     }
 
     @SubscribeEvent
@@ -97,6 +82,7 @@ public class ItemsMod {
         registerRender(copper_sword);
         registerRender(copper_axe);
         registerRender(copper_shovel);
+        registerRender(steam_sword);
 
         //armor
         registerRender(copper_helmet);
