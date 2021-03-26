@@ -17,9 +17,9 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 @Mod(modid = References.MODID, name = References.NAME, version = References.VERSION, acceptedMinecraftVersions = References.MINECRAFT_VERSION)
 public class Main {
+    public static final CreativeTabs creativeTab = new VillagerTab("villager");
     @Mod.Instance
     public static Main instance;
-    public static final CreativeTabs creativeTab = new VillagerTab("villager");
     @SidedProxy(clientSide = References.CLIENT_PROXY, serverSide = References.SERVER_PROXY, modId = References.MODID)
     public static ServerProxy proxy;
 
