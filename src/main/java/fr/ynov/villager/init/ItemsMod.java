@@ -2,6 +2,7 @@ package fr.ynov.villager.init;
 
 import fr.ynov.villager.References;
 import fr.ynov.villager.armor.ArmorMod;
+import fr.ynov.villager.book.BookMod;
 import fr.ynov.villager.items.ItemCustomFood;
 import fr.ynov.villager.items.ItemMod;
 import fr.ynov.villager.tools.ItemAxeMod;
@@ -22,7 +23,7 @@ import java.util.Objects;
 
 @Mod.EventBusSubscriber(modid = References.MODID)
 public class ItemsMod {
-    public static Item saphire, viande, copper_coin, copper_ingot, silver_coin, silver_ingot, gold_coin, copper_pickaxe, copper_sword, copper_axe, copper_shovel, copper_helmet, copper_chestplate, copper_leggings, copper_boots, steam_sword;
+    public static Item saphire, viande, copper_coin, copper_ingot, silver_coin, silver_ingot, gold_coin, copper_pickaxe, copper_sword, copper_axe, copper_shovel, copper_helmet, copper_chestplate, copper_leggings, copper_boots, steam_sword, explication_book;
 
     public static void init() {
 
@@ -52,11 +53,14 @@ public class ItemsMod {
         copper_chestplate = new ArmorMod("copper_chestplate", ItemArmor.ArmorMaterial.DIAMOND, 1, EntityEquipmentSlot.CHEST);
         copper_leggings = new ArmorMod("copper_leggings", ItemArmor.ArmorMaterial.DIAMOND, 2, EntityEquipmentSlot.LEGS);
         copper_boots = new ArmorMod("copper_boots", ItemArmor.ArmorMaterial.DIAMOND, 1, EntityEquipmentSlot.FEET);
+
+        //book
+        explication_book = new BookMod("explication_book");
     }
 
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
-        event.getRegistry().registerAll(saphire, viande, copper_coin, copper_ingot, silver_coin, silver_ingot, gold_coin, copper_pickaxe, copper_sword, copper_shovel, copper_axe, copper_helmet, copper_chestplate, copper_leggings, copper_boots, steam_sword);
+        event.getRegistry().registerAll(saphire, viande, copper_coin, copper_ingot, silver_coin, silver_ingot, gold_coin, copper_pickaxe, copper_sword, copper_shovel, copper_axe, copper_helmet, copper_chestplate, copper_leggings, copper_boots, steam_sword, explication_book);
     }
 
     @SubscribeEvent
@@ -89,6 +93,9 @@ public class ItemsMod {
         registerRender(copper_chestplate);
         registerRender(copper_leggings);
         registerRender(copper_boots);
+
+        //book
+        registerRender(explication_book);
     }
 
     private static void registerRender(Item item) {

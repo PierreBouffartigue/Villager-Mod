@@ -21,5 +21,6 @@ item.copper_chestplate.name=Copper chestplate
 item.copper_leggings.name=Copper leggings
 item.copper_boots.name=Copper boots
 item.steam_sword.name=Steam sword
+item.explication_book.name=Book
 
 entity.cweep.name=Cweep
