@@ -1,7 +1,6 @@
 package fr.ynov.villager.book;
 
 import fr.ynov.villager.Main;
-import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;

@@ -28,33 +28,33 @@ public class ItemsMod {
     public static void init() {
 
         saphire = new ItemMod("saphire");
-        //copper items
+        //Copper items
         copper_coin = new ItemMod("copper_coin");
         copper_ingot = new ItemMod("copper_ingot");
 
 
-        //silver items
+        //Silver items
         silver_coin = new ItemMod("silver_coin");
         silver_ingot = new ItemMod("silver_ingot");
 
-        //gold items
+        //Gold items
         gold_coin = new ItemMod("gold_coin");
         viande = (new ItemCustomFood("viande", 10, 0.3F, false));
 
-        //tools
+        //Tools
         copper_pickaxe = new ItemPickaxeMod("copper_pickaxe", Item.ToolMaterial.DIAMOND);
         copper_sword = new ItemSwordMod("copper_sword", Item.ToolMaterial.DIAMOND);
         copper_axe = new ItemAxeMod("copper_axe", Item.ToolMaterial.DIAMOND);
         copper_shovel = new ItemShovelMod("copper_shovel", Item.ToolMaterial.DIAMOND);
         steam_sword = new ItemSwordMod("steam_sword", Item.ToolMaterial.DIAMOND);
 
-        //armor
+        //Armor
         copper_helmet = new ArmorMod("copper_helmet", ItemArmor.ArmorMaterial.DIAMOND, 1, EntityEquipmentSlot.HEAD);
         copper_chestplate = new ArmorMod("copper_chestplate", ItemArmor.ArmorMaterial.DIAMOND, 1, EntityEquipmentSlot.CHEST);
         copper_leggings = new ArmorMod("copper_leggings", ItemArmor.ArmorMaterial.DIAMOND, 2, EntityEquipmentSlot.LEGS);
         copper_boots = new ArmorMod("copper_boots", ItemArmor.ArmorMaterial.DIAMOND, 1, EntityEquipmentSlot.FEET);
 
-        //book
+        //Book
         explication_book = new BookMod("explication_book");
     }
 
