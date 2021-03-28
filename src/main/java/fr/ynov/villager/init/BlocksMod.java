@@ -28,7 +28,7 @@ public class BlocksMod {
         //blocks
         copper_ore = new BlockMod("copper_ore", Material.IRON, 1).setHardness(3.5F);
         silver_ore = new BlockMod("silver_ore", Material.IRON, 2).setHardness(4.5F);
-        sign_block = new BlockMod("sign_block", Material.CLAY, 1).setHardness(1.0F);
+        sign_block = new BlockMod("sign_block", Material.GLASS, 1).setHardness(1.0F);
     }
 
     @SubscribeEvent
