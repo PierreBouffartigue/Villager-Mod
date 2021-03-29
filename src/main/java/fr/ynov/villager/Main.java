@@ -6,6 +6,7 @@ import fr.ynov.villager.init.RecipesMod;
 import fr.ynov.villager.proxy.ServerProxy;
 import fr.ynov.villager.tabs.VillagerTab;
 import fr.ynov.villager.util.handler.RegistryHandler;
+import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
