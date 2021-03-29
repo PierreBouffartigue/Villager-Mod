@@ -34,10 +34,10 @@ public class GuiMain extends GuiScreen {
         guiLeft = (this.width - this.xSize) / 2;
         guiTop = (this.height - this.ySize) / 2;
 
-        buttonList.add(new GuiButton(0, guiLeft + 77, guiTop + 91, 100, 20, "Button 1"));
-        buttonList.add(new GuiButton(1, guiLeft + 77, guiTop + 116, 100, 20, "Button 2"));
-
-        buttonList.add(new GuiButton(2, guiLeft + 236, guiTop, 20, 20, "X"));
+        buttonList.add(new GuiCustomButton(0, guiLeft + 77, guiTop + 91, 100, 20, "Button 1", 0, 0));
+        buttonList.add(new GuiCustomButton(1, guiLeft + 77, guiTop + 116, 100, 20, "Button 2", 0, 0));
+        buttonList.get(1).enabled = false;
+        buttonList.add(new GuiCustomButton(2, guiLeft + 240, guiTop, 16, 16, "X", 128, 0));
     }
 
     public boolean doesGuiPauseGame()
