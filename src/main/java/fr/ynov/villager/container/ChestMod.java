@@ -4,7 +4,7 @@ import fr.ynov.villager.Main;
 import net.minecraft.block.BlockChest;
 
 public class ChestMod extends BlockChest {
-    protected ChestMod(String name, Type chestTypeIn) {
+    public ChestMod(String name, Type chestTypeIn) {
         super(chestTypeIn);
         setUnlocalizedName(name);
         setRegistryName(name);

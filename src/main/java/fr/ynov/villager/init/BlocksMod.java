@@ -2,10 +2,11 @@ package fr.ynov.villager.init;
 
 import fr.ynov.villager.References;
 import fr.ynov.villager.blocks.BlockMod;
+import fr.ynov.villager.container.ChestMod;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockChest;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -21,20 +22,24 @@ import java.util.Objects;
 @Mod.EventBusSubscriber(modid = References.MODID)
 public class BlocksMod {
     public static Block ardoise_block, copper_ore, silver_ore, sign_block;
+    public static BlockChest silver_chest;
 
     public static void init() {
         //ore
         ardoise_block = new BlockMod("ardoise_block", Material.ROCK, 0).setLightLevel(20).setHardness(5.0F);
         copper_ore = new BlockMod("copper_ore", Material.IRON, 1).setHardness(3.5F);
         silver_ore = new BlockMod("silver_ore", Material.IRON, 2).setHardness(4.5F);
-        //blocks
 
+        //blocks
         sign_block = new BlockMod("sign_block", Material.GLASS, 1).setHardness(1.0F);
+
+        //chest
+        silver_chest = new ChestMod("silver_chest", BlockChest.Type.BASIC);
     }
 
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
-        event.getRegistry().registerAll(ardoise_block, copper_ore, silver_ore, sign_block);
+        event.getRegistry().registerAll(ardoise_block, copper_ore, silver_ore, sign_block, silver_chest);
     }
 
     @SubscribeEvent
@@ -43,7 +48,8 @@ public class BlocksMod {
                 new ItemBlock(ardoise_block).setRegistryName(Objects.requireNonNull(ardoise_block.getRegistryName())),
                 new ItemBlock(copper_ore).setRegistryName(Objects.requireNonNull(copper_ore.getRegistryName())),
                 new ItemBlock(silver_ore).setRegistryName(Objects.requireNonNull(silver_ore.getRegistryName())),
-                new ItemBlock(sign_block).setRegistryName(Objects.requireNonNull(sign_block.getRegistryName()))
+                new ItemBlock(sign_block).setRegistryName(Objects.requireNonNull(sign_block.getRegistryName())),
+                new ItemBlock(silver_chest).setRegistryName(Objects.requireNonNull(silver_chest.getRegistryName()))
         );
     }
 
@@ -53,6 +59,7 @@ public class BlocksMod {
         registerRender(Item.getItemFromBlock(copper_ore));
         registerRender(Item.getItemFromBlock(silver_ore));
         registerRender(Item.getItemFromBlock(sign_block));
+        registerRender(Item.getItemFromBlock(silver_chest));
 
         //Adding smelting
         GameRegistry.addSmelting(new ItemStack(copper_ore), new ItemStack(ItemsMod.copper_ingot), 1.0F);

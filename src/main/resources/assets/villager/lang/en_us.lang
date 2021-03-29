@@ -4,6 +4,7 @@ tile.ardoise_block.name=Ardoise
 tile.copper_ore.name= Copper ore
 tile.silver_ore.name=Silver ore
 tile.sign_block.name=Panel
+tile.silver_chest.name=Silver chest
 
 item.saphire.name=Saphire
 item.viande.name=Viande
