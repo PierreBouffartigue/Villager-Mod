@@ -25,9 +25,10 @@ public class BlocksMod {
     public static void init() {
         //ore
         ardoise_block = new BlockMod("ardoise_block", Material.ROCK, 0).setLightLevel(20).setHardness(5.0F);
-        //blocks
         copper_ore = new BlockMod("copper_ore", Material.IRON, 1).setHardness(3.5F);
         silver_ore = new BlockMod("silver_ore", Material.IRON, 2).setHardness(4.5F);
+        //blocks
+
         sign_block = new BlockMod("sign_block", Material.GLASS, 1).setHardness(1.0F);
     }
 
