@@ -10,11 +10,13 @@ import fr.ynov.villager.tools.ItemPickaxeMod;
 import fr.ynov.villager.tools.ItemShovelMod;
 import fr.ynov.villager.tools.ItemSwordMod;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -24,6 +26,7 @@ import java.util.Objects;
 @Mod.EventBusSubscriber(modid = References.MODID)
 public class ItemsMod {
     public static Item saphire, viande, copper_coin, copper_ingot, silver_coin, silver_ingot, gold_coin, copper_pickaxe, copper_sword, copper_axe, copper_shovel, copper_helmet, copper_chestplate, copper_leggings, copper_boots, steam_sword, explication_book;
+    public static ItemArmor.ArmorMaterial copper_material;
 
     public static void init() {
 
@@ -49,10 +52,11 @@ public class ItemsMod {
         steam_sword = new ItemSwordMod("steam_sword", Item.ToolMaterial.DIAMOND);
 
         //Armor
-        copper_helmet = new ArmorMod("copper_helmet", ItemArmor.ArmorMaterial.DIAMOND, 1, EntityEquipmentSlot.HEAD);
-        copper_chestplate = new ArmorMod("copper_chestplate", ItemArmor.ArmorMaterial.DIAMOND, 1, EntityEquipmentSlot.CHEST);
-        copper_leggings = new ArmorMod("copper_leggings", ItemArmor.ArmorMaterial.DIAMOND, 2, EntityEquipmentSlot.LEGS);
-        copper_boots = new ArmorMod("copper_boots", ItemArmor.ArmorMaterial.DIAMOND, 1, EntityEquipmentSlot.FEET);
+        copper_material = EnumHelper.addArmorMaterial("copper", References.MODID + ":copper", 100, new int[]{7, 8, 8, 9}, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 2.0f);
+        copper_helmet = new ArmorMod("copper_helmet", copper_material, 1, EntityEquipmentSlot.HEAD);
+        copper_chestplate = new ArmorMod("copper_chestplate", copper_material, 1, EntityEquipmentSlot.CHEST);
+        copper_leggings = new ArmorMod("copper_leggings", copper_material, 2, EntityEquipmentSlot.LEGS);
+        copper_boots = new ArmorMod("copper_boots", copper_material, 1, EntityEquipmentSlot.FEET);
 
         //Book
         explication_book = new BookMod("explication_book");
