@@ -10,7 +10,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
  * ModelPlayer - Either Mojang or a mod author
  * Created using Tabula 7.1.0
  */
-public class ModelMayor extends ModelBase {
+public class ModelVillager extends ModelBase {
     public ModelRenderer field_178736_x;
     public ModelRenderer field_178734_a;
     public ModelRenderer field_178731_d;
@@ -23,7 +23,7 @@ public class ModelMayor extends ModelBase {
     public ModelRenderer field_178724_i;
     public ModelRenderer field_178722_k;
 
-    public ModelMayor() {
+    public ModelVillager() {
         this.textureWidth = 64;
         this.textureHeight = 64;
         this.field_178722_k = new ModelRenderer(this, 16, 48);
