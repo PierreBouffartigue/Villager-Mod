@@ -27,6 +27,7 @@ import java.util.Objects;
 public class ItemsMod {
     public static Item saphire, viande, copper_coin, copper_ingot, silver_coin, silver_ingot, gold_coin, copper_pickaxe, copper_sword, copper_axe, copper_shovel, copper_helmet, copper_chestplate, copper_leggings, copper_boots, steam_sword, explication_book;
     public static ItemArmor.ArmorMaterial copper_material;
+    public static Item.ToolMaterial copper_tool_material;
 
     public static void init() {
 
@@ -45,11 +46,12 @@ public class ItemsMod {
         viande = (new ItemCustomFood("viande", 10, 0.3F, false));
 
         //Tools
-        copper_pickaxe = new ItemPickaxeMod("copper_pickaxe", Item.ToolMaterial.DIAMOND);
-        copper_sword = new ItemSwordMod("copper_sword", Item.ToolMaterial.DIAMOND);
-        copper_axe = new ItemAxeMod("copper_axe", Item.ToolMaterial.DIAMOND);
-        copper_shovel = new ItemShovelMod("copper_shovel", Item.ToolMaterial.DIAMOND);
-        steam_sword = new ItemSwordMod("steam_sword", Item.ToolMaterial.DIAMOND);
+        copper_tool_material = EnumHelper.addToolMaterial("copper_tool", 3,100,1, 20F,1);
+        copper_pickaxe = new ItemPickaxeMod("copper_pickaxe", copper_tool_material);
+        copper_sword = new ItemSwordMod("copper_sword", copper_tool_material);
+        copper_axe = new ItemAxeMod("copper_axe", copper_tool_material);
+        copper_shovel = new ItemShovelMod("copper_shovel", copper_tool_material);
+        steam_sword = new ItemSwordMod("steam_sword", copper_tool_material);
 
         //Armor
         copper_material = EnumHelper.addArmorMaterial("copper", References.MODID + ":copper", 100, new int[]{7, 8, 8, 9}, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 2.0f);
