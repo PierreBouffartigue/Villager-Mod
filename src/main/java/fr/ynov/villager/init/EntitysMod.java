@@ -3,12 +3,14 @@ package fr.ynov.villager.init;
 import fr.ynov.villager.Main;
 import fr.ynov.villager.References;
 import fr.ynov.villager.entity.EntityCweep;
+import fr.ynov.villager.entity.EntityMayor;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 public class EntitysMod {
     public static void registerEntities() {
+        registerEntity("mayor", EntityMayor.class, 112, 40, 12345678, 56984235);
         registerEntity("cweep", EntityCweep.class, 111, 50, 16765255, 1672485);
     }
 

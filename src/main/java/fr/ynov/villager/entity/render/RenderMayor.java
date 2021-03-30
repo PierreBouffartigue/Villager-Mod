@@ -1,9 +1,8 @@
 package fr.ynov.villager.entity.render;
 
-
 import fr.ynov.villager.References;
-import fr.ynov.villager.entity.EntityCweep;
-import fr.ynov.villager.entity.models.ModelCweep;
+import fr.ynov.villager.entity.EntityMayor;
+import fr.ynov.villager.entity.models.ModelMayor;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
@@ -14,12 +13,11 @@ import javax.annotation.ParametersAreNonnullByDefault;
 
 @SideOnly(Side.CLIENT)
 public
-class RenderCweep<T extends EntityCweep> extends RenderLiving<T> {
-    private static final ResourceLocation CWEEP_TEXTURES = new ResourceLocation(References.MODID + ":textures/entity/cweep.png");
+class RenderMayor<T extends EntityMayor> extends RenderLiving<T> {
+    private static final ResourceLocation MAYOR_TEXTURES = new ResourceLocation(References.MODID + ":textures/entity/mayor.png");
 
-    public RenderCweep(RenderManager renderManagerIn) {
-
-        super(renderManagerIn, new ModelCweep(), 1.0F);
+    public RenderMayor(RenderManager renderManagerIn) {
+        super(renderManagerIn, new ModelMayor(), 1.0F);
     }
 
     @ParametersAreNonnullByDefault
@@ -29,6 +27,6 @@ class RenderCweep<T extends EntityCweep> extends RenderLiving<T> {
 
     @ParametersAreNonnullByDefault
     protected ResourceLocation getEntityTexture(T entity) {
-        return CWEEP_TEXTURES;
+        return MAYOR_TEXTURES;
     }
 }
