@@ -1,5 +1,7 @@
 package fr.ynov.villager.entity;
 
+import fr.ynov.villager.gui.GuiVillager;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.EntityIronGolem;
@@ -7,6 +9,7 @@ import net.minecraft.entity.monster.EntityPigZombie;
 import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 
 public class EntityCweep extends EntitySpider {
@@ -44,4 +47,8 @@ public class EntityCweep extends EntitySpider {
         this.applyEntityAI();
     }
 
+    public boolean processInteract(EntityPlayer player, EnumHand hand) {
+        Minecraft.getMinecraft().displayGuiScreen(new GuiVillager(Minecraft.getMinecraft(), this));
+        return false;
+    }
 }
