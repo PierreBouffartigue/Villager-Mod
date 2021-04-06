@@ -46,9 +46,4 @@ public class EntityCweep extends EntitySpider {
         this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
         this.applyEntityAI();
     }
-
-    public boolean processInteract(EntityPlayer player, EnumHand hand) {
-        Minecraft.getMinecraft().displayGuiScreen(new GuiVillager(Minecraft.getMinecraft(), this));
-        return false;
-    }
 }
