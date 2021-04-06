@@ -27,3 +27,5 @@ item.explication_book.name=Book
 
 entity.cweep.name=Cweep
 entity.mayor.name=Mayor
+entity.farmer.name=Farmer
+entity.constructor.name=Constructor

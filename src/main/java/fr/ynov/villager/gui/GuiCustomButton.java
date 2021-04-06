@@ -37,11 +37,9 @@ public class GuiCustomButton extends GuiButton {
 
             if (packedFGColour != 0) {
                 j = packedFGColour;
-            }
-            else if (!this.enabled) {
+            } else if (!this.enabled) {
                 j = 10526880;
-            }
-            else if (this.hovered) {
+            } else if (this.hovered) {
                 j = 16777120;
             }
 
