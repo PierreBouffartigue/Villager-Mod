@@ -17,12 +17,12 @@ class RenderMayor<T extends EntityMayor> extends RenderLiving<T> {
     private static final ResourceLocation MAYOR_TEXTURES = new ResourceLocation(References.MODID + ":textures/entity/mayor.png");
 
     public RenderMayor(RenderManager renderManagerIn) {
-        super(renderManagerIn, new ModelVillager(), 1.0F);
+        super(renderManagerIn, new ModelVillager(), 0.5F);
     }
 
     @ParametersAreNonnullByDefault
     protected float getDeathMaxRotation(T entityLivingBaseIn) {
-        return 180.0F;
+        return 100.0F;
     }
 
     @ParametersAreNonnullByDefault
