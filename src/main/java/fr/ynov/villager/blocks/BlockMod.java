@@ -7,6 +7,8 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
 public class BlockMod extends Block {
 
     public BlockMod(String name, Material materialIn, int harvestLevel) {
@@ -19,6 +21,7 @@ public class BlockMod extends Block {
 
     @Override
     @SideOnly(Side.CLIENT)
+    @ParametersAreNonnullByDefault
     public boolean isOpaqueCube(IBlockState state)
     {
         return false;

@@ -1,5 +1,6 @@
 package fr.ynov.villager;
 
+import fr.ynov.villager.gui.GuiDebug;
 import fr.ynov.villager.init.BlocksMod;
 import fr.ynov.villager.init.ItemsMod;
 import fr.ynov.villager.init.RecipesMod;
@@ -8,6 +9,7 @@ import fr.ynov.villager.tabs.VillagerTab;
 import fr.ynov.villager.util.handler.RegistryHandler;
 import fr.ynov.villager.world.OreGen;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -43,6 +45,7 @@ public class Main {
         proxy.register();
         RegistryHandler.initRegistries();
         GameRegistry.registerWorldGenerator(new OreGen(), 0);
+        MinecraftForge.EVENT_BUS.register(new GuiDebug());
     }
 
 
