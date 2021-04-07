@@ -10,6 +10,7 @@ import net.minecraft.world.World;
 public class EntityMayor extends EntityCreature {
     public EntityMayor(World worldIn) {
         super(worldIn);
+        setCustomNameTag(getName());
     }
 
     public boolean processInteract(EntityPlayer player, EnumHand hand) {

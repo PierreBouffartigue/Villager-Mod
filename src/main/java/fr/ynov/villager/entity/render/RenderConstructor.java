@@ -14,7 +14,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 @SideOnly(Side.CLIENT)
 public
 class RenderConstructor<T extends EntityConstructor> extends RenderLiving<T> {
-    private static final ResourceLocation MAYOR_TEXTURES = new ResourceLocation(References.MODID + ":textures/entity/constructor.png");
+    private static final ResourceLocation CONSTRUCTOR_TEXTURES = new ResourceLocation(References.MODID + ":textures/entity/constructor.png");
 
     public RenderConstructor(RenderManager renderManagerIn) {
         super(renderManagerIn, new ModelVillager(), 0.5F);
@@ -27,6 +27,6 @@ class RenderConstructor<T extends EntityConstructor> extends RenderLiving<T> {
 
     @ParametersAreNonnullByDefault
     protected ResourceLocation getEntityTexture(T entity) {
-        return MAYOR_TEXTURES;
+        return CONSTRUCTOR_TEXTURES;
     }
 }

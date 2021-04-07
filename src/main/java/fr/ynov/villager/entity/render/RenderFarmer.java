@@ -14,7 +14,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 @SideOnly(Side.CLIENT)
 public
 class RenderFarmer<T extends EntityFarmer> extends RenderLiving<T> {
-    private static final ResourceLocation MAYOR_TEXTURES = new ResourceLocation(References.MODID + ":textures/entity/farmer.png");
+    private static final ResourceLocation FARMER_TEXTURES = new ResourceLocation(References.MODID + ":textures/entity/farmer.png");
 
     public RenderFarmer(RenderManager renderManagerIn) {
         super(renderManagerIn, new ModelVillager(), 0.5F);
@@ -27,6 +27,6 @@ class RenderFarmer<T extends EntityFarmer> extends RenderLiving<T> {
 
     @ParametersAreNonnullByDefault
     protected ResourceLocation getEntityTexture(T entity) {
-        return MAYOR_TEXTURES;
+        return FARMER_TEXTURES;
     }
 }

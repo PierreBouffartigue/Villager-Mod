@@ -25,6 +25,6 @@ item.steam_sword.name=Epee de vapeur
 item.explication_book.name=Livre
 
 entity.cweep.name=Cweep
-entity.mayor.name=Mayor
-entity.farmer.name=Farmer
-entity.constructor.name=Constructor
+entity.mayor.name=Maire
+entity.farmer.name=Fermier
+entity.constructor.name=Constructeur

@@ -6,5 +6,6 @@ import net.minecraft.world.World;
 public class EntityFarmer extends EntityCreature {
     public EntityFarmer(World worldIn) {
         super(worldIn);
+        setCustomNameTag(getName());
     }
 }
