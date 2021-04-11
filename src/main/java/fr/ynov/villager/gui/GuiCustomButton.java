@@ -6,14 +6,12 @@ import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
 @SideOnly(Side.CLIENT)
-@Mod.EventBusSubscriber(modid = References.MODID)
 public class GuiCustomButton extends GuiButton {
     private final ResourceLocation buttonTex = new ResourceLocation(References.MODID, "textures/gui/gui_button.png");
     private final int textureX;

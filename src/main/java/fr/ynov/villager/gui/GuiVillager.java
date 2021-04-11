@@ -8,24 +8,21 @@ import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.awt.*;
 
-@Mod.EventBusSubscriber(modid = References.MODID)
+@SideOnly(Side.CLIENT)
 public class GuiVillager extends GuiScreen {
     private final ResourceLocation background = new ResourceLocation(References.MODID, "textures/gui/gui_base.png"); // 256x202
-
-    private int tab = 0;
-
     private final int xSize = 256;
     private final int ySize = 202;
-
+    private final Minecraft mc;
+    private final EntityLivingBase villager;
+    private int tab = 0;
     private int guiLeft;
     private int guiTop;
-
-    private Minecraft mc;
-    private EntityLivingBase villager;
 
     public GuiVillager(Minecraft mc, EntityLivingBase villager) {
         this.mc = mc;
@@ -59,7 +56,7 @@ public class GuiVillager extends GuiScreen {
                 tab--;
                 break;
             case 3:
-                this.mc.displayGuiScreen((GuiScreen) null);
+                this.mc.displayGuiScreen(null);
                 this.mc.setIngameFocus();
                 break;
         }

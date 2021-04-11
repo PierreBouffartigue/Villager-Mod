@@ -10,21 +10,20 @@ import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.awt.*;
 
-@Mod.EventBusSubscriber(modid = References.MODID)
+@SideOnly(Side.CLIENT)
 public class GuiMain extends GuiScreen {
     private final ResourceLocation background = new ResourceLocation(References.MODID, "textures/gui/gui_base.png"); // 256x202
 
     private final int xSize = 256;
     private final int ySize = 202;
-
+    private final Minecraft mc;
     private int guiLeft;
     private int guiTop;
-
-    private Minecraft mc;
 
     public GuiMain(Minecraft mc) {
         this.mc = mc;
@@ -54,7 +53,7 @@ public class GuiMain extends GuiScreen {
                 this.mc.player.sendChatMessage("Button 2");
                 break;
             case 2:
-                this.mc.displayGuiScreen((GuiScreen) null);
+                this.mc.displayGuiScreen(null);
                 this.mc.setIngameFocus();
                 break;
         }
@@ -98,10 +97,10 @@ public class GuiMain extends GuiScreen {
         GlStateManager.rotate(135.0F, 0.0F, 1.0F, 0.0F);
         RenderHelper.enableStandardItemLighting();
         GlStateManager.rotate(-135.0F, 0.0F, 1.0F, 0.0F);
-        GlStateManager.rotate(-((float) Math.atan((double) (mouseY / 40.0F))) * 20.0F, 1.0F, 0.0F, 0.0F);
-        ent.renderYawOffset = (float) Math.atan((double) (mouseX / 40.0F)) * 20.0F;
-        ent.rotationYaw = (float) Math.atan((double) (mouseX / 40.0F)) * 40.0F;
-        ent.rotationPitch = -((float) Math.atan((double) (mouseY / 40.0F))) * 20.0F;
+        GlStateManager.rotate(-((float) Math.atan(mouseY / 40.0F)) * 20.0F, 1.0F, 0.0F, 0.0F);
+        ent.renderYawOffset = (float) Math.atan(mouseX / 40.0F) * 20.0F;
+        ent.rotationYaw = (float) Math.atan(mouseX / 40.0F) * 40.0F;
+        ent.rotationPitch = -((float) Math.atan(mouseY / 40.0F)) * 20.0F;
         ent.rotationYawHead = ent.rotationYaw;
         ent.prevRotationYawHead = ent.rotationYaw;
         GlStateManager.translate(0.0F, 0.0F, 0.0F);
