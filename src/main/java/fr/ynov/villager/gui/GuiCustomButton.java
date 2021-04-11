@@ -10,12 +10,14 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
 @SideOnly(Side.CLIENT)
 @Mod.EventBusSubscriber(modid = References.MODID)
 public class GuiCustomButton extends GuiButton {
-    private ResourceLocation buttonTex = new ResourceLocation(References.MODID, "textures/gui/gui_button.png");
-    private int textureX;
-    private int textureY;
+    private final ResourceLocation buttonTex = new ResourceLocation(References.MODID, "textures/gui/gui_button.png");
+    private final int textureX;
+    private final int textureY;
 
     public GuiCustomButton(int buttonId, int x, int y, int widthIn, int heightIn, String buttonText, int textureX, int textureY) {
         super(buttonId, x, y, widthIn, heightIn, buttonText);
@@ -24,6 +26,7 @@ public class GuiCustomButton extends GuiButton {
     }
 
     @Override
+    @ParametersAreNonnullByDefault
     public void drawButton(Minecraft mc, int mouseX, int mouseY, float partialTicks) {
         if (this.visible) {
             FontRenderer fontrenderer = mc.fontRenderer;

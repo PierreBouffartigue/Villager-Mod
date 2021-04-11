@@ -3,7 +3,7 @@ package fr.ynov.villager.init;
 import fr.ynov.villager.References;
 import fr.ynov.villager.armor.ArmorMod;
 import fr.ynov.villager.book.BookMod;
-import fr.ynov.villager.items.ItemCustomFood;
+import fr.ynov.villager.items.ItemFoodMod;
 import fr.ynov.villager.items.ItemMod;
 import fr.ynov.villager.tools.ItemAxeMod;
 import fr.ynov.villager.tools.ItemPickaxeMod;
@@ -43,7 +43,7 @@ public class ItemsMod {
 
         //Gold items
         gold_coin = new ItemMod("gold_coin");
-        viande = (new ItemCustomFood("viande", 10, 0.3F, false));
+        viande = (new ItemFoodMod("viande", 10, 0.3F, false));
 
         //Tools
         copper_tool_material = EnumHelper.addToolMaterial("copper_tool", 3,100,1, 20F,1);
