@@ -6,6 +6,7 @@ tile.silver_ore.name=Silver ore
 tile.sign_block.name=Panel
 tile.silver_chest.name=Silver chest
 tile.silver_lantern.name=Silver lantern
+tile.coin_creator.name=Coin creator
 
 item.saphire.name=Saphire
 item.viande.name=Viande

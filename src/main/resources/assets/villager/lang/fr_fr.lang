@@ -6,6 +6,7 @@ tile.silver_ore.name=Minerais d argent
 tile.sign_block.name=Panneau
 tile.silver_chest.name=Coffre d argent
 tile.silver_lantern.name=Lanterne d argent
+tile.coin_creator.name=Machine a pieces
 
 item.saphire.name=Saphire
 item.viande.name=Viande
