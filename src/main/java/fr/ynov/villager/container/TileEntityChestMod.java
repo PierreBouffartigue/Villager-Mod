@@ -14,94 +14,78 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 
-public class TileEntityChestMod extends TileEntityLockableLoot implements ITickable
-{
-    private NonNullList<ItemStack> chestContents = NonNullList.<ItemStack>withSize(72, ItemStack.EMPTY);
+public class TileEntityChestMod extends TileEntityLockableLoot implements ITickable {
     public int numPlayersUsing, ticksSinceSync;
     public float lidAngle, prevLidAngle;
+    private NonNullList<ItemStack> chestContents = NonNullList.withSize(72, ItemStack.EMPTY);
 
     @Override
-    public int getSizeInventory()
-    {
+    public int getSizeInventory() {
         return 72;
     }
 
     @Override
-    public int getInventoryStackLimit()
-    {
+    public int getInventoryStackLimit() {
         return 64;
     }
 
     @Override
-    public boolean isEmpty()
-    {
-        for(ItemStack stack : this.chestContents)
-        {
-            if(!stack.isEmpty()) return false;
+    public boolean isEmpty() {
+        for (ItemStack stack : this.chestContents) {
+            if (!stack.isEmpty()) return false;
         }
 
         return true;
     }
 
     @Override
-    public String getName()
-    {
-        return this.hasCustomName() ? this.customName : "container.copper_chest";
+    public String getName() {
+        return this.hasCustomName() ? this.customName : "container.silver_chest";
     }
 
     @Override
-    public void readFromNBT(NBTTagCompound compound)
-    {
+    public void readFromNBT(NBTTagCompound compound) {
         super.readFromNBT(compound);
-        this.chestContents = NonNullList.<ItemStack>withSize(this.getSizeInventory(), ItemStack.EMPTY);
+        this.chestContents = NonNullList.withSize(this.getSizeInventory(), ItemStack.EMPTY);
 
-        if(!this.checkLootAndRead(compound)) ItemStackHelper.loadAllItems(compound, chestContents);
-        if(compound.hasKey("CustomName", 8)) this.customName = compound.getString("CustomName");
+        if (!this.checkLootAndRead(compound)) ItemStackHelper.loadAllItems(compound, chestContents);
+        if (compound.hasKey("CustomName", 8)) this.customName = compound.getString("CustomName");
     }
 
     @Override
-    public NBTTagCompound writeToNBT(NBTTagCompound compound)
-    {
+    public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         super.writeToNBT(compound);
 
-        if(!this.checkLootAndWrite(compound)) ItemStackHelper.saveAllItems(compound, chestContents);
-        if(compound.hasKey("CustomName", 8)) compound.setString("CustomName", this.customName);
+        if (!this.checkLootAndWrite(compound)) ItemStackHelper.saveAllItems(compound, chestContents);
+        if (compound.hasKey("CustomName", 8)) compound.setString("CustomName", this.customName);
 
         return compound;
     }
 
     @Override
-    public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn)
-    {
+    public Container createContainer(InventoryPlayer playerInventory, EntityPlayer playerIn) {
         return new ContainerChestMod(playerInventory, this, playerIn);
     }
 
     @Override
-    public String getGuiID()
-    {
-        return References.MODID + ":copper_chest";
+    public String getGuiID() {
+        return References.MODID + ":silver_chest";
     }
 
     @Override
-    protected NonNullList<ItemStack> getItems()
-    {
+    protected NonNullList<ItemStack> getItems() {
         return this.chestContents;
     }
 
     @Override
-    public void update()
-    {
-        if (!this.world.isRemote && this.numPlayersUsing != 0 && (this.ticksSinceSync + pos.getX() + pos.getY() + pos.getZ()) % 200 == 0)
-        {
+    public void update() {
+        if (!this.world.isRemote && this.numPlayersUsing != 0 && (this.ticksSinceSync + pos.getX() + pos.getY() + pos.getZ()) % 200 == 0) {
             this.numPlayersUsing = 0;
             float f = 5.0F;
 
-            for (EntityPlayer entityplayer : this.world.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB((double)((float)pos.getX() - 5.0F), (double)((float)pos.getY() - 5.0F), (double)((float)pos.getZ() - 5.0F), (double)((float)(pos.getX() + 1) + 5.0F), (double)((float)(pos.getY() + 1) + 5.0F), (double)((float)(pos.getZ() + 1) + 5.0F))))
-            {
-                if (entityplayer.openContainer instanceof ContainerChestMod)
-                {
-                    if (((ContainerChestMod)entityplayer.openContainer).getChestInventory() == this)
-                    {
+            for (EntityPlayer entityplayer : this.world.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB((float) pos.getX() - 5.0F, (float) pos.getY() - 5.0F, (float) pos.getZ() - 5.0F, (float) (pos.getX() + 1) + 5.0F, (float) (pos.getY() + 1) + 5.0F, (float) (pos.getZ() + 1) + 5.0F))) {
+                if (entityplayer.openContainer instanceof ContainerChestMod) {
+                    if (((ContainerChestMod) entityplayer.openContainer).getChestInventory() == this) {
                         ++this.numPlayersUsing;
                     }
                 }
@@ -111,58 +95,48 @@ public class TileEntityChestMod extends TileEntityLockableLoot implements ITicka
         this.prevLidAngle = this.lidAngle;
         float f1 = 0.1F;
 
-        if (this.numPlayersUsing > 0 && this.lidAngle == 0.0F)
-        {
-            double d1 = (double)pos.getX() + 0.5D;
-            double d2 = (double)pos.getZ() + 0.5D;
-            this.world.playSound((EntityPlayer)null, d1, (double)pos.getY() + 0.5D, d2, SoundEvents.BLOCK_IRON_TRAPDOOR_OPEN, SoundCategory.BLOCKS, 0.5F, this.world.rand.nextFloat() * 0.1F + 0.9F);
+        if (this.numPlayersUsing > 0 && this.lidAngle == 0.0F) {
+            double d1 = (double) pos.getX() + 0.5D;
+            double d2 = (double) pos.getZ() + 0.5D;
+            this.world.playSound(null, d1, (double) pos.getY() + 0.5D, d2, SoundEvents.BLOCK_IRON_TRAPDOOR_OPEN, SoundCategory.BLOCKS, 0.5F, this.world.rand.nextFloat() * 0.1F + 0.9F);
         }
 
-        if (this.numPlayersUsing == 0 && this.lidAngle > 0.0F || this.numPlayersUsing > 0 && this.lidAngle < 1.0F)
-        {
+        if (this.numPlayersUsing == 0 && this.lidAngle > 0.0F || this.numPlayersUsing > 0 && this.lidAngle < 1.0F) {
             float f2 = this.lidAngle;
 
-            if (this.numPlayersUsing > 0)
-            {
+            if (this.numPlayersUsing > 0) {
                 this.lidAngle += 0.1F;
-            }
-            else
-            {
+            } else {
                 this.lidAngle -= 0.1F;
             }
 
-            if (this.lidAngle > 1.0F)
-            {
+            if (this.lidAngle > 1.0F) {
                 this.lidAngle = 1.0F;
             }
 
             float f3 = 0.5F;
 
-            if (this.lidAngle < 0.5F && f2 >= 0.5F)
-            {
-                double d3 = (double)pos.getX() + 0.5D;
-                double d0 = (double)pos.getZ() + 0.5D;
-                this.world.playSound((EntityPlayer)null, d3, (double)pos.getY() + 0.5D, d0, SoundEvents.BLOCK_IRON_TRAPDOOR_CLOSE, SoundCategory.BLOCKS, 0.5F, this.world.rand.nextFloat() * 0.1F + 0.9F);
+            if (this.lidAngle < 0.5F && f2 >= 0.5F) {
+                double d3 = (double) pos.getX() + 0.5D;
+                double d0 = (double) pos.getZ() + 0.5D;
+                this.world.playSound(null, d3, (double) pos.getY() + 0.5D, d0, SoundEvents.BLOCK_IRON_TRAPDOOR_CLOSE, SoundCategory.BLOCKS, 0.5F, this.world.rand.nextFloat() * 0.1F + 0.9F);
             }
 
-            if (this.lidAngle < 0.0F)
-            {
+            if (this.lidAngle < 0.0F) {
                 this.lidAngle = 0.0F;
             }
         }
     }
 
     @Override
-    public void openInventory(EntityPlayer player)
-    {
+    public void openInventory(EntityPlayer player) {
         ++this.numPlayersUsing;
         this.world.addBlockEvent(pos, this.getBlockType(), 1, this.numPlayersUsing);
         this.world.notifyNeighborsOfStateChange(pos, this.getBlockType(), false);
     }
 
     @Override
-    public void closeInventory(EntityPlayer player)
-    {
+    public void closeInventory(EntityPlayer player) {
         --this.numPlayersUsing;
         this.world.addBlockEvent(pos, this.getBlockType(), 1, this.numPlayersUsing);
         this.world.notifyNeighborsOfStateChange(pos, this.getBlockType(), false);

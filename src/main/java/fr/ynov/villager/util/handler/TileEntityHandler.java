@@ -7,6 +7,6 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class TileEntityHandler {
     public static void registerTileEntities() {
-        GameRegistry.registerTileEntity(TileEntityChestMod.class, new ResourceLocation(References.MODID + ":copper_chest"));
+        GameRegistry.registerTileEntity(TileEntityChestMod.class, new ResourceLocation(References.MODID + ":silver_chest"));
     }
 }

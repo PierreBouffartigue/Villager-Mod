@@ -6,81 +6,63 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
-public class ContainerChestMod extends Container
-{
+public class ContainerChestMod extends Container {
     private final int numRows;
     private final TileEntityChestMod chestInventory;
 
-    public ContainerChestMod(InventoryPlayer playerInv, TileEntityChestMod tileEntityCopperChest, EntityPlayer player)
-    {
+    public ContainerChestMod(InventoryPlayer playerInv, TileEntityChestMod tileEntityCopperChest, EntityPlayer player) {
         this.chestInventory = tileEntityCopperChest;
         this.numRows = tileEntityCopperChest.getSizeInventory() / 9;
         tileEntityCopperChest.openInventory(player);
 
-        for(int i = 0; i < this.numRows; ++i)
-        {
-            for(int j = 0; j < 9; ++j)
-            {
-                this.addSlotToContainer(new Slot(tileEntityCopperChest, j + i*9, 8 + j*18, 18 + i*18));
+        for (int i = 0; i < this.numRows; ++i) {
+            for (int j = 0; j < 9; ++j) {
+                this.addSlotToContainer(new Slot(tileEntityCopperChest, j + i * 9, 8 + j * 18, 18 + i * 18));
             }
         }
 
-        for(int y = 0; y < 3; y++)
-        {
-            for(int x = 0; x < 9; x++)
-            {
-                this.addSlotToContainer(new Slot(playerInv, x + y*9 + 9, 8 + x*18, 175 + y*18));
+        for (int y = 0; y < 3; y++) {
+            for (int x = 0; x < 9; x++) {
+                this.addSlotToContainer(new Slot(playerInv, x + y * 9 + 9, 8 + x * 18, 175 + y * 18));
             }
         }
 
-        for(int x = 0; x < 9; x++)
-        {
-            this.addSlotToContainer(new Slot(playerInv, x, 8 + x*18, 233));
+        for (int x = 0; x < 9; x++) {
+            this.addSlotToContainer(new Slot(playerInv, x, 8 + x * 18, 233));
         }
     }
 
     @Override
-    public boolean canInteractWith(EntityPlayer playerIn)
-    {
+    public boolean canInteractWith(EntityPlayer playerIn) {
         return this.chestInventory.isUsableByPlayer(playerIn);
     }
 
     @Override
-    public void onContainerClosed(EntityPlayer playerIn)
-    {
+    public void onContainerClosed(EntityPlayer playerIn) {
         super.onContainerClosed(playerIn);
         chestInventory.closeInventory(playerIn);
     }
 
     @Override
-    public ItemStack transferStackInSlot(EntityPlayer playerIn, int index)
-    {
+    public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
         ItemStack itemstack = ItemStack.EMPTY;
         Slot slot = this.inventorySlots.get(index);
 
-        if (slot != null && slot.getHasStack())
-        {
+        if (slot != null && slot.getHasStack()) {
             ItemStack itemstack1 = slot.getStack();
             itemstack = itemstack1.copy();
 
-            if (index < this.numRows * 9)
-            {
-                if (!this.mergeItemStack(itemstack1, this.numRows * 9, this.inventorySlots.size(), true))
-                {
+            if (index < this.numRows * 9) {
+                if (!this.mergeItemStack(itemstack1, this.numRows * 9, this.inventorySlots.size(), true)) {
                     return ItemStack.EMPTY;
                 }
-            }
-            else if (!this.mergeItemStack(itemstack1, 0, this.numRows * 9, false))
-            {
+            } else if (!this.mergeItemStack(itemstack1, 0, this.numRows * 9, false)) {
                 return ItemStack.EMPTY;
             }
 
-            if (itemstack1.isEmpty())
-            {
+            if (itemstack1.isEmpty()) {
                 slot.putStack(ItemStack.EMPTY);
-            }
-            else
-            {
+            } else {
                 slot.onSlotChanged();
             }
         }
@@ -88,8 +70,7 @@ public class ContainerChestMod extends Container
         return itemstack;
     }
 
-    public TileEntityChestMod getChestInventory()
-    {
+    public TileEntityChestMod getChestInventory() {
         return this.chestInventory;
     }
 }
