@@ -7,4 +7,5 @@ public class References {
     public static final String MINECRAFT_VERSION = "[1.12]";
     public static final String CLIENT_PROXY = "fr.ynov.villager.proxy.ClientProxy";
     public static final String SERVER_PROXY = "fr.ynov.villager.proxy.ServerProxy";
+    public static final int GUI_SILVER_CHEST = 1;
 }

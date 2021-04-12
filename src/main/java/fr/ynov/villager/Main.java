@@ -6,6 +6,7 @@ import fr.ynov.villager.init.ItemsMod;
 import fr.ynov.villager.init.RecipesMod;
 import fr.ynov.villager.proxy.ServerProxy;
 import fr.ynov.villager.tabs.VillagerTab;
+import fr.ynov.villager.util.handler.GuiHandler;
 import fr.ynov.villager.util.handler.RegistryHandler;
 import fr.ynov.villager.world.OreGen;
 import net.minecraft.creativetab.CreativeTabs;
@@ -17,6 +18,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 @Mod(modid = References.MODID, name = References.NAME, version = References.VERSION, acceptedMinecraftVersions = References.MINECRAFT_VERSION)
@@ -46,6 +48,7 @@ public class Main {
         RegistryHandler.initRegistries();
         GameRegistry.registerWorldGenerator(new OreGen(), 0);
         MinecraftForge.EVENT_BUS.register(new GuiDebug());
+        NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
     }
 
 

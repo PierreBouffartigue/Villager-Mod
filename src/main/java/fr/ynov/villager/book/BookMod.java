@@ -8,6 +8,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemWritableBook;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -28,7 +29,7 @@ public class BookMod extends ItemWritableBook {
     @Override
     @ParametersAreNonnullByDefault
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
-        Minecraft.getMinecraft().player.sendChatMessage("Livre ouvert");
+        Minecraft.getMinecraft().player.sendMessage(new TextComponentString(">>> Livre ouvert"));
         return super.onItemRightClick(worldIn, playerIn, handIn);
     }
 }

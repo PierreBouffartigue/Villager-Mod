@@ -22,7 +22,7 @@ import java.util.Objects;
 @Mod.EventBusSubscriber(modid = References.MODID)
 public class BlocksMod {
     public static Block ardoise_block, copper_ore, silver_ore, sign_block, silver_lantern;
-    public static BlockChest silver_chest;
+    public static ChestMod silver_chest;
 
     public static void init() {
         //ore
@@ -35,7 +35,7 @@ public class BlocksMod {
         silver_lantern = new BlockMod("silver_lantern", Material.CLAY, 0).setHardness(1.0F).setLightLevel(1.0F);
 
         //chest
-        silver_chest = new ChestMod("silver_chest", BlockChest.Type.BASIC);
+        silver_chest = new ChestMod("silver_chest");
     }
 
     @SubscribeEvent
