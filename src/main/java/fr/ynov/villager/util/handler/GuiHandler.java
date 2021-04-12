@@ -24,7 +24,6 @@ public class GuiHandler implements IGuiHandler
         if(te instanceof TileCoinCreator) {
             return new ContainerCoinCreator((TileCoinCreator) te, player.inventory);
         }
-
         if(ID == References.GUI_SILVER_CHEST) return new ContainerChestMod(player.inventory, (TileEntityChestMod) Objects.requireNonNull(world.getTileEntity(new BlockPos(x, y, z))), player);
 
         return null;

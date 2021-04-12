@@ -40,7 +40,7 @@ public class BlocksMod {
         silver_chest = new ChestMod("silver_chest");
 
         //coin creator
-        coin_creator = new BlockCoinCreator("coin_creator");
+        coin_creator = new BlockCoinCreator("coin_creator",Material.ROCK);
     }
 
     @SubscribeEvent
