@@ -23,7 +23,7 @@ public class ContainerCoinCreator extends Container {
         this.tile = tile;
         int i;
         for(i = 0; i < 1; i++) {
-            this.addSlotToContainer(new Slot(tile, i, 33 + i * 18, 7));
+            this.addSlotToContainer(new Slot(tile, i, 42 + i * 25, 7));
         }
         for(i = 0; i < 2; i++) {
             this.addSlotToContainer(new SlotSingleItem(tile, i + 2, 42, 40 + i * 18, i == 0 ? Items.COAL : Items.IRON_INGOT));

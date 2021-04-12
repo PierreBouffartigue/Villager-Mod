@@ -8,7 +8,7 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 
 public class GuiCoinCreator extends GuiContainer {
-    private static final ResourceLocation background = new ResourceLocation("modid","textures/gui/container/custom_furnace.png");
+    private static final ResourceLocation background = new ResourceLocation("villager","textures/blocks/custom_furnace.png");
     private TileCoinCreator tile;
 
     public GuiCoinCreator(TileCoinCreator tile, InventoryPlayer playerInv) {
