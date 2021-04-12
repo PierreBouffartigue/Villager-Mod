@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    " c ",
+    " c ",
+    " s "
+  ],
+  "key":
+  {
+    "c":
+    {
+      "item": "villager:copper_ingot"
+    },
+    "s":
+    {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "villager:copper_sword",
+    "count": 1
+  }
+}

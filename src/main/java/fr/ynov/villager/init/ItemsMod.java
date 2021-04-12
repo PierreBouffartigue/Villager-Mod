@@ -10,16 +10,20 @@ import fr.ynov.villager.tools.ItemPickaxeMod;
 import fr.ynov.villager.tools.ItemShovelMod;
 import fr.ynov.villager.tools.ItemSwordMod;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.util.Objects;
 
@@ -62,6 +66,10 @@ public class ItemsMod {
 
         //Book
         explication_book = new BookMod("explication_book");
+
+        //Craft
+
+
     }
 
     @SubscribeEvent

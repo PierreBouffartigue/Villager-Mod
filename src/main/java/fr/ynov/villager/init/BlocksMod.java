@@ -1,6 +1,7 @@
 package fr.ynov.villager.init;
 
 import fr.ynov.villager.References;
+import fr.ynov.villager.blocks.BlockCoinCreator;
 import fr.ynov.villager.blocks.BlockMod;
 import fr.ynov.villager.container.ChestMod;
 import net.minecraft.block.Block;
@@ -23,6 +24,7 @@ import java.util.Objects;
 public class BlocksMod {
     public static Block ardoise_block, copper_ore, silver_ore, sign_block, silver_lantern;
     public static ChestMod silver_chest;
+    public static BlockCoinCreator coin_creator;
 
     public static void init() {
         //ore
@@ -36,11 +38,14 @@ public class BlocksMod {
 
         //chest
         silver_chest = new ChestMod("silver_chest");
+
+        //coin creator
+        coin_creator = new BlockCoinCreator("coin_creator");
     }
 
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
-        event.getRegistry().registerAll(ardoise_block, copper_ore, silver_ore, sign_block, silver_chest, silver_lantern);
+        event.getRegistry().registerAll(ardoise_block, copper_ore, silver_ore, sign_block, silver_chest, silver_lantern, coin_creator);
     }
 
     @SubscribeEvent
@@ -51,7 +56,8 @@ public class BlocksMod {
                 new ItemBlock(silver_ore).setRegistryName(Objects.requireNonNull(silver_ore.getRegistryName())),
                 new ItemBlock(sign_block).setRegistryName(Objects.requireNonNull(sign_block.getRegistryName())),
                 new ItemBlock(silver_chest).setRegistryName(Objects.requireNonNull(silver_chest.getRegistryName())),
-                new ItemBlock(silver_lantern).setRegistryName(Objects.requireNonNull(silver_lantern.getRegistryName()))
+                new ItemBlock(silver_lantern).setRegistryName(Objects.requireNonNull(silver_lantern.getRegistryName())),
+                new ItemBlock(coin_creator).setRegistryName(Objects.requireNonNull(coin_creator.getRegistryName()))
         );
     }
 
@@ -63,6 +69,7 @@ public class BlocksMod {
         registerRender(Item.getItemFromBlock(sign_block));
         registerRender(Item.getItemFromBlock(silver_chest));
         registerRender(Item.getItemFromBlock(silver_lantern));
+        registerRender(Item.getItemFromBlock(coin_creator));
 
         //Adding smelting
         GameRegistry.addSmelting(new ItemStack(copper_ore), new ItemStack(ItemsMod.copper_ingot), 1.0F);
