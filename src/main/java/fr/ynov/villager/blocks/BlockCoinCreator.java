@@ -22,9 +22,11 @@ import javax.annotation.Nullable;
 
 public class BlockCoinCreator extends BlockContainer {
 
-    public BlockCoinCreator(String name) {
-        super(Material.ROCK); // Choisissez ce que que vous voulez
-        // Autres paramètres
+    public BlockCoinCreator(String name, Material materialIn) {
+        super(Material.ROCK);
+        setUnlocalizedName(name);
+        setRegistryName(name);
+        setCreativeTab(Main.creativeTab);
     }
 
     @Override
