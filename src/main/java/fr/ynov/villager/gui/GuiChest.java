@@ -13,7 +13,7 @@ import java.util.Objects;
 
 public class GuiChest extends GuiContainer
 {
-    private static final ResourceLocation GUI_CHEST = new ResourceLocation(References.MODID + ":textures/gui/copper_chest.png");
+    private static final ResourceLocation GUI_CHEST = new ResourceLocation(References.MODID + ":textures/gui/silver_chest.png");
     private final InventoryPlayer playerInventory;
     private final TileEntityChestMod te;
 

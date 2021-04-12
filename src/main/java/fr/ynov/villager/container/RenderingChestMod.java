@@ -9,7 +9,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class RenderingChestMod extends TileEntitySpecialRenderer<TileEntityChestMod> {
-    private static final ResourceLocation TEXTURE = new ResourceLocation(References.MODID + ":textures/block/silver_chest.png");
+    private static final ResourceLocation TEXTURE = new ResourceLocation(References.MODID + ":textures/blocks/silver_chest.png");
     private final ModelChestMod MODEL = new ModelChestMod();
 
     @Override

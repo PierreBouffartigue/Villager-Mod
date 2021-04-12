@@ -40,7 +40,7 @@ public class TileEntityChestMod extends TileEntityLockableLoot implements ITicka
 
     @Override
     public String getName() {
-        return this.hasCustomName() ? this.customName : "container.silver_chest";
+        return this.hasCustomName() ? this.customName : "Resources";
     }
 
     @Override
