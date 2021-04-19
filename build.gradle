@@ -34,6 +34,8 @@ minecraft {
 }
 
 dependencies {
+    compile "org.springframework.data:spring-data-redis:1.8.0.RELEASE"
+    compile "redis.clients:jedis:2.9.0"
     // you may put jars on which you depend on in ./libs
     // or you may define them like so..
     //compile "some.group:artifact:version:classifier"
