@@ -8,7 +8,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
@@ -30,37 +29,30 @@ public class StructureGenerator extends Item {
         return 0;
     }
 
-    public float getStrVsBlock(ItemStack par1ItemStack, Block par2Block) {
-        return 1.0F;
-    }
-
-
-    public boolean onItemUse(ItemStack itemStack, EntityPlayer entity, World world, int i, int j, int k, int l, float a, float b, float c) {
+    @Override
+    public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand handIn) {
 
         Minecraft.getMinecraft().player.sendMessage(new TextComponentString(">>> Item used"));
-        if(true){
-            Minecraft.getMinecraft().player.sendMessage(new TextComponentString(">>> Item used"));
-            boolean place = true;
-            if(place){
-                Block blk = Block.getBlockById(42);
-                IBlockState blkState = blk.getDefaultState();
+        Block blk = Block.getBlockById(98);
+        IBlockState blkState = blk.getDefaultState();
+        int x = (int) Minecraft.getMinecraft().player.posX;
+        int y = (int) Minecraft.getMinecraft().player.posY;
+        int z = (int) Minecraft.getMinecraft().player.posZ;
 
-                BlockPos initialPos = new BlockPos(i,j,k);
-                world.setBlockState(initialPos, blkState);
-                initialPos = new BlockPos(i+1,j,k);
-                world.setBlockState(initialPos, blkState);
-                initialPos = new BlockPos(i+2,j,k);
-                world.setBlockState(initialPos, blkState);
-                initialPos = new BlockPos(i+3,j,k);
-                world.setBlockState(initialPos, blkState);
-                initialPos = new BlockPos(i+4,j,k);
-                world.setBlockState(initialPos, blkState);
-                initialPos = new BlockPos(i+5,j,k);
-                world.setBlockState(initialPos, blkState);
 
-            }
+        BlockPos initialPos = new BlockPos(x, y, z);
+        world.setBlockState(initialPos, blkState);
+        initialPos = new BlockPos(x + 1, y, z);
+        world.setBlockState(initialPos, blkState);
+        initialPos = new BlockPos(x + 2, y, z);
+        world.setBlockState(initialPos, blkState);
+        initialPos = new BlockPos(x + 3, y, z);
+        world.setBlockState(initialPos, blkState);
+        initialPos = new BlockPos(x + 4, y, z);
+        world.setBlockState(initialPos, blkState);
+        initialPos = new BlockPos(x + 5, y, z);
+        world.setBlockState(initialPos, blkState);
 
-        }
-        return true;
+        return super.onItemRightClick(world, player, handIn);
     }
 }
