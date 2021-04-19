@@ -25,6 +25,7 @@ item.copper_leggings.name=Copper leggings
 item.copper_boots.name=Copper boots
 item.steam_sword.name=Steam sword
 item.explication_book.name=Book
+item.structure_generator.name=Structure Generator
 
 entity.cweep.name=Cweep
 entity.mayor.name=Mayor

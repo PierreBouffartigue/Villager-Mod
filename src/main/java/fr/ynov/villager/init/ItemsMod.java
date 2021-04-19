@@ -9,6 +9,7 @@ import fr.ynov.villager.tools.ItemAxeMod;
 import fr.ynov.villager.tools.ItemPickaxeMod;
 import fr.ynov.villager.tools.ItemShovelMod;
 import fr.ynov.villager.tools.ItemSwordMod;
+import fr.ynov.villager.world.StructureGenerator;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -29,7 +30,9 @@ import java.util.Objects;
 
 @Mod.EventBusSubscriber(modid = References.MODID)
 public class ItemsMod {
-    public static Item saphire, viande, copper_coin, copper_ingot, silver_coin, silver_ingot, gold_coin, copper_pickaxe, copper_sword, copper_axe, copper_shovel, copper_helmet, copper_chestplate, copper_leggings, copper_boots, steam_sword, explication_book;
+    public static Item saphire, viande, copper_coin, copper_ingot, silver_coin, silver_ingot, gold_coin, copper_pickaxe,
+            copper_sword, copper_axe, copper_shovel, copper_helmet, copper_chestplate,
+            copper_leggings, copper_boots, steam_sword, explication_book,structure_generator;
     public static ItemArmor.ArmorMaterial copper_material;
     public static Item.ToolMaterial copper_tool_material;
 
@@ -56,6 +59,7 @@ public class ItemsMod {
         copper_axe = new ItemAxeMod("copper_axe", copper_tool_material);
         copper_shovel = new ItemShovelMod("copper_shovel", copper_tool_material);
         steam_sword = new ItemSwordMod("steam_sword", copper_tool_material);
+        structure_generator = new StructureGenerator("structure_generator");
 
         //Armor
         copper_material = EnumHelper.addArmorMaterial("copper", References.MODID + ":copper", 100, new int[]{7, 8, 8, 9}, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 2.0f);
@@ -74,7 +78,9 @@ public class ItemsMod {
 
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
-        event.getRegistry().registerAll(saphire, viande, copper_coin, copper_ingot, silver_coin, silver_ingot, gold_coin, copper_pickaxe, copper_sword, copper_shovel, copper_axe, copper_helmet, copper_chestplate, copper_leggings, copper_boots, steam_sword, explication_book);
+        event.getRegistry().registerAll(saphire, viande, copper_coin, copper_ingot, silver_coin, silver_ingot, gold_coin,
+                copper_pickaxe, copper_sword, copper_shovel, copper_axe, copper_helmet, copper_chestplate,
+                copper_leggings, copper_boots, steam_sword, explication_book, structure_generator);
     }
 
     @SubscribeEvent
@@ -101,6 +107,7 @@ public class ItemsMod {
         registerRender(copper_axe);
         registerRender(copper_shovel);
         registerRender(steam_sword);
+        registerRender(structure_generator);
 
         //armor
         registerRender(copper_helmet);

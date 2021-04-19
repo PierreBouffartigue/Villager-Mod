@@ -1,5 +1,6 @@
 package fr.ynov.villager.blocks;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Items;
@@ -11,6 +12,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityLockable;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class TileCoinCreator extends TileEntityLockable implements ITickable
@@ -57,7 +59,7 @@ public class TileCoinCreator extends TileEntityLockable implements ITickable
     //Getters and Setters
     @Override
     public String getName() {
-        return hasCustomName() ? this.customName : "tile.custom_furnace";
+        return hasCustomName() ? this.customName : "Coin creator";
     }
 
     public void setCustomName(String name) {
@@ -164,35 +166,36 @@ public class TileCoinCreator extends TileEntityLockable implements ITickable
     @Override
     public boolean isItemValidForSlot(int index, ItemStack stack) {
 
-        // Slot 2 get Iron ingot
+        // Slot 1 Iron ingot
         if (index == 1)
             return stack.getItem() == Items.IRON_INGOT;
-        // slot 3 get Coal
+        // slot 2 Coal
         if (index == 2)
             return stack.getItem() == Items.COAL;
-        // slot 4 is output
+        // slot 3 is output
         if (index == 3)
             return false;
-        //slot 1 for ingot
+        //slot 0 for ingot
         return true;
     }
 
-    //check if blocj is usable
+    //check if block is usable
     public boolean isUsableByPlayer(EntityPlayer player) {
-        return this.world.getTileEntity(this.pos) != this ? false : player
+        return this.world.getTileEntity(this.pos) == this && player
                 .getDistanceSq((double) this.pos.getX() + 0.5D,
                         (double) this.pos.getY() + 0.5D,
                         (double) this.pos.getZ() + 0.5D) <= 64.0D;
     }
 
     public boolean hasFuelEmpty() {
+
         return this.getStackInSlot(2).isEmpty()
-                || this.getStackInSlot(3).isEmpty();
+                || this.getStackInSlot(1).isEmpty();
     }
 
     public ItemStack getRecipeResult() {
         return CoinCreatorRecipies.getRecipeResult(new ItemStack[] {
-                this.getStackInSlot(0), this.getStackInSlot(1) });
+                this.getStackInSlot(0)});
     }
 
     public boolean canSmelt() {
@@ -203,11 +206,11 @@ public class TileCoinCreator extends TileEntityLockable implements ITickable
 
             ItemStack slot3 = this.getStackInSlot(3);
 
-            // Si il est vide on renvoie vrai
+
             if (slot3.isEmpty())
                 return true;
 
-            // Sinon on vérifie que ce soit le même objet, les même métadata et que la taille finale ne sera pas trop grande
+
             if (slot3.getItem() == result.getItem() && slot3.getItemDamage() == result.getItemDamage()) {
                 int newStackSize = slot3.getCount() + result.getCount();
                 if (newStackSize <= this.getInventoryStackLimit() && newStackSize <= slot3.getMaxStackSize()) {
@@ -223,25 +226,25 @@ public class TileCoinCreator extends TileEntityLockable implements ITickable
 
         ItemStack result = this.getRecipeResult();
         this.decrStackSize(0, 1);
-        ItemStack stack3 = this.getStackInSlot(3);
+        ItemStack stack3 = this.getStackInSlot(2);
 
         if (stack3.isEmpty()) {
 
-            this.setInventorySlotContents(4, result.copy());
+            this.setInventorySlotContents(3, result.copy());
         } else {
 
             stack3.setCount(stack3.getCount() + result.getCount());
         }
     }
 
-    /** Temps de cuisson de la recette */
+
     public int getFullRecipeTime() {
-        return 100;
+        return 50;
     }
 
 
     public int getFullBurnTime() {
-        return 500;
+        return 100;
     }
 
 
@@ -259,6 +262,7 @@ public class TileCoinCreator extends TileEntityLockable implements ITickable
             }
 
             if (!this.isBurning() && this.canSmelt() && !this.hasFuelEmpty()) {
+                Minecraft.getMinecraft().player.sendMessage(new TextComponentString(">>> Livre ouvert"));
                 this.burningTimeLeft = this.getFullBurnTime();
                 this.decrStackSize(1, 1);
                 this.decrStackSize(2, 1);

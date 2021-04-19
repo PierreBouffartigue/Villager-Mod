@@ -30,7 +30,7 @@ public class ContainerCoinCreator extends Container {
         }
         this.addSlotToContainer(new SlotOutput(tile, 4, 116, 17));
 
-        for(i = 0; i < 2; ++i) {
+        for(i = 0; i < 3; ++i) {
             for(int j = 0; j < 9; ++j) {
                 this.addSlotToContainer(new Slot(playerInventory, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
             }
@@ -39,6 +39,7 @@ public class ContainerCoinCreator extends Container {
         for(i = 0; i < 9; ++i) {
             this.addSlotToContainer(new Slot(playerInventory, i, 8 + i * 18, 142));
         }
+
     }
 
     @Override

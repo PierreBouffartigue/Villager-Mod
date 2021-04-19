@@ -24,7 +24,7 @@ item.copper_leggings.name=Jambiere en cuivre
 item.copper_boots.name=Bottes en cuivre
 item.steam_sword.name=Epee de vapeur
 item.explication_book.name=Livre
-
+item.structure_generator.name=Generateur de structure
 entity.cweep.name=Cweep
 entity.mayor.name=Maire
 entity.farmer.name=Fermier

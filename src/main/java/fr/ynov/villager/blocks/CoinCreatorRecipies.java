@@ -13,6 +13,7 @@ public class CoinCreatorRecipies {
     private static final HashMap<ItemStack[], ItemStack> recipes = new HashMap<ItemStack[], ItemStack>();
     static {
         addRecipe(ItemsMod.copper_ingot, ItemsMod.copper_coin);
+        addRecipe(ItemsMod.silver_ingot, ItemsMod.silver_coin);
     }
     private static void addRecipe(Item ingredient, Item resultat) {
         addRecipe(new ItemStack(ingredient), new ItemStack(resultat));
@@ -22,6 +23,7 @@ public class CoinCreatorRecipies {
         recipes.put(new ItemStack[]{ingredient}, resultat);
     }
 
+    /**
     private static boolean areKeysEqual(ItemStack[] key1, ItemStack[] key2) {
         if(key1.length != key2.length) return false;
 
@@ -34,15 +36,16 @@ public class CoinCreatorRecipies {
             if(s1.getItemDamage() != s2.getItemDamage()) return false;
         }
         return true;
-    }
+    }*/
 
     public static ItemStack getRecipeResult(ItemStack[] ingredients) {
         Iterator<Map.Entry<ItemStack[], ItemStack>> it = recipes.entrySet().iterator();
         while(it.hasNext()) {
             Map.Entry<ItemStack[], ItemStack> entry = it.next();
-            if(areKeysEqual(entry.getKey(), ingredients)) {
+            /**if(areKeysEqual(entry.getKey(), ingredients)) {
                 return entry.getValue();
-            }
+            }*/
+            return entry.getValue();
         }
         return null;
     }
