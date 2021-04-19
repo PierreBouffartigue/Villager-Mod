@@ -1,7 +1,6 @@
 package fr.ynov.villager.blocks;
 
 import fr.ynov.villager.init.ItemsMod;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
@@ -23,7 +22,6 @@ public class CoinCreatorRecipies {
         recipes.put(new ItemStack[]{ingredient}, resultat);
     }
 
-    /**
     private static boolean areKeysEqual(ItemStack[] key1, ItemStack[] key2) {
         if(key1.length != key2.length) return false;
 
@@ -36,16 +34,15 @@ public class CoinCreatorRecipies {
             if(s1.getItemDamage() != s2.getItemDamage()) return false;
         }
         return true;
-    }*/
+    }
 
     public static ItemStack getRecipeResult(ItemStack[] ingredients) {
         Iterator<Map.Entry<ItemStack[], ItemStack>> it = recipes.entrySet().iterator();
-        while(it.hasNext()) {
+        while (it.hasNext()) {
             Map.Entry<ItemStack[], ItemStack> entry = it.next();
-            /**if(areKeysEqual(entry.getKey(), ingredients)) {
+            if (areKeysEqual(entry.getKey(), ingredients)) {
                 return entry.getValue();
-            }*/
-            return entry.getValue();
+            }
         }
         return null;
     }

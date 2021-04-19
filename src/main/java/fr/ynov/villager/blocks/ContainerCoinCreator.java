@@ -2,7 +2,6 @@ package fr.ynov.villager.blocks;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IContainerListener;
@@ -26,9 +25,9 @@ public class ContainerCoinCreator extends Container {
             this.addSlotToContainer(new Slot(tile, i, 42 + i * 25, 7));
         }
         for(i = 0; i < 2; i++) {
-            this.addSlotToContainer(new SlotSingleItem(tile, i + 2, 42, 40 + i * 18, i == 0 ? Items.COAL : Items.IRON_INGOT));
+            this.addSlotToContainer(new SlotSingleItem(tile, i + 1, 42, 40 + i * 18, i == 0 ? Items.COAL : Items.IRON_INGOT));
         }
-        this.addSlotToContainer(new SlotOutput(tile, 4, 116, 17));
+        this.addSlotToContainer(new SlotOutput(tile, 3, 116, 17));
 
         for(i = 0; i < 3; ++i) {
             for(int j = 0; j < 9; ++j) {

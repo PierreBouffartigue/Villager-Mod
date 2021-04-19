@@ -1,6 +1,5 @@
 package fr.ynov.villager.blocks;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Items;
@@ -8,17 +7,14 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityLockable;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.NonNullList;
-import net.minecraft.util.text.TextComponentString;
-import net.minecraftforge.oredict.OreDictionary;
 
 public class TileCoinCreator extends TileEntityLockable implements ITickable
 {
 
-    private NonNullList<ItemStack> stacks = NonNullList.withSize(5, ItemStack.EMPTY);
+    private NonNullList<ItemStack> stacks = NonNullList.withSize(4, ItemStack.EMPTY);
     private String customName;
     private int	timePassed = 0;
     private int	burningTimeLeft	= 0;
@@ -226,7 +222,7 @@ public class TileCoinCreator extends TileEntityLockable implements ITickable
 
         ItemStack result = this.getRecipeResult();
         this.decrStackSize(0, 1);
-        ItemStack stack3 = this.getStackInSlot(2);
+        ItemStack stack3 = this.getStackInSlot(3);
 
         if (stack3.isEmpty()) {
 
@@ -262,7 +258,6 @@ public class TileCoinCreator extends TileEntityLockable implements ITickable
             }
 
             if (!this.isBurning() && this.canSmelt() && !this.hasFuelEmpty()) {
-                Minecraft.getMinecraft().player.sendMessage(new TextComponentString(">>> Livre ouvert"));
                 this.burningTimeLeft = this.getFullBurnTime();
                 this.decrStackSize(1, 1);
                 this.decrStackSize(2, 1);

@@ -2,12 +2,14 @@ package fr.ynov.villager.gui;
 
 import fr.ynov.villager.References;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -34,7 +36,7 @@ public class GuiVillager extends GuiScreen {
         guiTop = (this.height - this.ySize) / 2;
 
         buttonList.add(new GuiCustomButton(0, guiLeft + 77, guiTop + 91, 100, 20, "Suivant", 0, 0));
-        buttonList.add(new GuiCustomButton(1, guiLeft + 77, guiTop + 116, 100, 20, "Precedent", 0, 0));
+        buttonList.add(new GuiCustomButton(1, guiLeft + 77, guiTop + 116, 100, 20, "Précédent", 0, 0));
         buttonList.add(new GuiCustomButton(2, guiLeft + 77, guiTop + 151, 100, 20, "Button 3", 0, 0));
         buttonList.get(2).enabled = false;
         buttonList.add(new GuiCustomButton(3, guiLeft + 240, guiTop, 16, 16, "X", 128, 0));
@@ -48,11 +50,11 @@ public class GuiVillager extends GuiScreen {
     public void actionPerformed(GuiButton button) {
         switch (button.id) {
             case 0:
-                this.mc.player.sendChatMessage("Suivant");
+                this.mc.player.sendMessage(new TextComponentString("Suivant"));
                 tab++;
                 break;
             case 1:
-                this.mc.player.sendChatMessage("Precedent");
+                this.mc.player.sendMessage(new TextComponentString("Précédent"));
                 tab--;
                 break;
             case 3:
@@ -74,26 +76,22 @@ public class GuiVillager extends GuiScreen {
         GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
 
         mc.getTextureManager().bindTexture(background);
-        drawTexturedModalRect(guiLeft, guiTop, 0, 1, xSize, ySize);
+        drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
 
 
         GlStateManager.popMatrix();
     }
 
     public void drawText() {
-        // drawString
-        // drawCenterdString
         switch (tab) {
             case 0:
-                drawCenteredString(fontRenderer, "Bonjour " + this.mc.player.getName() + " | Lvl : " + this.mc.player.experienceLevel, guiLeft + 128, guiTop + 20, Color.ORANGE.getRGB());
-                drawCenteredString(fontRenderer, "Je suis " + this.villager.getName() + ", que puis-je faire pour vous ?", guiLeft + 128, guiTop + 50, Color.WHITE.getRGB());
-                break;
-            case 1:
-                drawCenteredString(fontRenderer, "Page 2, hello", guiLeft + 128, guiTop + 20, Color.WHITE.getRGB());
-                drawString(fontRenderer, "Page 2, hello", guiLeft + 128, guiTop + 40, Color.WHITE.getRGB());
+                drawString(fontRenderer, "Bonjour " + this.mc.player.getName(), guiLeft + 128, guiTop + 20, Color.BLACK.getRGB(), true, false);
+                drawString(fontRenderer, "Je suis " + this.villager.getName() + ", que puis-je faire pour vous ?", guiLeft + 128, guiTop + 40, Color.BLACK.getRGB(), true, false);
+                drawString(fontRenderer, "Nom de la ville : test", guiLeft + 78, guiTop + 60, Color.BLACK.getRGB(), false, false);
+                drawString(fontRenderer, "Réputation : 0", guiLeft + 78, guiTop + 70, Color.BLACK.getRGB(), false, false);
                 break;
             default:
-                drawCenteredString(fontRenderer, "Page " + this.tab, guiLeft + 128, guiTop + 20, Color.WHITE.getRGB());
+                drawString(fontRenderer, "Page " + this.tab, guiLeft + 128, guiTop + 20, Color.BLACK.getRGB(), true, false);
                 break;
         }
 
@@ -103,5 +101,15 @@ public class GuiVillager extends GuiScreen {
         if (tab == 0) {
             GuiInventory.drawEntityOnScreen(posX, posY, scale, mouseX, mouseY, ent);
         }
+    }
+
+    public void drawString(FontRenderer fontRendererIn, String text, int x, int y, int color, boolean centered, boolean shadow) {
+        if (shadow) {
+            fontRendererIn.drawStringWithShadow(text, centered ? x - fontRendererIn.getStringWidth(text) / 2 : x, y, color);
+        }
+        else {
+            fontRendererIn.drawString(text, centered ? x - fontRendererIn.getStringWidth(text) / 2 : x, y, color);
+        }
+
     }
 }
