@@ -13,6 +13,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 
+import java.util.concurrent.TimeUnit;
+
 public class StructureGenerator extends Item {
 
     public StructureGenerator(String name) {
@@ -39,18 +41,76 @@ public class StructureGenerator extends Item {
         int y = (int) Minecraft.getMinecraft().player.posY;
         int z = (int) Minecraft.getMinecraft().player.posZ;
 
-
         BlockPos initialPos = new BlockPos(x, y, z);
-        world.setBlockState(initialPos, blkState);
-        initialPos = new BlockPos(x + 1, y, z);
-        world.setBlockState(initialPos, blkState);
-        initialPos = new BlockPos(x + 2, y, z);
-        world.setBlockState(initialPos, blkState);
-        initialPos = new BlockPos(x + 3, y, z);
-        world.setBlockState(initialPos, blkState);
-        initialPos = new BlockPos(x + 4, y, z);
-        world.setBlockState(initialPos, blkState);
-        initialPos = new BlockPos(x + 5, y, z);
+        for (int i = 0; i < 6; i++){
+
+            initialPos = new BlockPos(x +i, y -1, z);
+            world.setBlockState(initialPos, blkState);
+            initialPos = new BlockPos(x +i, y -1, z +1);
+            world.setBlockState(initialPos, blkState);
+            initialPos = new BlockPos(x +i, y -1, z +2);
+            world.setBlockState(initialPos, blkState);
+            initialPos = new BlockPos(x +i, y -1, z +3);
+            world.setBlockState(initialPos, blkState);
+            initialPos = new BlockPos(x +i, y , z +3);
+            world.setBlockState(initialPos, blkState);
+            initialPos = new BlockPos(x +i, y +1 , z +3);
+            world.setBlockState(initialPos, blkState);
+            initialPos = new BlockPos(x +i, y +2 , z +3);
+            world.setBlockState(initialPos, blkState);
+            initialPos = new BlockPos(x +i, y +3 , z +3);
+            world.setBlockState(initialPos, blkState);
+            initialPos = new BlockPos(x +i, y -1, z -1);
+            world.setBlockState(initialPos, blkState);
+            initialPos = new BlockPos(x +i, y -1, z -2);
+            world.setBlockState(initialPos, blkState);
+            initialPos = new BlockPos(x +i, y -1, z -3);
+            world.setBlockState(initialPos, blkState);
+            initialPos = new BlockPos(x +i, y -1, z -3);
+            world.setBlockState(initialPos, blkState);
+            initialPos = new BlockPos(x +i, y , z -3);
+            world.setBlockState(initialPos, blkState);
+            initialPos = new BlockPos(x +i, y +1 , z -3);
+            world.setBlockState(initialPos, blkState);
+            initialPos = new BlockPos(x +i, y +2 , z -3);
+            world.setBlockState(initialPos, blkState);
+            initialPos = new BlockPos(x +i, y +3 , z -3);
+            world.setBlockState(initialPos, blkState);
+
+            initialPos = new BlockPos(x +i, y -1, z);
+            world.setBlockState(initialPos, blkState);
+            initialPos = new BlockPos(x +i, y -1, z +1);
+            world.setBlockState(initialPos, blkState);
+            initialPos = new BlockPos(x +i, y -1, z +2);
+            world.setBlockState(initialPos, blkState);
+            initialPos = new BlockPos(x +i, y -1, z +3);
+            world.setBlockState(initialPos, blkState);
+            initialPos = new BlockPos(x +i, y , z +3);
+            world.setBlockState(initialPos, blkState);
+            initialPos = new BlockPos(x +i, y +1 , z +3);
+            world.setBlockState(initialPos, blkState);
+            initialPos = new BlockPos(x +i, y +2 , z +3);
+            world.setBlockState(initialPos, blkState);
+            initialPos = new BlockPos(x +i, y +3 , z +3);
+            world.setBlockState(initialPos, blkState);
+            initialPos = new BlockPos(x +i, y -1, z -1);
+            world.setBlockState(initialPos, blkState);
+            initialPos = new BlockPos(x +i, y -1, z -2);
+            world.setBlockState(initialPos, blkState);
+            initialPos = new BlockPos(x +i, y -1, z -3);
+            world.setBlockState(initialPos, blkState);
+            initialPos = new BlockPos(x +i, y -1, z -3);
+            world.setBlockState(initialPos, blkState);
+            initialPos = new BlockPos(x +i, y , z -3);
+            world.setBlockState(initialPos, blkState);
+            initialPos = new BlockPos(x +i, y +1 , z -3);
+            world.setBlockState(initialPos, blkState);
+            initialPos = new BlockPos(x +i, y +2 , z -3);
+            world.setBlockState(initialPos, blkState);
+            initialPos = new BlockPos(x +i, y +3 , z -3);
+            world.setBlockState(initialPos, blkState);
+        }
+
         world.setBlockState(initialPos, blkState);
 
         return super.onItemRightClick(world, player, handIn);
