@@ -71,7 +71,7 @@ public class GuiMain extends GuiScreen {
         GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
 
         mc.getTextureManager().bindTexture(background);
-        drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
+        drawTexturedModalRect(guiLeft, guiTop, 0, 1, xSize, ySize);
 
 
         GlStateManager.popMatrix();
