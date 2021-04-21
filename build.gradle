@@ -37,6 +37,7 @@ minecraft {
 dependencies {
     compile "org.springframework.data:spring-data-redis:1.8.0.RELEASE"
     compile "redis.clients:jedis:3.3.0"
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.10.0'
     // you may put jars on which you depend on in ./libs
     // or you may define them like so..
     //compile "some.group:artifact:version:classifier"
