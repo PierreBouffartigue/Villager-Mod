@@ -34,12 +34,14 @@ public class GuiVillager extends GuiScreen {
     public void initGui() {
         guiLeft = (this.width - this.xSize) / 2;
         guiTop = (this.height - this.ySize) / 2;
-
         buttonList.add(new GuiCustomButton(0, guiLeft + 77, guiTop + 91, 100, 20, "Suivant", 0, 0));
         buttonList.add(new GuiCustomButton(1, guiLeft + 77, guiTop + 116, 100, 20, "Précédent", 0, 0));
         buttonList.add(new GuiCustomButton(2, guiLeft + 77, guiTop + 151, 100, 20, "Button 3", 0, 0));
         buttonList.get(2).enabled = false;
         buttonList.add(new GuiCustomButton(3, guiLeft + 240, guiTop, 16, 16, "X", 128, 0));
+    }
+
+    public void addButtons(){
     }
 
     @Override
@@ -68,6 +70,7 @@ public class GuiVillager extends GuiScreen {
         drawBackgroundImage();
         drawEntityOnScreen(guiLeft + 40, guiTop + 150, 40, (guiLeft + 40) - mouseX, (guiTop + 80) - mouseY, this.villager);
         drawText();
+        addButtons();
         super.drawScreen(mouseX, mouseY, partialTicks);
     }
 
@@ -90,6 +93,12 @@ public class GuiVillager extends GuiScreen {
                 drawString(fontRenderer, "Nom de la ville : test", guiLeft + 78, guiTop + 60, Color.BLACK.getRGB(), false, false);
                 drawString(fontRenderer, "Réputation : 0", guiLeft + 78, guiTop + 70, Color.BLACK.getRGB(), false, false);
                 break;
+            case 1:
+                drawString(fontRenderer, "Echanger avec le village : ", guiLeft + 128, guiTop + 20, Color.BLACK.getRGB(), true, false);
+                break;
+            case 2:
+                drawString(fontRenderer, "Développer le village : ", guiLeft + 128, guiTop + 20, Color.BLACK.getRGB(), true, false);
+                break;
             default:
                 drawString(fontRenderer, "Page " + this.tab, guiLeft + 128, guiTop + 20, Color.BLACK.getRGB(), true, false);
                 break;
@@ -106,8 +115,7 @@ public class GuiVillager extends GuiScreen {
     public void drawString(FontRenderer fontRendererIn, String text, int x, int y, int color, boolean centered, boolean shadow) {
         if (shadow) {
             fontRendererIn.drawStringWithShadow(text, centered ? x - fontRendererIn.getStringWidth(text) / 2 : x, y, color);
-        }
-        else {
+        } else {
             fontRendererIn.drawString(text, centered ? x - fontRendererIn.getStringWidth(text) / 2 : x, y, color);
         }
 

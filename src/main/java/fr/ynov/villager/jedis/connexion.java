@@ -1,23 +1,25 @@
 package fr.ynov.villager.jedis;
 
+
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
 public class connexion {
     public static JedisPool jedisPool;
 
-    public connexion() {
-        jedisPool = new JedisPool("90.120.184.220", 6379);
+    public static void initJedis() {
+        jedisPool = new JedisPool("127.0.0.1", 6379);
         Jedis j = null;
 
         try {
             j = jedisPool.getResource();
-            //j.auth("mdp");
-
+            j.select(0); //select db
             j.set("abc", "def");
+
+
         } finally {
             assert j != null;
-            j.close();
+            //j.close();
         }
 
         onDisable();
