@@ -38,7 +38,7 @@ public class StructureGenerator extends Item {
             String test = System.getProperty("user.dir");
             System.out.println(test);
             ObjectMapper mapper = new ObjectMapper();
-            Map<String ,String> map = mapper.readValue(Paths.get("json/test.json").toFile(), Map.class);
+            Map map = mapper.readValue(Paths.get("json/test.json").toFile(), Map.class);
             //Minecraft.getMinecraft().player.sendMessage(new TextComponentString(map.toString()));
 
 
@@ -59,6 +59,12 @@ public class StructureGenerator extends Item {
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand handIn) {
+
+        ItemStack itemstack = player.getHeldItem(handIn);
+
+        if (!player.capabilities.isCreativeMode) {
+            itemstack.shrink(1);
+        }
 
         //Minecraft.getMinecraft().player.sendMessage(new TextComponentString(">>> Item used"));
         Block blk = Block.getBlockById(98);
