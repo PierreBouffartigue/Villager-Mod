@@ -32,11 +32,11 @@ public class StructureGenerator extends Item {
             ObjectMapper mapper = new ObjectMapper();
 
             //Code pour créer un JSON, le path par défaut est dans le run à la racine du projet
-            //FileWriter file = new FileWriter("../src/main/resources/assets/villager/json/tt.json");
+            //FileWriter file = new FileWriter("../src/main/resources/assets/villager/json/structure.json");
             //file.write("tt");
             //file.close();
 
-            Map map = mapper.readValue(Paths.get("../src/main/resources/assets/villager/json/tt.json").toFile(), Map.class);
+            Map map = mapper.readValue(Paths.get("../src/main/resources/assets/villager/json/structure.json").toFile(), Map.class);
             //Minecraft.getMinecraft().player.sendMessage(new TextComponentString(map.toString()));
 
 

@@ -1,10 +1,10 @@
-package fr.ynov.villager.jedis;
+package fr.ynov.villager.bdd;
 
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
-public class connexion {
+public class JedisConnexion {
     public static JedisPool jedisPool;
 
     public static void initJedis() {
@@ -19,7 +19,7 @@ public class connexion {
 
         } finally {
             assert j != null;
-            //j.close();
+            j.close();
         }
 
         onDisable();
