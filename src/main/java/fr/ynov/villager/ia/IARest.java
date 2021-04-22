@@ -11,6 +11,7 @@ public class IARest extends EntityAIBase {
     protected double randPosX;
     protected double randPosY;
     protected double randPosZ;
+    protected int timer = 0;
 
     public IARest(EntityCreature creature, double speedIn) {
         this.creature = creature;
@@ -20,11 +21,11 @@ public class IARest extends EntityAIBase {
 
 
     public boolean shouldExecute() {
-        return this.findRandomPosition();
+        return this.findPath();
     }
 
-    protected boolean findRandomPosition() {
-        Vec3d vec3d = RandomPositionGenerator.findRandomTarget(this.creature, 5, 4);
+    protected boolean findPath() {
+        Vec3d vec3d = RandomPositionGenerator.findRandomTarget(this.creature, 4, 4);
 
         if (vec3d == null) {
             return false;
@@ -38,7 +39,12 @@ public class IARest extends EntityAIBase {
 
 
     public void startExecuting() {
-        this.creature.getNavigator().tryMoveToXYZ(this.randPosX, this.randPosY, this.randPosZ, this.speed);
+        if (timer == 0) {
+            this.creature.getNavigator().tryMoveToXYZ(this.randPosX, this.randPosY, this.randPosZ, this.speed);
+            timer = 100;
+        } else {
+            timer--;
+        }
     }
 
 

@@ -8,12 +8,15 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
 public class EntityFarmer extends EntityCreature {
     public EntityFarmer(World worldIn) {
         super(worldIn);
         setCustomNameTag(getName());
     }
 
+    @ParametersAreNonnullByDefault
     public boolean processInteract(EntityPlayer player, EnumHand hand) {
         Minecraft.getMinecraft().player.sendMessage(new TextComponentString(">>> Occupé"));
         return false;
@@ -24,7 +27,7 @@ public class EntityFarmer extends EntityCreature {
 
     @Override
     protected void initEntityAI() {
-        this.tasks.addTask(1, new IAFarmer());
+        this.tasks.addTask(1, new IAFarmer(this,0.25));
         this.applyEntityAI();
     }
 }
