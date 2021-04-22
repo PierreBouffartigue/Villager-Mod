@@ -12,18 +12,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 
-
-
-import java.io.Reader;
-import java.net.URI;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 public class StructureGenerator extends Item {
 
@@ -32,18 +24,23 @@ public class StructureGenerator extends Item {
         setRegistryName(name);
         setCreativeTab(Main.creativeTab);
 
-        try{
+        try {
 
             System.out.println("user.dir");
             String test = System.getProperty("user.dir");
             System.out.println(test);
             ObjectMapper mapper = new ObjectMapper();
-            Map map = mapper.readValue(Paths.get("json/test.json").toFile(), Map.class);
+
+            //Code pour créer un JSON, le path par défaut est dans le run à la racine du projet
+            //FileWriter file = new FileWriter("../src/main/resources/assets/villager/json/tt.json");
+            //file.write("tt");
+            //file.close();
+
+            Map map = mapper.readValue(Paths.get("../src/main/resources/assets/villager/json/tt.json").toFile(), Map.class);
             //Minecraft.getMinecraft().player.sendMessage(new TextComponentString(map.toString()));
 
 
-
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -77,69 +74,69 @@ public class StructureGenerator extends Item {
 
 
         /**
-        for (int i = 0; i < 6; i++){
+         for (int i = 0; i < 6; i++){
 
-            initialPos = new BlockPos(x +i, y -1, z);
-            world.setBlockState(initialPos, blkState);
+         initialPos = new BlockPos(x +i, y -1, z);
+         world.setBlockState(initialPos, blkState);
 
-            // 3 * z
-            for(int a = 1; a<3 ; a++){
-                initialPos = new BlockPos(x +i, y -1, z + a);
-                world.setBlockState(initialPos, blkState);
-            }
+         // 3 * z
+         for(int a = 1; a<3 ; a++){
+         initialPos = new BlockPos(x +i, y -1, z + a);
+         world.setBlockState(initialPos, blkState);
+         }
 
-            // 4 * y
-            for(int a = 0; a<3 ; a++){
-                initialPos = new BlockPos(x +i, y + a, z + 3);
-                world.setBlockState(initialPos, blkState);
-            }
+         // 4 * y
+         for(int a = 0; a<3 ; a++){
+         initialPos = new BlockPos(x +i, y + a, z + 3);
+         world.setBlockState(initialPos, blkState);
+         }
 
-            // 3 * -z
-            for(int a = 1; a<3 ; a++){
-                initialPos = new BlockPos(x +i, y -1, z - a);
-                world.setBlockState(initialPos, blkState);
-            }
+         // 3 * -z
+         for(int a = 1; a<3 ; a++){
+         initialPos = new BlockPos(x +i, y -1, z - a);
+         world.setBlockState(initialPos, blkState);
+         }
 
 
-            initialPos = new BlockPos(x +i, y -1, z -3);
-            world.setBlockState(initialPos, blkState);
+         initialPos = new BlockPos(x +i, y -1, z -3);
+         world.setBlockState(initialPos, blkState);
 
-            // 4 * -y
-            for(int a = 0; a<3 ; a++){
-                initialPos = new BlockPos(x +i, y + a, z - 3);
-                world.setBlockState(initialPos, blkState);
-            }
+         // 4 * -y
+         for(int a = 0; a<3 ; a++){
+         initialPos = new BlockPos(x +i, y + a, z - 3);
+         world.setBlockState(initialPos, blkState);
+         }
 
-            // 3 * z
-            initialPos = new BlockPos(x +i, y -1, z);
-            world.setBlockState(initialPos, blkState);
-            for(int a = 1; a<3 ; a++){
-                initialPos = new BlockPos(x +i, y -1, z + a);
-                world.setBlockState(initialPos, blkState);
-            }
+         // 3 * z
+         initialPos = new BlockPos(x +i, y -1, z);
+         world.setBlockState(initialPos, blkState);
+         for(int a = 1; a<3 ; a++){
+         initialPos = new BlockPos(x +i, y -1, z + a);
+         world.setBlockState(initialPos, blkState);
+         }
 
-            // 4 * -z
-            for(int a = 0; a<3 ; a++){
-                initialPos = new BlockPos(x +i, y + a, z + 3);
-                world.setBlockState(initialPos, blkState);
-            }
+         // 4 * -z
+         for(int a = 0; a<3 ; a++){
+         initialPos = new BlockPos(x +i, y + a, z + 3);
+         world.setBlockState(initialPos, blkState);
+         }
 
-            // 3 * -z
-            for(int a = 1; a<3 ; a++){
-                initialPos = new BlockPos(x +i, y -1, z - a);
-                world.setBlockState(initialPos, blkState);
-            }
+         // 3 * -z
+         for(int a = 1; a<3 ; a++){
+         initialPos = new BlockPos(x +i, y -1, z - a);
+         world.setBlockState(initialPos, blkState);
+         }
 
-            initialPos = new BlockPos(x +i, y -1, z -3);
-            world.setBlockState(initialPos, blkState);
+         initialPos = new BlockPos(x +i, y -1, z -3);
+         world.setBlockState(initialPos, blkState);
 
-            // 4 * y
-            for(int a = 0; a<3 ; a++){
-                initialPos = new BlockPos(x +i, y +a, z - 3);
-                world.setBlockState(initialPos, blkState);
-            }
+         // 4 * y
+         for(int a = 0; a<3 ; a++){
+         initialPos = new BlockPos(x +i, y +a, z - 3);
+         world.setBlockState(initialPos, blkState);
+         }
 
-        }*/
+         }*/
 
         world.setBlockState(initialPos, blkState);
 
