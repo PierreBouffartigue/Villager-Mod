@@ -2,7 +2,7 @@ package fr.ynov.villager.entity.render;
 
 import fr.ynov.villager.References;
 import fr.ynov.villager.entity.EntityFarmer;
-import fr.ynov.villager.entity.models.ModelVillager;
+import net.minecraft.client.model.ModelPlayer;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
@@ -17,7 +17,7 @@ class RenderFarmer<T extends EntityFarmer> extends RenderLiving<T> {
     private static final ResourceLocation FARMER_TEXTURES = new ResourceLocation(References.MODID + ":textures/entity/farmer.png");
 
     public RenderFarmer(RenderManager renderManagerIn) {
-        super(renderManagerIn, new ModelVillager(), 0.5F);
+        super(renderManagerIn, new ModelPlayer(0.0F, false), 0.5F);
     }
 
     @ParametersAreNonnullByDefault
