@@ -25,7 +25,7 @@ public class IARest extends EntityAIBase {
     }
 
     protected boolean findPath() {
-        Vec3d vec3d = RandomPositionGenerator.findRandomTarget(this.creature, 4, 4);
+        Vec3d vec3d = RandomPositionGenerator.findRandomTarget(this.creature, 1, 4);
 
         if (vec3d == null) {
             return false;

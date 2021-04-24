@@ -9,22 +9,18 @@ import fr.ynov.villager.tools.ItemAxeMod;
 import fr.ynov.villager.tools.ItemPickaxeMod;
 import fr.ynov.villager.tools.ItemShovelMod;
 import fr.ynov.villager.tools.ItemSwordMod;
-import fr.ynov.villager.world.StructureGenerator;
+import fr.ynov.villager.world.StructureCityHall;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.util.Objects;
 
@@ -59,7 +55,7 @@ public class ItemsMod {
         copper_axe = new ItemAxeMod("copper_axe", copper_tool_material);
         copper_shovel = new ItemShovelMod("copper_shovel", copper_tool_material);
         steam_sword = new ItemSwordMod("steam_sword", copper_tool_material);
-        structure_generator = new StructureGenerator("structure_generator");
+        structure_generator = new StructureCityHall("structure_generator");
 
         //Armor
         copper_material = EnumHelper.addArmorMaterial("copper", References.MODID + ":copper", 100, new int[]{7, 8, 8, 9}, 0, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 2.0f);
