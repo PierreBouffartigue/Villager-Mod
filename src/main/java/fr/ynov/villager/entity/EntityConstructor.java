@@ -1,7 +1,6 @@
 package fr.ynov.villager.entity;
 
 import fr.ynov.villager.ia.IAConstructor;
-import fr.ynov.villager.ia.IARest;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.player.EntityPlayer;
@@ -28,7 +27,7 @@ public class EntityConstructor extends EntityCreature {
 
     @Override
     protected void initEntityAI() {
-        this.tasks.addTask(1, new IAConstructor(this,0.25D));
+        this.tasks.addTask(1, new IAConstructor(this, 0.25D));
         this.applyEntityAI();
     }
 }

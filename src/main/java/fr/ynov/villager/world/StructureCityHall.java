@@ -1,6 +1,10 @@
 package fr.ynov.villager.world;
 
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.MongoIterable;
 import fr.ynov.villager.Main;
+import fr.ynov.villager.bdd.MongoConnexion;
 import fr.ynov.villager.entity.EntityConstructor;
 import fr.ynov.villager.entity.EntityMayor;
 import net.minecraft.block.Block;
@@ -14,6 +18,8 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import org.bson.Document;
+import org.bson.types.ObjectId;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -87,6 +93,23 @@ public class StructureCityHall extends Item {
             EntityConstructor constructor = new EntityConstructor(world);
             constructor.setLocationAndAngles(Minecraft.getMinecraft().player.posX - 1.0, Minecraft.getMinecraft().player.posY + 1.0 + constructor.getYOffset(), Minecraft.getMinecraft().player.posZ + 6.0, MathHelper.wrapDegrees(world.rand.nextFloat() * 360.0F), 0.0F);
             world.spawnEntity(constructor);
+
+            /**
+            MongoDatabase sampleTrainingDB = MongoConnexion.initMongo().getDatabase("villager");
+            MongoCollection<Document> gradesCollection = sampleTrainingDB.getCollection("villager");
+            Document villager = new Document("_id", new ObjectId());
+            villager.append("name", "MyVillage")
+                    .append("x", x + 1)
+                    .append("y", y)
+                    .append("z", z + 4)
+                    .append("farm", "none")
+                    .append("house", "none");
+            gradesCollection.insertOne(villager);
+            for (String name : sampleTrainingDB.listCollectionNames()) {
+
+                Minecraft.getMinecraft().player.sendChatMessage(name);
+            }
+            **/
         }
         return super.onItemRightClick(world, player, handIn);
 

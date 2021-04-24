@@ -1,31 +1,31 @@
 package fr.ynov.villager.bdd;
 
 
-import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
 public class JedisConnexion {
-    public static JedisPool jedisPool;
 
-    public static void initJedis() {
-        jedisPool = new JedisPool("127.0.0.1", 6379);
-        Jedis j = null;
+    public static JedisPool initJedis() {
+        return new JedisPool("127.0.0.1", 6379);
+        /**
+         Jedis j = jedisPool.getResource();
 
-        try {
-            j = jedisPool.getResource();
-            j.select(0); //select db
-            j.set("abc", "def");
+         try {
+         j.select(0); //select db
+         j.set("abc", "def");
+         String value = j.get("abc");
 
+         } finally {
+         assert j != null;
+         j.close();
+         }
 
-        } finally {
-            assert j != null;
-            j.close();
-        }
+         onDisable();
+         }
 
-        onDisable();
-    }
-
-    public static void onDisable() {
-        jedisPool.close();
+         public static void onDisable() {
+         jedisPool.close();
+         }
+         **/
     }
 }

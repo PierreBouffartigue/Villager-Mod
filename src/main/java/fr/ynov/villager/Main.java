@@ -1,6 +1,5 @@
 package fr.ynov.villager;
 
-import fr.ynov.villager.bdd.JedisConnexion;
 import fr.ynov.villager.commands.CommandRedisCheck;
 import fr.ynov.villager.gui.GuiDebug;
 import fr.ynov.villager.init.BlocksMod;
@@ -56,7 +55,6 @@ public class Main {
 
     @EventHandler
     public void postInit(FMLPostInitializationEvent event) {
-        //JedisConnexion.initJedis();
     }
 
     @EventHandler
