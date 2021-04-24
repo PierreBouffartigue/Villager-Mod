@@ -30,10 +30,9 @@ import java.util.List;
 import java.util.Map;
 
 public class StructureGenerator extends Item {
-    Map map;
     JSONObject jo;
     ArrayList<String> listdata = new ArrayList<String>();
-    JSONArray ja;
+
     public StructureGenerator(String name) {
         setUnlocalizedName(name);
         setRegistryName(name);
@@ -55,23 +54,11 @@ public class StructureGenerator extends Item {
 
         try{
 
-            //System.out.println("user.dir");
-            //String test = System.getProperty("user.dir");
-            //System.out.println(test);
-            //ObjectMapper mapper = new ObjectMapper();
-
-            //Code pour créer un JSON, le path par défaut est dans le run à la racine du projet
-            //FileWriter file = new FileWriter("../src/main/resources/assets/villager/json/structure.json");
-            //file.write("tt");
-            //file.close();
-
-            //map = mapper.readValue(Paths.get("../src/main/resources/assets/villager/json/structure.json").toFile(), Map.class);
-
             Object obj = new JSONParser().parse(new FileReader("../src/main/resources/assets/villager/json/structure.json"));
             jo = (JSONObject) obj;
             JSONArray ja = (JSONArray) jo.get("town hall");
 
-            //get
+
             for (int i = 0; i < ja.size(); i++){
                 listdata.add(ja.get(i).toString());
             }
@@ -88,7 +75,7 @@ public class StructureGenerator extends Item {
             itemstack.shrink(1);
         }
 
-        //Minecraft.getMinecraft().player.sendMessage(new TextComponentString(">>> Item used"));
+
 
 
         int x = (int) Minecraft.getMinecraft().player.posX;
@@ -113,70 +100,7 @@ public class StructureGenerator extends Item {
             world.setBlockState(initialPos, blkState);
         }
 
-        /**
-         for (int i = 0; i < 6; i++){
 
-         initialPos = new BlockPos(x +i, y -1, z);
-         world.setBlockState(initialPos, blkState);
-
-         // 3 * z
-         for(int a = 1; a<3 ; a++){
-         initialPos = new BlockPos(x +i, y -1, z + a);
-         world.setBlockState(initialPos, blkState);
-         }
-
-         // 4 * y
-         for(int a = 0; a<3 ; a++){
-         initialPos = new BlockPos(x +i, y + a, z + 3);
-         world.setBlockState(initialPos, blkState);
-         }
-
-         // 3 * -z
-         for(int a = 1; a<3 ; a++){
-         initialPos = new BlockPos(x +i, y -1, z - a);
-         world.setBlockState(initialPos, blkState);
-         }
-
-
-         initialPos = new BlockPos(x +i, y -1, z -3);
-         world.setBlockState(initialPos, blkState);
-
-         // 4 * -y
-         for(int a = 0; a<3 ; a++){
-         initialPos = new BlockPos(x +i, y + a, z - 3);
-         world.setBlockState(initialPos, blkState);
-         }
-
-         // 3 * z
-         initialPos = new BlockPos(x +i, y -1, z);
-         world.setBlockState(initialPos, blkState);
-         for(int a = 1; a<3 ; a++){
-         initialPos = new BlockPos(x +i, y -1, z + a);
-         world.setBlockState(initialPos, blkState);
-         }
-
-         // 4 * -z
-         for(int a = 0; a<3 ; a++){
-         initialPos = new BlockPos(x +i, y + a, z + 3);
-         world.setBlockState(initialPos, blkState);
-         }
-
-         // 3 * -z
-         for(int a = 1; a<3 ; a++){
-         initialPos = new BlockPos(x +i, y -1, z - a);
-         world.setBlockState(initialPos, blkState);
-         }
-
-         initialPos = new BlockPos(x +i, y -1, z -3);
-         world.setBlockState(initialPos, blkState);
-
-         // 4 * y
-         for(int a = 0; a<3 ; a++){
-         initialPos = new BlockPos(x +i, y +a, z - 3);
-         world.setBlockState(initialPos, blkState);
-         }
-
-         }*/
         try {
             TimeUnit.SECONDS.sleep(1);
         } catch (InterruptedException e) {
