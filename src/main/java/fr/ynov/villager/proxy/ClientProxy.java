@@ -16,7 +16,7 @@ public class ClientProxy extends ServerProxy {
 
     public ClientProxy() {
         MinecraftForge.EVENT_BUS.register(this);
-        keyBindTest = new KeyBinding("modtest.key", Keyboard.KEY_O, "key.categories.gameplay");
+        keyBindTest = new KeyBinding("villager.key", Keyboard.KEY_O, "key.categories.gameplay");
         ClientRegistry.registerKeyBinding(keyBindTest);
     }
 

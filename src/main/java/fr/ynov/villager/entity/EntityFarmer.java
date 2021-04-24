@@ -27,7 +27,7 @@ public class EntityFarmer extends EntityCreature {
 
     @Override
     protected void initEntityAI() {
-        this.tasks.addTask(1, new IAFarmer(this,0.25));
+        this.tasks.addTask(1, new IAFarmer(this,0.25D));
         this.applyEntityAI();
     }
 }

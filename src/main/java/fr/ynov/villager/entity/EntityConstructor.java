@@ -28,8 +28,8 @@ public class EntityConstructor extends EntityCreature {
 
     @Override
     protected void initEntityAI() {
-        this.tasks.addTask(1, new IAConstructor(this,0.25));
-        this.tasks.addTask(2, new IARest(this, 0.23));
+        this.tasks.addTask(1, new IAConstructor(this,0.25D));
+        this.tasks.addTask(2, new IARest(this, 0.23D));
         this.applyEntityAI();
     }
 }

@@ -31,3 +31,5 @@ entity.cweep.name=Cweep
 entity.mayor.name=Mayor
 entity.farmer.name=Farmer
 entity.constructor.name=Constructor
+
+villager.key=Menu villager
