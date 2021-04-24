@@ -1,6 +1,6 @@
 package fr.ynov.villager.entity;
 
-import fr.ynov.villager.gui.GuiVillager;
+import fr.ynov.villager.gui.GuiVillagerMain;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.player.EntityPlayer;
@@ -17,7 +17,7 @@ public class EntityMayor extends EntityCreature {
 
     @ParametersAreNonnullByDefault
     public boolean processInteract(EntityPlayer player, EnumHand hand) {
-        Minecraft.getMinecraft().displayGuiScreen(new GuiVillager(Minecraft.getMinecraft(), this));
+        Minecraft.getMinecraft().displayGuiScreen(new GuiVillagerMain(Minecraft.getMinecraft(), this));
         return false;
     }
 }

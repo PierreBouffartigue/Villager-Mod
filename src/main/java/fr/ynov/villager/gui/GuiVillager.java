@@ -9,11 +9,11 @@ import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.awt.*;
+import java.util.Arrays;
+import java.util.List;
 
 @SideOnly(Side.CLIENT)
 public class GuiVillager extends GuiScreen {
@@ -25,26 +25,10 @@ public class GuiVillager extends GuiScreen {
     private final EntityLivingBase villager;
     private int guiLeft;
     private int guiTop;
-    private enum tabs { Main, Buy, Sell, Build }
-    private tabs tab = tabs.Main;
 
     public GuiVillager(Minecraft mc, EntityLivingBase villager) {
         this.mc = mc;
         this.villager = villager;
-    }
-
-    public void initGui() {
-        guiLeft = (this.width - this.xSize) / 2;
-        guiTop = (this.height - this.ySize) / 2;
-        buttonList.add(new GuiCustomButton(0, guiLeft + 77, guiTop + 91, 100, 20, "Acheter", 0, 0));
-        buttonList.add(new GuiCustomButton(1, guiLeft + 77, guiTop + 116, 100, 20, "Vendre", 0, 0));
-        buttonList.add(new GuiCustomButton(2, guiLeft + 77, guiTop + 141, 100, 20, "Construire", 0, 0));
-        buttonList.add(new GuiCustomButton(3, guiLeft + 6, guiTop + 6, 100, 20, "Retour", 0, 0));
-        buttonList.get(3).visible = false;
-        buttonList.add(new GuiCustomButton(4, guiLeft + 240, guiTop, 16, 16, "X", 128, 0));
-    }
-
-    public void addButtons(){
     }
 
     @Override
@@ -52,100 +36,16 @@ public class GuiVillager extends GuiScreen {
         return false;
     }
 
-    public void actionPerformed(GuiButton button) {
-        switch (button.id) {
-            case 0:
-                this.mc.player.sendMessage(new TextComponentString("Acheter"));
-                tab = tabs.Buy;
-                buttonList.get(0).visible = false;
-                buttonList.get(1).visible = false;
-                buttonList.get(2).visible = false;
-                buttonList.get(3).visible = true;
-                break;
-            case 1:
-                this.mc.player.sendMessage(new TextComponentString("Vendre"));
-                tab = tabs.Sell;
-                buttonList.get(0).visible = false;
-                buttonList.get(1).visible = false;
-                buttonList.get(2).visible = false;
-                buttonList.get(3).visible = true;
-                break;
-            case 2:
-                this.mc.player.sendMessage(new TextComponentString("Construire"));
-                tab = tabs.Build;
-                buttonList.get(0).visible = false;
-                buttonList.get(1).visible = false;
-                buttonList.get(2).visible = false;
-                buttonList.get(3).visible = true;
-                break;
-            case 3:
-                this.mc.player.sendMessage(new TextComponentString("Retour"));
-                tab = tabs.Main;
-                buttonList.get(0).visible = true;
-                buttonList.get(1).visible = true;
-                buttonList.get(2).visible = true;
-                buttonList.get(3).visible = false;
-                break;
-            case 4:
-                this.mc.displayGuiScreen(null);
-                this.mc.setIngameFocus();
-                break;
-        }
-    }
-
-    public void drawScreen(int mouseX, int mouseY, float partialTicks) {
-        drawBackgroundImage();
-        drawEntityOnScreen(guiLeft + 40, guiTop + 150, 40, (guiLeft + 40) - mouseX, (guiTop + 80) - mouseY, this.villager);
-        drawText();
-        addButtons();
-        super.drawScreen(mouseX, mouseY, partialTicks);
-    }
-
-    public void drawBackgroundImage() {
+    public void drawBackgroundImage(ResourceLocation background) {
         GlStateManager.pushMatrix();
         GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
-        switch (tab) {
-            case Main:
-            case Build:
-                mc.getTextureManager().bindTexture(background);
-                drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
-                break;
-            case Buy:
-            case Sell:
-                mc.getTextureManager().bindTexture(backgroundTrade);
-                drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
-                break;
-        }
-
-
+        mc.getTextureManager().bindTexture(background);
+        drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
         GlStateManager.popMatrix();
     }
 
-    public void drawText() {
-        switch (tab) {
-            case Main:
-                drawString(fontRenderer, "Bonjour " + this.mc.player.getName(), guiLeft + 128, guiTop + 20, Color.BLACK.getRGB(), true, false);
-                drawString(fontRenderer, "Je suis " + this.villager.getName() + ", que puis-je faire pour vous ?", guiLeft + 128, guiTop + 40, Color.BLACK.getRGB(), true, false);
-                drawString(fontRenderer, "Nom de la ville : test", guiLeft + 78, guiTop + 60, Color.BLACK.getRGB(), false, false);
-                drawString(fontRenderer, "Réputation : 0", guiLeft + 78, guiTop + 70, Color.BLACK.getRGB(), false, false);
-                break;
-            case Buy:
-                drawString(fontRenderer, "Acheter : ", guiLeft + 128, guiTop + 30, Color.BLACK.getRGB(), true, false);
-                break;
-            case Sell:
-                drawString(fontRenderer, "Vendre : ", guiLeft + 128, guiTop + 30, Color.BLACK.getRGB(), true, false);
-                break;
-            case Build:
-                drawString(fontRenderer, "Développer le village : ", guiLeft + 128, guiTop + 30, Color.BLACK.getRGB(), true, false);
-                break;
-        }
-
-    }
-
     public void drawEntityOnScreen(int posX, int posY, int scale, float mouseX, float mouseY, EntityLivingBase ent) {
-        if (tab == tabs.Main) {
-            GuiInventory.drawEntityOnScreen(posX, posY, scale, mouseX, mouseY, ent);
-        }
+        GuiInventory.drawEntityOnScreen(posX, posY, scale, mouseX, mouseY, ent);
     }
 
     public void drawString(FontRenderer fontRendererIn, String text, int x, int y, int color, boolean centered, boolean shadow) {
@@ -154,6 +54,52 @@ public class GuiVillager extends GuiScreen {
         } else {
             fontRendererIn.drawString(text, centered ? x - fontRendererIn.getStringWidth(text) / 2 : x, y, color);
         }
+    }
 
+    public void buttonHoveringText(GuiButton button, int mouseX, int mouseY, String[] text, int posX, int posY){
+        if (button.visible && mouseX >= button.x && mouseY >= button.y && mouseX < button.x + button.width && mouseY < button.y + this.height) {
+            List<String> temp = Arrays.asList(text);
+            drawHoveringText(temp, posX, posY);
+        }
+    }
+
+    public ResourceLocation getBackground() {
+        return background;
+    }
+
+    public ResourceLocation getBackgroundTrade() {
+        return backgroundTrade;
+    }
+
+    public int getxSize() {
+        return xSize;
+    }
+
+    public int getySize() {
+        return ySize;
+    }
+
+    public Minecraft getMc() {
+        return mc;
+    }
+
+    public EntityLivingBase getVillager() {
+        return villager;
+    }
+
+    public int getGuiLeft() {
+        return guiLeft;
+    }
+
+    public int getGuiTop() {
+        return guiTop;
+    }
+
+    public void setGuiLeft(int guiLeft) {
+        this.guiLeft = guiLeft;
+    }
+
+    public void setGuiTop(int guiTop) {
+        this.guiTop = guiTop;
     }
 }
