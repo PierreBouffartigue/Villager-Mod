@@ -16,6 +16,10 @@ public class IAConstructor extends EntityAIBase {
         this.setMutexBits(1);
     }
 
+    /**
+        Faire l'IA avec des coordonnées fixes, j'ajouterais la partie coordonnées de Mongo après. Et le faire construire
+        avec de fausses conditions, j'implémenterais Redis
+     */
 
     public boolean shouldExecute() {
         return this.findPath();
