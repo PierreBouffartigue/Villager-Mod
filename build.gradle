@@ -37,7 +37,6 @@ minecraft {
 dependencies {
     compile "org.springframework.data:spring-data-redis:1.8.0.RELEASE"
     compile "redis.clients:jedis:3.3.0"
-    compile "com.fasterxml.jackson.core:jackson-databind:2.10.0"
     compile "org.mongodb:mongodb-driver-sync:4.0.5"
     compile 'com.googlecode.json-simple:json-simple:1.1.1'
 

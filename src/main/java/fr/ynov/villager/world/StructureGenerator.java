@@ -1,9 +1,6 @@
 package fr.ynov.villager.world;
 
-
-import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.ynov.villager.Main;
-//import jdk.nashorn.internal.parser.JSONParser;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -13,21 +10,15 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
-import org.lwjgl.Sys;
+
 import scala.actors.threadpool.TimeUnit;
 
 import java.io.FileReader;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 
 public class StructureGenerator extends Item {
     JSONObject jo;
@@ -39,7 +30,6 @@ public class StructureGenerator extends Item {
         setCreativeTab(Main.creativeTab);
 
     }
-
 
     public int getItemEnchantability() {
         return 0;
@@ -63,8 +53,6 @@ public class StructureGenerator extends Item {
                 listdata.add(ja.get(i).toString());
             }
 
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -75,19 +63,10 @@ public class StructureGenerator extends Item {
             itemstack.shrink(1);
         }
 
-
-
-
         int x = (int) Minecraft.getMinecraft().player.posX;
         int y = (int) Minecraft.getMinecraft().player.posY;
         int z = (int) Minecraft.getMinecraft().player.posZ;
         BlockPos initialPos = new BlockPos(x, y, z);
-
-
-
-
-
-
 
         for (int i=0 ;i < listdata.size(); i++){
             String[] parts = listdata.get(i).split(",");
@@ -95,17 +74,12 @@ public class StructureGenerator extends Item {
             Block blk = Block.getBlockById(Integer.parseInt(parts[3]));
             IBlockState blkState = blk.getDefaultState();
 
-            //initialPos = new BlockPos(Integer.parseInt(parts[0]), Integer.parseInt(parts[1]), Integer.parseInt(parts[2]));
             initialPos = new BlockPos(x + Integer.parseInt(parts[0]) -1, y + Integer.parseInt(parts[1]), z + Integer.parseInt(parts[2]) +1);
             world.setBlockState(initialPos, blkState);
         }
 
+        player.getCooldownTracker().setCooldown(this, 50);
 
-        try {
-            TimeUnit.SECONDS.sleep(1);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         return super.onItemRightClick(world, player, handIn);
     }
 }
