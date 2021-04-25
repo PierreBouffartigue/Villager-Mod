@@ -104,9 +104,9 @@ public class StructureCityHall extends Item {
             //Redis / Jedis
             Jedis j = JedisConnexion.initJedis().getResource();
             j.select(1);
-            j.set("bronzeCoin", "0");
-            j.set("silverCoin", "0");
-            j.set("stone", "0");
+            j.set("bronzeCoin", "40");
+            j.set("silverCoin", "40");
+            j.set("stone", "40");
             j.set("reputation","0");
 
             //MongoDB

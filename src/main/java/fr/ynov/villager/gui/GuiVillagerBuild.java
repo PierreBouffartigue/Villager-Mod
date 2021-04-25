@@ -9,7 +9,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import redis.clients.jedis.Jedis;
 
-import javax.swing.plaf.synth.Region;
 import java.awt.*;
 
 @SideOnly(Side.CLIENT)
@@ -33,8 +32,8 @@ public class GuiVillagerBuild extends GuiVillager {
         buttonList.add(new GuiCustomButton(1, getGuiLeft() + 6, getGuiTop() + 6, 100, 20, "Retour", 0, 0));
         buttonList.add(new GuiCustomButton(2, getGuiLeft() + 77, getGuiTop() + 50, 100, 20, "Construire ferme", 0, 0));
         buttonList.add(new GuiCustomButton(3, getGuiLeft() + 77, getGuiTop() + 80, 100, 20, "Construire maison", 0, 0));
-        buttonList.get(2).enabled = bronze >= 10;
-        buttonList.get(3).enabled = stone >= 10;
+        buttonList.get(2).enabled = bronze >= 50;
+        buttonList.get(3).enabled = stone >= 50;
     }
 
     public void actionPerformed(GuiButton button) {
