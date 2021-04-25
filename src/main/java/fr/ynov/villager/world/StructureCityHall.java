@@ -7,6 +7,7 @@ import fr.ynov.villager.Main;
 import fr.ynov.villager.bdd.MongoConnexion;
 import fr.ynov.villager.entity.EntityConstructor;
 import fr.ynov.villager.entity.EntityMayor;
+import fr.ynov.villager.init.BlocksMod;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -84,7 +85,14 @@ public class StructureCityHall extends Item {
                 world.setBlockState(initialPos, blkState);
             }
 
+            initialPos = new BlockPos(x - 1 , y , z + 6);
+            Block blk = BlocksMod.silver_chest;
+            IBlockState blkState = blk.getDefaultState();
+            world.setBlockState(initialPos, blkState);
+
             player.getCooldownTracker().setCooldown(this, 50);
+
+
 
             EntityMayor mayor = new EntityMayor(world);
             mayor.setLocationAndAngles(Minecraft.getMinecraft().player.posX + 1.5, Minecraft.getMinecraft().player.posY + 1.0 + mayor.getYOffset(), Minecraft.getMinecraft().player.posZ + 6.0, MathHelper.wrapDegrees(world.rand.nextFloat() * 360.0F), 0.0F);
