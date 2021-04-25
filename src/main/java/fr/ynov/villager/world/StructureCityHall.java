@@ -121,7 +121,15 @@ public class StructureCityHall extends Item {
 
             Document vivi = villager.find(new Document(village)).first();
             assert vivi != null;
+
+            String ViviX = vivi.get("x").toString();
+            String ViviY = vivi.get("y").toString();
+            String ViviZ = vivi.get("z").toString();
+
             Minecraft.getMinecraft().player.sendChatMessage(vivi.toJson());
+            Minecraft.getMinecraft().player.sendChatMessage(ViviX);
+            Minecraft.getMinecraft().player.sendChatMessage(ViviY);
+            Minecraft.getMinecraft().player.sendChatMessage(ViviZ);
         }
         return super.onItemRightClick(world, player, handIn);
     }
