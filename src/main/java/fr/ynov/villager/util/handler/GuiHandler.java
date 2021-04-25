@@ -15,29 +15,28 @@ import net.minecraftforge.fml.common.network.IGuiHandler;
 
 import java.util.Objects;
 
-public class GuiHandler implements IGuiHandler
-{
+public class GuiHandler implements IGuiHandler {
     @Override
-    public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
-    {
+    public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
         TileEntity te = world.getTileEntity(new BlockPos(x, y, z));
-        if(te instanceof TileCoinCreator) {
+        if (te instanceof TileCoinCreator) {
             return new ContainerCoinCreator((TileCoinCreator) te, player.inventory);
         }
-        if(ID == References.GUI_SILVER_CHEST) return new ContainerChestMod(player.inventory, (TileEntityChestMod) Objects.requireNonNull(world.getTileEntity(new BlockPos(x, y, z))), player);
+        if (ID == References.GUI_SILVER_CHEST)
+            return new ContainerChestMod(player.inventory, (TileEntityChestMod) Objects.requireNonNull(world.getTileEntity(new BlockPos(x, y, z))), player);
 
         return null;
     }
 
     @Override
-    public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
-    {
+    public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
         TileEntity te = world.getTileEntity(new BlockPos(x, y, z));
-        if(te instanceof TileCoinCreator) {
+        if (te instanceof TileCoinCreator) {
             return new GuiCoinCreator((TileCoinCreator) te, player.inventory);
         }
 
-        if(ID == References.GUI_SILVER_CHEST) return new GuiChest(player.inventory, (TileEntityChestMod)world.getTileEntity(new BlockPos(x,y,z)), player);
+        if (ID == References.GUI_SILVER_CHEST)
+            return new GuiChest(player.inventory, (TileEntityChestMod) world.getTileEntity(new BlockPos(x, y, z)), player);
         return null;
     }
 }

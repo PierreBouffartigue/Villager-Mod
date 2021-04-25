@@ -1,16 +1,12 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern":
-  [
+  "pattern": [
     "c c",
     "ccc",
     "ccc"
-
   ],
-  "key":
-  {
-    "c":
-    {
+  "key": {
+    "c": {
       "item": "villager:copper_ingot"
     }
   },

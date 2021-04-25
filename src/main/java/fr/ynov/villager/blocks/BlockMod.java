@@ -23,8 +23,7 @@ public class BlockMod extends Block {
     @Override
     @SideOnly(Side.CLIENT)
     @ParametersAreNonnullByDefault
-    public boolean isOpaqueCube(IBlockState state)
-    {
+    public boolean isOpaqueCube(IBlockState state) {
         return false;
     }
 }

@@ -56,7 +56,7 @@ public class GuiVillager extends GuiScreen {
         }
     }
 
-    public void buttonHoveringText(GuiButton button, int mouseX, int mouseY, String[] text, int posX, int posY){
+    public void buttonHoveringText(GuiButton button, int mouseX, int mouseY, String[] text, int posX, int posY) {
         if (button.visible && mouseX >= button.x && mouseY >= button.y && mouseX < button.x + button.width && mouseY < button.y + this.height) {
             List<String> temp = Arrays.asList(text);
             drawHoveringText(temp, posX, posY);
@@ -91,12 +91,12 @@ public class GuiVillager extends GuiScreen {
         return guiLeft;
     }
 
-    public int getGuiTop() {
-        return guiTop;
-    }
-
     public void setGuiLeft(int guiLeft) {
         this.guiLeft = guiLeft;
+    }
+
+    public int getGuiTop() {
+        return guiTop;
     }
 
     public void setGuiTop(int guiTop) {

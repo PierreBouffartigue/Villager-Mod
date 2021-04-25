@@ -14,28 +14,28 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ContainerCoinCreator extends Container {
     private TileCoinCreator tile;
-    private int	timePassed = 0;
-    private int	burnTimeLeft = 0;
+    private int timePassed = 0;
+    private int burnTimeLeft = 0;
 
     public ContainerCoinCreator(TileCoinCreator tile, InventoryPlayer playerInventory) {
 
         this.tile = tile;
         int i;
-        for(i = 0; i < 1; i++) {
+        for (i = 0; i < 1; i++) {
             this.addSlotToContainer(new Slot(tile, i, 42 + i * 25, 7));
         }
-        for(i = 0; i < 2; i++) {
+        for (i = 0; i < 2; i++) {
             this.addSlotToContainer(new SlotSingleItem(tile, i + 1, 42, 40 + i * 18, i == 0 ? Items.COAL : Items.IRON_INGOT));
         }
         this.addSlotToContainer(new SlotOutput(tile, 3, 116, 17));
 
-        for(i = 0; i < 3; ++i) {
-            for(int j = 0; j < 9; ++j) {
+        for (i = 0; i < 3; ++i) {
+            for (int j = 0; j < 9; ++j) {
                 this.addSlotToContainer(new Slot(playerInventory, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
             }
         }
 
-        for(i = 0; i < 9; ++i) {
+        for (i = 0; i < 9; ++i) {
             this.addSlotToContainer(new Slot(playerInventory, i, 8 + i * 18, 142));
         }
 
@@ -56,7 +56,7 @@ public class ContainerCoinCreator extends Container {
     public void detectAndSendChanges() {
         super.detectAndSendChanges();
 
-        for(int i = 0; i < this.listeners.size(); ++i) {
+        for (int i = 0; i < this.listeners.size(); ++i) {
             IContainerListener icontainerlistener = (IContainerListener) this.listeners
                     .get(i);
 
@@ -88,7 +88,7 @@ public class ContainerCoinCreator extends Container {
 
 }
 
-class SlotOutput extends Slot{
+class SlotOutput extends Slot {
 
     public SlotOutput(IInventory inventoryIn, int index, int xPosition, int yPosition) {
         super(inventoryIn, index, xPosition, yPosition);

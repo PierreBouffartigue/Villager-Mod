@@ -2,14 +2,13 @@ package fr.ynov.villager.gui;
 
 import fr.ynov.villager.blocks.ContainerCoinCreator;
 import fr.ynov.villager.blocks.TileCoinCreator;
-import fr.ynov.villager.util.handler.GuiHandler;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 
 public class GuiCoinCreator extends GuiContainer {
-    private static final ResourceLocation background = new ResourceLocation("villager","textures/blocks/custom_furnace.png");
-    private TileCoinCreator tile;
+    private static final ResourceLocation background = new ResourceLocation("villager", "textures/blocks/custom_furnace.png");
+    private final TileCoinCreator tile;
 
     public GuiCoinCreator(TileCoinCreator tile, InventoryPlayer playerInv) {
         super(new ContainerCoinCreator(tile, playerInv));

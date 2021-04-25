@@ -2,12 +2,10 @@ package fr.ynov.villager.blocks;
 
 import fr.ynov.villager.Main;
 import net.minecraft.block.BlockContainer;
-import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -16,9 +14,6 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.network.NetworkRegistry;
-
-import javax.annotation.Nullable;
 
 public class BlockCoinCreator extends BlockContainer {
 
@@ -35,7 +30,7 @@ public class BlockCoinCreator extends BlockContainer {
     }
 
     @Override
-    public TileEntity createNewTileEntity(World world, int metadata)  {
+    public TileEntity createNewTileEntity(World world, int metadata) {
         return new TileCoinCreator();
     }
 

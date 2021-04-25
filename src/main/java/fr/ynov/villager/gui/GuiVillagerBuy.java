@@ -43,12 +43,12 @@ public class GuiVillagerBuy extends GuiVillager {
             case 2:
                 getMc().player.addItemStackToInventory(new ItemStack(Objects.requireNonNull(Block.getBlockFromName("stone")), 5));
                 int itemId = getMc().player.inventory.getSlotFor(new ItemStack(ItemsMod.copper_coin));
-                getMc().player.inventory.decrStackSize(itemId, 1);
+                getMc().player.inventory.decrStackSize(itemId, 2);
                 break;
             case 3:
-                getMc().player.addItemStackToInventory(new ItemStack(Objects.requireNonNull(Block.getBlockFromName("log")), 5));
+                getMc().player.addItemStackToInventory(new ItemStack(Objects.requireNonNull(ItemsMod.silver_coin), 5));
                 int itemId2 = getMc().player.inventory.getSlotFor(new ItemStack(ItemsMod.copper_coin));
-                getMc().player.inventory.decrStackSize(itemId2, 1);
+                getMc().player.inventory.decrStackSize(itemId2, 2);
                 break;
         }
     }

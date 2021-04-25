@@ -11,14 +11,12 @@ import net.minecraft.util.ResourceLocation;
 
 import java.util.Objects;
 
-public class GuiChest extends GuiContainer
-{
+public class GuiChest extends GuiContainer {
     private static final ResourceLocation GUI_CHEST = new ResourceLocation(References.MODID + ":textures/gui/silver_chest.png");
     private final InventoryPlayer playerInventory;
     private final TileEntityChestMod te;
 
-    public GuiChest(InventoryPlayer playerInventory, TileEntityChestMod chestInventory, EntityPlayer player)
-    {
+    public GuiChest(InventoryPlayer playerInventory, TileEntityChestMod chestInventory, EntityPlayer player) {
         super(new ContainerChestMod(playerInventory, chestInventory, player));
         this.playerInventory = playerInventory;
         this.te = chestInventory;
@@ -28,15 +26,13 @@ public class GuiChest extends GuiContainer
     }
 
     @Override
-    protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
-    {
+    protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
         this.fontRenderer.drawString(Objects.requireNonNull(this.te.getDisplayName()).getUnformattedText(), 8, 6, 16086784);
         this.fontRenderer.drawString(this.playerInventory.getDisplayName().getUnformattedText(), 8, this.ySize - 92, 16086784);
     }
 
     @Override
-    protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY)
-    {
+    protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
         GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
         this.mc.getTextureManager().bindTexture(GUI_CHEST);
         this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);

@@ -2,7 +2,6 @@ package fr.ynov.villager.world;
 
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import com.mongodb.client.MongoIterable;
 import fr.ynov.villager.Main;
 import fr.ynov.villager.bdd.MongoConnexion;
 import fr.ynov.villager.entity.EntityConstructor;
@@ -20,7 +19,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import org.bson.Document;
-import org.bson.types.ObjectId;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -85,13 +83,12 @@ public class StructureCityHall extends Item {
                 world.setBlockState(initialPos, blkState);
             }
 
-            initialPos = new BlockPos(x - 1 , y , z + 6);
+            initialPos = new BlockPos(x - 1, y, z + 6);
             Block blk = BlocksMod.silver_chest;
             IBlockState blkState = blk.getDefaultState();
             world.setBlockState(initialPos, blkState);
 
             player.getCooldownTracker().setCooldown(this, 50);
-
 
 
             EntityMayor mayor = new EntityMayor(world);
@@ -104,7 +101,6 @@ public class StructureCityHall extends Item {
 
             //Redis / Jedis
 
-            /**
             //MongoDB
             MongoDatabase villagerDB = MongoConnexion.initMongo().getDatabase("villager");
             MongoCollection<Document> villager = villagerDB.getCollection("villager");
@@ -120,7 +116,6 @@ public class StructureCityHall extends Item {
             Document vivi = villager.find(new Document(village)).first();
             assert vivi != null;
             Minecraft.getMinecraft().player.sendChatMessage(vivi.toJson());
-             **/
         }
         return super.onItemRightClick(world, player, handIn);
     }

@@ -5,7 +5,6 @@ import fr.ynov.villager.blocks.BlockCoinCreator;
 import fr.ynov.villager.blocks.BlockMod;
 import fr.ynov.villager.container.ChestMod;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockChest;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
@@ -40,7 +39,7 @@ public class BlocksMod {
         silver_chest = new ChestMod("silver_chest");
 
         //coin creator
-        coin_creator = new BlockCoinCreator("coin_creator",Material.ROCK);
+        coin_creator = new BlockCoinCreator("coin_creator", Material.ROCK);
     }
 
     @SubscribeEvent

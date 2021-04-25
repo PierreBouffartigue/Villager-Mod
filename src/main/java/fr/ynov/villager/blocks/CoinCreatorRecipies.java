@@ -10,10 +10,12 @@ import java.util.Map;
 
 public class CoinCreatorRecipies {
     private static final HashMap<ItemStack[], ItemStack> recipes = new HashMap<ItemStack[], ItemStack>();
+
     static {
         addRecipe(ItemsMod.copper_ingot, ItemsMod.copper_coin);
         addRecipe(ItemsMod.silver_ingot, ItemsMod.silver_coin);
     }
+
     private static void addRecipe(Item ingredient, Item resultat) {
         addRecipe(new ItemStack(ingredient), new ItemStack(resultat));
     }
@@ -23,15 +25,15 @@ public class CoinCreatorRecipies {
     }
 
     private static boolean areKeysEqual(ItemStack[] key1, ItemStack[] key2) {
-        if(key1.length != key2.length) return false;
+        if (key1.length != key2.length) return false;
 
-        for(int i = 0; i < key1.length; i++) {
+        for (int i = 0; i < key1.length; i++) {
             ItemStack s1 = key1[i];
             ItemStack s2 = key2[i];
-            if(s1.isEmpty() && !s2.isEmpty()) return false;
-            if(!s1.isEmpty() && s2.isEmpty()) return false;
-            if(s1.getItem() != s2.getItem()) return false;
-            if(s1.getItemDamage() != s2.getItemDamage()) return false;
+            if (s1.isEmpty() && !s2.isEmpty()) return false;
+            if (!s1.isEmpty() && s2.isEmpty()) return false;
+            if (s1.getItem() != s2.getItem()) return false;
+            if (s1.getItemDamage() != s2.getItemDamage()) return false;
         }
         return true;
     }

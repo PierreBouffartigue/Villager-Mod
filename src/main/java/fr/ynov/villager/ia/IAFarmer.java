@@ -17,8 +17,8 @@ public class IAFarmer extends EntityAIBase {
     }
 
     /**
-        Faire l'IA avec des coordonnées fixes, j'ajouterais la partie coordonnées de Mongo après. Et le faire farm
-        et ramener les blocs (print quand il doit ramener) j'ajouterais redis
+     * Faire l'IA avec des coordonnées fixes, j'ajouterais la partie coordonnées de Mongo après. Et le faire farm
+     * et ramener les blocs (print quand il doit ramener) j'ajouterais redis
      */
 
     public boolean shouldExecute() {

@@ -11,13 +11,12 @@ import net.minecraft.tileentity.TileEntityLockable;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.NonNullList;
 
-public class TileCoinCreator extends TileEntityLockable implements ITickable
-{
+public class TileCoinCreator extends TileEntityLockable implements ITickable {
 
     private NonNullList<ItemStack> stacks = NonNullList.withSize(4, ItemStack.EMPTY);
     private String customName;
-    private int	timePassed = 0;
-    private int	burningTimeLeft	= 0;
+    private int timePassed = 0;
+    private int burningTimeLeft = 0;
 
     @Override
     public void readFromNBT(NBTTagCompound compound) {
@@ -126,7 +125,7 @@ public class TileCoinCreator extends TileEntityLockable implements ITickable
 
     @Override
     public boolean isEmpty() {
-        for(ItemStack stack : this.stacks) {
+        for (ItemStack stack : this.stacks) {
             if (!stack.isEmpty()) {
                 return false;
             }
@@ -136,17 +135,19 @@ public class TileCoinCreator extends TileEntityLockable implements ITickable
 
     @Override
     public void clear() {
-        for(int i = 0; i < this.stacks.size(); i++) {
+        for (int i = 0; i < this.stacks.size(); i++) {
             this.stacks.set(i, ItemStack.EMPTY);
         }
     }
 
     //called when open or closed
     @Override
-    public void openInventory(EntityPlayer player) {}
+    public void openInventory(EntityPlayer player) {
+    }
 
     @Override
-    public void closeInventory(EntityPlayer player) {}
+    public void closeInventory(EntityPlayer player) {
+    }
 
     //For minecraft
     @Override
@@ -190,7 +191,7 @@ public class TileCoinCreator extends TileEntityLockable implements ITickable
     }
 
     public ItemStack getRecipeResult() {
-        return CoinCreatorRecipies.getRecipeResult(new ItemStack[] {
+        return CoinCreatorRecipies.getRecipeResult(new ItemStack[]{
                 this.getStackInSlot(0)});
     }
 

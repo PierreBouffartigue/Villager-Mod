@@ -15,8 +15,7 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 public class RegistryHandler {
 
     @SubscribeEvent
-    public static void registerBlocks(RegistryEvent.Register<Block> event)
-    {
+    public static void registerBlocks(RegistryEvent.Register<Block> event) {
         TileEntityHandler.registerTileEntities();
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityChestMod.class, new RenderingChestMod());
     }

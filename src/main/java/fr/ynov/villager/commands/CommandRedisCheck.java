@@ -8,7 +8,6 @@ import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.server.MinecraftServer;
 import org.bson.Document;
-import org.bson.types.ObjectId;
 
 public class CommandRedisCheck extends CommandBase {
     @Override
@@ -24,12 +23,12 @@ public class CommandRedisCheck extends CommandBase {
     @Override
     public void execute(MinecraftServer server, ICommandSender sender, String[] args) {
         /**
-        Jedis j = JedisConnexion.initJedis().getResource();
-        j.select(0);
-        j.set("abc", "def");
-        String value = j.get("abc");
-        Minecraft.getMinecraft().player.sendChatMessage("tttt");
-        **/
+         Jedis j = JedisConnexion.initJedis().getResource();
+         j.select(0);
+         j.set("abc", "def");
+         String value = j.get("abc");
+         Minecraft.getMinecraft().player.sendChatMessage("tttt");
+         **/
 
         MongoDatabase villagerDB = MongoConnexion.initMongo().getDatabase("villager");
         MongoCollection<Document> villager = villagerDB.getCollection("villager");

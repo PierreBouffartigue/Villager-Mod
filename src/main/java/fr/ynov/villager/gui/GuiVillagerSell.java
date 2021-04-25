@@ -1,13 +1,17 @@
 package fr.ynov.villager.gui;
 
+import fr.ynov.villager.init.ItemsMod;
+import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.awt.*;
+import java.util.Objects;
 
 @SideOnly(Side.CLIENT)
 public class GuiVillagerSell extends GuiVillager {
@@ -34,6 +38,16 @@ public class GuiVillagerSell extends GuiVillager {
             case 1:
                 getMc().player.sendMessage(new TextComponentString("Retour"));
                 getMc().displayGuiScreen(new GuiVillagerMain(getMc(), getVillager()));
+                break;
+            case 2:
+                getMc().player.addItemStackToInventory(new ItemStack(Objects.requireNonNull(ItemsMod.copper_coin), 1));
+                int itemId = getMc().player.inventory.getSlotFor(new ItemStack(Objects.requireNonNull(Block.getBlockFromName("stone"))));
+                getMc().player.inventory.decrStackSize(itemId, 5);
+                break;
+            case 3:
+                getMc().player.addItemStackToInventory(new ItemStack(Objects.requireNonNull(ItemsMod.copper_coin), 1));
+                int itemId2 = getMc().player.inventory.getSlotFor(new ItemStack(Objects.requireNonNull(ItemsMod.silver_coin)));
+                getMc().player.inventory.decrStackSize(itemId2, 1);
                 break;
         }
     }
