@@ -1,12 +1,15 @@
 package fr.ynov.villager.entity;
 
+import fr.ynov.villager.bdd.JedisConnexion;
 import fr.ynov.villager.ia.IAConstructor;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
+import redis.clients.jedis.Jedis;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
@@ -14,6 +17,18 @@ public class EntityConstructor extends EntityCreature {
     public EntityConstructor(World worldIn) {
         super(worldIn);
         setCustomNameTag(getName());
+    }
+
+    @Override
+    public void onDeath(DamageSource cause) {
+        super.onDeath(cause);
+        Jedis j = JedisConnexion.initJedis().getResource();
+        j.select(1);
+        String rep = j.get("reputation");
+        int repu = Integer.parseInt(rep);
+        int newRepu = repu - 5;
+        j.set("reputation", Integer.toString(newRepu));
+        Minecraft.getMinecraft().player.sendChatMessage("5 Points de réputation perdus");
     }
 
     @ParametersAreNonnullByDefault

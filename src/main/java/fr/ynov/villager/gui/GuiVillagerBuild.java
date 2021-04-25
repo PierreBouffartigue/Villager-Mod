@@ -1,12 +1,15 @@
 package fr.ynov.villager.gui;
 
+import fr.ynov.villager.bdd.JedisConnexion;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import redis.clients.jedis.Jedis;
 
+import javax.swing.plaf.synth.Region;
 import java.awt.*;
 
 @SideOnly(Side.CLIENT)
@@ -16,6 +19,13 @@ public class GuiVillagerBuild extends GuiVillager {
     }
 
     public void initGui() {
+        Jedis j = JedisConnexion.initJedis().getResource();
+        j.select(1);
+        String bzc = j.get("bronzeCoin");
+        String stn = j.get("stone");
+        int bronze = Integer.parseInt(bzc);
+        int stone = Integer.parseInt(stn);
+
         setGuiLeft((this.width - getxSize()) / 2);
         setGuiTop((this.height - getySize()) / 2);
 
@@ -23,6 +33,8 @@ public class GuiVillagerBuild extends GuiVillager {
         buttonList.add(new GuiCustomButton(1, getGuiLeft() + 6, getGuiTop() + 6, 100, 20, "Retour", 0, 0));
         buttonList.add(new GuiCustomButton(2, getGuiLeft() + 77, getGuiTop() + 50, 100, 20, "Construire ferme", 0, 0));
         buttonList.add(new GuiCustomButton(3, getGuiLeft() + 77, getGuiTop() + 80, 100, 20, "Construire maison", 0, 0));
+        buttonList.get(2).enabled = bronze >= 10;
+        buttonList.get(3).enabled = stone >= 10;
     }
 
     public void actionPerformed(GuiButton button) {

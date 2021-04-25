@@ -1,11 +1,13 @@
 package fr.ynov.villager.gui;
 
+import fr.ynov.villager.bdd.JedisConnexion;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import redis.clients.jedis.Jedis;
 
 import java.awt.*;
 
@@ -47,13 +49,20 @@ public class GuiVillagerMain extends GuiVillager {
     }
 
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+        Jedis j = JedisConnexion.initJedis().getResource();
+        j.select(1);
+        String bzc = j.get("bronzeCoin");
+        String stn = j.get("stone");
+        String svc = j.get("silverCoin");
+        String rep = j.get("reputation");
+
         drawBackgroundImage(getBackground());
         drawEntityOnScreen(getGuiLeft() + 40, getGuiTop() + 150, 40, (getGuiLeft() + 40) - mouseX, (getGuiTop() + 80) - mouseY, getVillager());
 
         drawString(fontRenderer, "Bonjour " + getMc().player.getName(), getGuiLeft() + 128, getGuiTop() + 20, Color.BLACK.getRGB(), true, false);
         drawString(fontRenderer, "Je suis " + getVillager().getName() + ", que puis-je faire pour vous ?", getGuiLeft() + 128, getGuiTop() + 40, Color.BLACK.getRGB(), true, false);
-        drawString(fontRenderer, "Nom de la ville : MyVillage", getGuiLeft() + 78, getGuiTop() + 60, Color.BLACK.getRGB(), false, false);
-        drawString(fontRenderer, "Réputation : 0", getGuiLeft() + 78, getGuiTop() + 70, Color.BLACK.getRGB(), false, false);
+        drawString(fontRenderer, "Ressources : " + bzc + "BC " + stn + "Stone " + svc + "SC", getGuiLeft() + 78, getGuiTop() + 60, Color.BLACK.getRGB(), false, false);
+        drawString(fontRenderer, "Réputation : " + rep, getGuiLeft() + 78, getGuiTop() + 70, Color.BLACK.getRGB(), false, false);
 
         super.drawScreen(mouseX, mouseY, partialTicks);
     }

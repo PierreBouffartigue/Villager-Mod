@@ -1,5 +1,6 @@
 package fr.ynov.villager.gui;
 
+import fr.ynov.villager.bdd.JedisConnexion;
 import fr.ynov.villager.init.ItemsMod;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
@@ -9,6 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import redis.clients.jedis.Jedis;
 
 import java.awt.*;
 import java.util.Objects;
@@ -31,6 +33,8 @@ public class GuiVillagerBuy extends GuiVillager {
     }
 
     public void actionPerformed(GuiButton button) {
+        Jedis j = JedisConnexion.initJedis().getResource();
+        j.select(1);
         switch (button.id) {
             case 0:
                 getMc().displayGuiScreen(null);
@@ -44,6 +48,11 @@ public class GuiVillagerBuy extends GuiVillager {
                 getMc().player.addItemStackToInventory(new ItemStack(Objects.requireNonNull(Block.getBlockFromName("stone")), 5));
                 int itemId = getMc().player.inventory.getSlotFor(new ItemStack(ItemsMod.copper_coin));
                 getMc().player.inventory.decrStackSize(itemId, 2);
+                String bzc = j.get("bronzeCoin");
+                String stn = j.get("stone");
+                int bronze = Integer.parseInt(bzc);
+                int stone = Integer.parseInt(stn);
+
                 break;
             case 3:
                 getMc().player.addItemStackToInventory(new ItemStack(Objects.requireNonNull(ItemsMod.silver_coin), 5));

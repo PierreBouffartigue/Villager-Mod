@@ -2,6 +2,7 @@ package fr.ynov.villager.entity;
 
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import fr.ynov.villager.bdd.JedisConnexion;
 import fr.ynov.villager.bdd.MongoConnexion;
 import fr.ynov.villager.gui.GuiVillagerMain;
 import net.minecraft.client.Minecraft;
@@ -11,6 +12,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 import org.bson.Document;
+import redis.clients.jedis.Jedis;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
@@ -26,7 +28,12 @@ public class EntityMayor extends EntityCreature {
         MongoDatabase villagerDB = MongoConnexion.initMongo().getDatabase("villager");
         MongoCollection<Document> villager = villagerDB.getCollection("villager");
         villager.drop();
-        Minecraft.getMinecraft().player.sendChatMessage("Maire tué, village supprimé de MongoDB");
+        Jedis j = JedisConnexion.initJedis().getResource();
+        j.select(1);
+        j.set("bronzeCoin", "0");
+        j.set("silverCoin", "0");
+        j.set("stone", "0");
+        Minecraft.getMinecraft().player.sendChatMessage("Maire tué, village supprimé des bases de données");
     }
 
     @ParametersAreNonnullByDefault

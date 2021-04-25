@@ -3,6 +3,7 @@ package fr.ynov.villager.world;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import fr.ynov.villager.Main;
+import fr.ynov.villager.bdd.JedisConnexion;
 import fr.ynov.villager.bdd.MongoConnexion;
 import fr.ynov.villager.entity.EntityConstructor;
 import fr.ynov.villager.entity.EntityMayor;
@@ -22,6 +23,7 @@ import org.bson.Document;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import redis.clients.jedis.Jedis;
 
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -100,6 +102,12 @@ public class StructureCityHall extends Item {
             world.spawnEntity(constructor);
 
             //Redis / Jedis
+            Jedis j = JedisConnexion.initJedis().getResource();
+            j.select(1);
+            j.set("bronzeCoin", "0");
+            j.set("silverCoin", "0");
+            j.set("stone", "0");
+            j.set("reputation","0");
 
             //MongoDB
             MongoDatabase villagerDB = MongoConnexion.initMongo().getDatabase("villager");
@@ -108,9 +116,7 @@ public class StructureCityHall extends Item {
             Document village = new Document("name", "MyVillage")
                     .append("x", x + 1)
                     .append("y", y)
-                    .append("z", z + 4)
-                    .append("farm", "none")
-                    .append("house", "none");
+                    .append("z", z + 4);
             villager.insertOne(village);
 
             Document vivi = villager.find(new Document(village)).first();

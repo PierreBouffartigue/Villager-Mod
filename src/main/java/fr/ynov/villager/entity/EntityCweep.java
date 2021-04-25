@@ -1,11 +1,15 @@
 package fr.ynov.villager.entity;
 
+import fr.ynov.villager.bdd.JedisConnexion;
 import fr.ynov.villager.ia.IACweep;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
+import redis.clients.jedis.Jedis;
 
 public class EntityCweep extends EntitySpider {
 
@@ -13,6 +17,19 @@ public class EntityCweep extends EntitySpider {
         super(worldIn);
         this.setSize(1.4F, 0.9F);
     }
+
+    @Override
+    public void onDeath(DamageSource cause) {
+        super.onDeath(cause);
+        Jedis j = JedisConnexion.initJedis().getResource();
+        j.select(1);
+        String rep = j.get("reputation");
+        int repu = Integer.parseInt(rep);
+        int newRepu = repu + 20;
+        j.set("reputation", Integer.toString(newRepu));
+        Minecraft.getMinecraft().player.sendChatMessage("20 Points de réputation gagnés");
+    }
+
 
     @Override
     protected void applyEntityAttributes() {
