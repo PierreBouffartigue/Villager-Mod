@@ -52,7 +52,7 @@ public class GuiVillagerMain extends GuiVillager {
 
         drawString(fontRenderer, "Bonjour " + getMc().player.getName(), getGuiLeft() + 128, getGuiTop() + 20, Color.BLACK.getRGB(), true, false);
         drawString(fontRenderer, "Je suis " + getVillager().getName() + ", que puis-je faire pour vous ?", getGuiLeft() + 128, getGuiTop() + 40, Color.BLACK.getRGB(), true, false);
-        drawString(fontRenderer, "Nom de la ville : test", getGuiLeft() + 78, getGuiTop() + 60, Color.BLACK.getRGB(), false, false);
+        drawString(fontRenderer, "Nom de la ville : MyVillage", getGuiLeft() + 78, getGuiTop() + 60, Color.BLACK.getRGB(), false, false);
         drawString(fontRenderer, "Réputation : 0", getGuiLeft() + 78, getGuiTop() + 70, Color.BLACK.getRGB(), false, false);
 
         super.drawScreen(mouseX, mouseY, partialTicks);

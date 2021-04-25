@@ -102,24 +102,26 @@ public class StructureCityHall extends Item {
             constructor.setLocationAndAngles(Minecraft.getMinecraft().player.posX - 1.0, Minecraft.getMinecraft().player.posY + 1.0 + constructor.getYOffset(), Minecraft.getMinecraft().player.posZ + 6.0, MathHelper.wrapDegrees(world.rand.nextFloat() * 360.0F), 0.0F);
             world.spawnEntity(constructor);
 
+            //Redis / Jedis
+
             /**
-            MongoDatabase sampleTrainingDB = MongoConnexion.initMongo().getDatabase("villager");
-            MongoCollection<Document> gradesCollection = sampleTrainingDB.getCollection("villager");
-            Document villager = new Document("_id", new ObjectId());
-            villager.append("name", "MyVillage")
+            //MongoDB
+            MongoDatabase villagerDB = MongoConnexion.initMongo().getDatabase("villager");
+            MongoCollection<Document> villager = villagerDB.getCollection("villager");
+            villager.drop();
+            Document village = new Document("name", "MyVillage")
                     .append("x", x + 1)
                     .append("y", y)
                     .append("z", z + 4)
                     .append("farm", "none")
                     .append("house", "none");
-            gradesCollection.insertOne(villager);
-            for (String name : sampleTrainingDB.listCollectionNames()) {
+            villager.insertOne(village);
 
-                Minecraft.getMinecraft().player.sendChatMessage(name);
-            }
-            **/
+            Document vivi = villager.find(new Document(village)).first();
+            assert vivi != null;
+            Minecraft.getMinecraft().player.sendChatMessage(vivi.toJson());
+             **/
         }
         return super.onItemRightClick(world, player, handIn);
-
     }
 }

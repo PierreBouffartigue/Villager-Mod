@@ -21,6 +21,8 @@ public class GuiVillagerSell extends GuiVillager {
 
         buttonList.add(new GuiCustomButton(0, getGuiLeft() + 240, getGuiTop(), 16, 16, "X", 128, 0));
         buttonList.add(new GuiCustomButton(1, getGuiLeft() + 6, getGuiTop() + 6, 100, 20, "Retour", 0, 0));
+        buttonList.add(new GuiCustomButton(2, getGuiLeft() + 77, getGuiTop() + 50, 100, 20, "Vendre 5 Pierres", 0, 0));
+        buttonList.add(new GuiCustomButton(3, getGuiLeft() + 77, getGuiTop() + 80, 100, 20, "Vendre 1 PA", 0, 0));
     }
 
     public void actionPerformed(GuiButton button) {
@@ -37,10 +39,13 @@ public class GuiVillagerSell extends GuiVillager {
     }
 
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
-        drawBackgroundImage(getBackgroundTrade());
+        drawBackgroundImage(getBackground());
 
         drawString(fontRenderer, "Vendre : ", getGuiLeft() + 128, getGuiTop() + 30, Color.BLACK.getRGB(), true, false);
 
         super.drawScreen(mouseX, mouseY, partialTicks);
+
+        buttonHoveringText(buttonList.get(2), mouseX, mouseY, new String[]{"5 Pierres", "", "Gain : 1 Pièce de cuivre"}, mouseX, mouseY);
+        buttonHoveringText(buttonList.get(3), mouseX, mouseY, new String[]{"1 Pièce de silver", "", "Gain : 1 Pièce de cuivre"}, mouseX, mouseY);
     }
 }
