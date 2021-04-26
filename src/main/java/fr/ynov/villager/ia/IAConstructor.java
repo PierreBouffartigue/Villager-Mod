@@ -16,6 +16,7 @@ public class IAConstructor extends EntityAIBase {
     protected int randPosX;
     protected int randPosY;
     protected int randPosZ;
+    protected int timer = 20;
     MongoDatabase villagerDB = MongoConnexion.initMongo().getDatabase("villager");
     MongoCollection<Document> villager = villagerDB.getCollection("villager");
     Document vivi = villager.find().first();
@@ -63,13 +64,26 @@ public class IAConstructor extends EntityAIBase {
             this.creature.getNavigator().tryMoveToXYZ(this.randPosX, this.randPosY, this.randPosZ - 6, this.speed);
             this.creature.getNavigator().tryMoveToXYZ(this.randPosX, this.randPosY, this.randPosZ - 12, this.speed);
             this.creature.getNavigator().noPath();
-            Structure.HouseStructure(this.creature, this.creature.world);
+            if (timer == 0) {
+                Structure.HouseStructure(this.creature, this.creature.world);
+                timer = 30;
+                j.set("constructor","no");
+            } else {
+                timer--;
+            }
         }
+        //Cweep
         if(bzc.equals("farm")) {
             this.creature.getNavigator().tryMoveToXYZ(this.randPosX, this.randPosY, this.randPosZ - 6, this.speed);
-            this.creature.getNavigator().tryMoveToXYZ(this.randPosX, this.randPosY, this.randPosZ - 12, this.speed);
+            this.creature.getNavigator().tryMoveToXYZ(this.randPosX - 6, this.randPosY, this.randPosZ -6, this.speed);
             this.creature.getNavigator().noPath();
-            Structure.HouseStructure(this.creature, this.creature.world);
+            if (timer == 0) {
+                Structure.HouseStructure(this.creature, this.creature.world);
+                timer = 30;
+                j.set("constructor","no");
+            } else {
+                timer--;
+            }
         }
     }
 
