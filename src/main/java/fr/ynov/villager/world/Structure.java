@@ -1,10 +1,12 @@
 package fr.ynov.villager.world;
 
-import fr.ynov.villager.init.BlocksMod;
+import fr.ynov.villager.entity.EntityCweep;
+import fr.ynov.villager.entity.EntityFarmer;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -47,6 +49,9 @@ public class Structure {
                 initialPos = new BlockPos(x + Integer.parseInt(parts[0]) - 1, y + Integer.parseInt(parts[1]), z + Integer.parseInt(parts[2]) + 1);
                 world.setBlockState(initialPos, blkState);
             }
+            EntityCweep cweep = new EntityCweep(world);
+            cweep.setLocationAndAngles(creature.posX, creature.posY + cweep.getYOffset(), creature.posZ + 12, MathHelper.wrapDegrees(world.rand.nextFloat() * 360.0F), 0.0F);
+            world.spawnEntity(cweep);
         }
     }
 
@@ -68,7 +73,7 @@ public class Structure {
                 e.printStackTrace();
             }
 
-            int x = (int) creature.posX;
+            int x = (int) creature.posX - 5;
             int y = (int) creature.posY;
             int z = (int) creature.posZ - 6;
             BlockPos initialPos = new BlockPos(x, y, z);
@@ -82,6 +87,9 @@ public class Structure {
                 initialPos = new BlockPos(x + Integer.parseInt(parts[0]) - 1, y + Integer.parseInt(parts[1]), z + Integer.parseInt(parts[2]) + 1);
                 world.setBlockState(initialPos, blkState);
             }
+            EntityFarmer farmer = new EntityFarmer(world);
+            farmer.setLocationAndAngles(creature.posX - 4, creature.posY + farmer.getYOffset(), creature.posZ - 3, MathHelper.wrapDegrees(world.rand.nextFloat() * 360.0F), 0.0F);
+            world.spawnEntity(farmer);
         }
     }
 }

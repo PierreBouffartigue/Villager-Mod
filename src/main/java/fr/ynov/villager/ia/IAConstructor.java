@@ -49,13 +49,6 @@ public class IAConstructor extends EntityAIBase {
         return true;
     }
 
-    public void goToPos(){
-        this.creature.getNavigator().tryMoveToXYZ(this.randPosX, this.randPosY, this.randPosZ - 6, this.speed);
-        this.creature.getNavigator().tryMoveToXYZ(this.randPosX, this.randPosY, this.randPosZ - 12, this.speed);
-        this.creature.getNavigator().noPath();
-    }
-
-
     public void startExecuting() {
         Jedis j = JedisConnexion.initJedis().getResource();
         j.select(1);
@@ -71,7 +64,6 @@ public class IAConstructor extends EntityAIBase {
                 timer--;
             }
         }
-        //Cweep
         if(bzc.equals("farm")) {
             this.creature.getNavigator().tryMoveToXYZ(this.randPosX, this.randPosY, this.randPosZ - 6, this.speed);
             this.creature.getNavigator().tryMoveToXYZ(this.randPosX - 10, this.randPosY, this.randPosZ -6, this.speed);

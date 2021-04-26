@@ -94,7 +94,7 @@ public class StructureCityHall extends Item {
 
 
             EntityMayor mayor = new EntityMayor(world);
-            mayor.setLocationAndAngles(Minecraft.getMinecraft().player.posX, Minecraft.getMinecraft().player.posY+ mayor.getYOffset(), Minecraft.getMinecraft().player.posZ + 6.0, MathHelper.wrapDegrees(world.rand.nextFloat() * 360.0F), 0.0F);
+            mayor.setLocationAndAngles(Minecraft.getMinecraft().player.posX + 1, Minecraft.getMinecraft().player.posY+ mayor.getYOffset(), Minecraft.getMinecraft().player.posZ + 6.0, MathHelper.wrapDegrees(world.rand.nextFloat() * 360.0F), 0.0F);
             world.spawnEntity(mayor);
 
             //Redis / Jedis
@@ -105,6 +105,7 @@ public class StructureCityHall extends Item {
             j.set("stone", "40");
             j.set("reputation","0");
             j.set("constructor","no");
+            j.set("farmer", "no");
 
             //MongoDB
             MongoDatabase villagerDB = MongoConnexion.initMongo().getDatabase("villager");
