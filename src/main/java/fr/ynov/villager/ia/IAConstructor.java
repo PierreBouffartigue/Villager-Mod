@@ -6,9 +6,12 @@ import net.minecraft.entity.ai.EntityAIBase;
 public class IAConstructor extends EntityAIBase {
     protected final EntityCreature creature;
     protected double speed;
-    protected double randPosX;
-    protected double randPosY;
-    protected double randPosZ;
+    protected int randPosX;
+    protected int randPosY;
+    protected int randPosZ;
+    MongoDatabase villagerDB = MongoConnexion.initMongo().getDatabase("villager");
+    MongoCollection<Document> villager = villagerDB.getCollection("villager");
+    Document vivi = villager.find().first();
 
     public IAConstructor(EntityCreature creature, double speedIn) {
         this.creature = creature;
@@ -16,12 +19,8 @@ public class IAConstructor extends EntityAIBase {
         this.setMutexBits(1);
     }
 
-    /**
-     * Faire l'IA avec des coordonnées fixes, j'ajouterais la partie coordonnées de Mongo après. Et le faire construire
-     * avec de fausses conditions, j'implémenterais Redis
-     */
-
     public boolean shouldExecute() {
+
         return this.findPath();
     }
 
@@ -31,11 +30,14 @@ public class IAConstructor extends EntityAIBase {
 
 
     public void startExecuting() {
+        this.creature.getNavigator().tryMoveToXYZ(this.randPosX, this.randPosY, this.randPosZ - 6, this.speed);
+        this.creature.getNavigator().tryMoveToXYZ(this.randPosX, this.randPosY, this.randPosZ - 12, this.speed);
+        Structure.HouseStructure(this.creature, this.creature.world);
     }
 
 
     public boolean shouldContinueExecuting() {
-        return false;
+        return !this.creature.getNavigator().noPath();
     }
 
 }

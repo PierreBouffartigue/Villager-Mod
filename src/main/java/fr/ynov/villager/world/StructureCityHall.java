@@ -94,12 +94,8 @@ public class StructureCityHall extends Item {
 
 
             EntityMayor mayor = new EntityMayor(world);
-            mayor.setLocationAndAngles(Minecraft.getMinecraft().player.posX + 1.5, Minecraft.getMinecraft().player.posY + 1.0 + mayor.getYOffset(), Minecraft.getMinecraft().player.posZ + 6.0, MathHelper.wrapDegrees(world.rand.nextFloat() * 360.0F), 0.0F);
+            mayor.setLocationAndAngles(Minecraft.getMinecraft().player.posX, Minecraft.getMinecraft().player.posY+ mayor.getYOffset(), Minecraft.getMinecraft().player.posZ + 6.0, MathHelper.wrapDegrees(world.rand.nextFloat() * 360.0F), 0.0F);
             world.spawnEntity(mayor);
-
-            EntityConstructor constructor = new EntityConstructor(world);
-            constructor.setLocationAndAngles(Minecraft.getMinecraft().player.posX - 1.0, Minecraft.getMinecraft().player.posY + 1.0 + constructor.getYOffset(), Minecraft.getMinecraft().player.posZ + 6.0, MathHelper.wrapDegrees(world.rand.nextFloat() * 360.0F), 0.0F);
-            world.spawnEntity(constructor);
 
             //Redis / Jedis
             Jedis j = JedisConnexion.initJedis().getResource();
@@ -130,6 +126,10 @@ public class StructureCityHall extends Item {
             Minecraft.getMinecraft().player.sendChatMessage(ViviX);
             Minecraft.getMinecraft().player.sendChatMessage(ViviY);
             Minecraft.getMinecraft().player.sendChatMessage(ViviZ);
+
+            EntityConstructor constructor = new EntityConstructor(world);
+            constructor.setLocationAndAngles(Minecraft.getMinecraft().player.posX - 2.0, Minecraft.getMinecraft().player.posY + constructor.getYOffset(), Minecraft.getMinecraft().player.posZ + 6.0, MathHelper.wrapDegrees(world.rand.nextFloat() * 360.0F), 0.0F);
+            world.spawnEntity(constructor);
         }
         return super.onItemRightClick(world, player, handIn);
     }

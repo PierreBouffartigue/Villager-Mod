@@ -1,14 +1,21 @@
 package fr.ynov.villager.ia;
 
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import fr.ynov.villager.bdd.MongoConnexion;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.ai.EntityAIBase;
+import org.bson.Document;
 
 public class IAFarmer extends EntityAIBase {
     protected final EntityCreature creature;
     protected double speed;
-    protected double randPosX;
-    protected double randPosY;
-    protected double randPosZ;
+    protected int randPosX;
+    protected int randPosY;
+    protected int randPosZ;
+    MongoDatabase villagerDB = MongoConnexion.initMongo().getDatabase("villager");
+    MongoCollection<Document> villager = villagerDB.getCollection("villager");
+    Document vivi = villager.find().first();
 
     public IAFarmer(EntityCreature creature, double speedIn) {
         this.creature = creature;
@@ -16,26 +23,38 @@ public class IAFarmer extends EntityAIBase {
         this.setMutexBits(1);
     }
 
-    /**
-     * Faire l'IA avec des coordonnées fixes, j'ajouterais la partie coordonnées de Mongo après. Et le faire farm
-     * et ramener les blocs (print quand il doit ramener) j'ajouterais redis
-     */
-
     public boolean shouldExecute() {
         return this.findPath();
     }
 
+
     protected boolean findPath() {
-        return false;
+
+        String ViviX = vivi.get("x").toString();
+        String ViviY = vivi.get("y").toString();
+        String ViviZ = vivi.get("z").toString();
+        int ViviX2 = Integer.parseInt(ViviX);
+        int ViviY2 = Integer.parseInt(ViviY);
+        int ViviZ2 = Integer.parseInt(ViviZ);
+
+        this.randPosX = ViviX2;
+        this.randPosY = ViviY2;
+        this.randPosZ = ViviZ2;
+
+        return true;
     }
 
 
     public void startExecuting() {
+
+        this.creature.getNavigator().tryMoveToXYZ(this.randPosX, this.randPosY, this.randPosZ - 6, this.speed);
+        this.creature.getNavigator().tryMoveToXYZ(this.randPosX + 6, this.randPosY, this.randPosZ -6, this.speed);
+        this.creature.getNavigator().noPath();
     }
 
 
     public boolean shouldContinueExecuting() {
-        return false;
+        return !this.creature.getNavigator().noPath();
     }
 
 }
