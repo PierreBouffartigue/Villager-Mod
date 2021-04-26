@@ -6,6 +6,8 @@ import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.fml.relauncher.Side;
@@ -48,7 +50,8 @@ public class GuiVillagerSell extends GuiVillager {
                 String stn = j.get("stone");
                 int bronze = Integer.parseInt(bzc);
                 int stone = Integer.parseInt(stn);
-                if (bronze >= 1) {
+
+                if (bronze >= 1 && getMc().player.inventory.hasItemStack(new ItemStack(Objects.requireNonNull(Blocks.STONE), 5))) {
                     int bronzeBuyInt = bronze - 1;
                     int stoneBuyInt = stone + 5;
                     j.set("stone", Integer.toString(stoneBuyInt));
@@ -56,23 +59,35 @@ public class GuiVillagerSell extends GuiVillager {
                     getMc().player.addItemStackToInventory(new ItemStack(Objects.requireNonNull(ItemsMod.copper_coin), 1));
                     int itemId = getMc().player.inventory.getSlotFor(new ItemStack(Objects.requireNonNull(Block.getBlockFromName("stone"))));
                     getMc().player.inventory.decrStackSize(itemId, 5);
+                    break;
+                }else {
+                    getMc().player.sendMessage(new TextComponentString("Action impossible manque de ressources ou d argent"));
+                    break;
                 }
-                break;
+
+
             case 3:
                 String bzc2 = j.get("bronzeCoin");
                 String svc = j.get("silverCoin");
                 int bronze2 = Integer.parseInt(bzc2);
                 int silver = Integer.parseInt(svc);
-                if (silver >= 5) {
-                    int bronzeBuyInt2 = bronze2 - 1;
-                    int silverBuyInt = silver + 5;
-                    j.set("silverCoin", Integer.toString(silverBuyInt));
-                    j.set("bronzeCoin", Integer.toString(bronzeBuyInt2));
-                    getMc().player.addItemStackToInventory(new ItemStack(Objects.requireNonNull(ItemsMod.copper_coin), 1));
-                    int itemId2 = getMc().player.inventory.getSlotFor(new ItemStack(Objects.requireNonNull(ItemsMod.silver_coin)));
-                    getMc().player.inventory.decrStackSize(itemId2, 1);
-                }
-                break;
+
+
+                    if (bronze2 >= 1 && getMc().player.inventory.hasItemStack(new ItemStack(Objects.requireNonNull(ItemsMod.silver_coin)))) {
+                        int bronzeBuyInt2 = bronze2 - 1;
+                        int silverBuyInt = silver + 1;
+                        j.set("silverCoin", Integer.toString(silverBuyInt));
+                        j.set("bronzeCoin", Integer.toString(bronzeBuyInt2));
+                        getMc().player.addItemStackToInventory(new ItemStack(Objects.requireNonNull(ItemsMod.copper_coin), 1));
+                        int itemId2 = getMc().player.inventory.getSlotFor(new ItemStack(Objects.requireNonNull(ItemsMod.silver_coin)));
+                        getMc().player.inventory.decrStackSize(itemId2, 1);
+                        break;
+                    } else {
+                        getMc().player.sendMessage(new TextComponentString("Action impossible manque de ressources ou d argent"));
+                        break;
+                    }
+
+
         }
     }
 
