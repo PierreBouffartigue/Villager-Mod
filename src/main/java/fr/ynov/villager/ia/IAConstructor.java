@@ -48,9 +48,12 @@ public class IAConstructor extends EntityAIBase {
 
 
     public void startExecuting() {
-        this.creature.getNavigator().tryMoveToXYZ(this.randPosX, this.randPosY, this.randPosZ - 6, this.speed);
-        this.creature.getNavigator().tryMoveToXYZ(this.randPosX, this.randPosY, this.randPosZ - 12, this.speed);
-        Structure.HouseStructure(this.creature, this.creature.world);
+        //this.creature.getNavigator().tryMoveToXYZ(this.randPosX, this.randPosY, this.randPosZ - 6, this.speed);
+        //this.creature.getNavigator().tryMoveToXYZ(this.randPosX, this.randPosY, this.randPosZ - 12, this.speed);
+        //this.creature.getNavigator().noPath();
+        if(this.creature.posZ == randPosZ - 12) {
+            Structure.HouseStructure(this.creature, this.creature.world);
+        }
     }
 
 

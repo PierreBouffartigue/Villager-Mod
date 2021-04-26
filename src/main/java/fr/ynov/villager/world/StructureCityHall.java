@@ -104,6 +104,7 @@ public class StructureCityHall extends Item {
             j.set("silverCoin", "40");
             j.set("stone", "40");
             j.set("reputation","0");
+            j.set("constructor","no");
 
             //MongoDB
             MongoDatabase villagerDB = MongoConnexion.initMongo().getDatabase("villager");

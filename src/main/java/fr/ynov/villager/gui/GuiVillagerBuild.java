@@ -45,9 +45,15 @@ public class GuiVillagerBuild extends GuiVillager {
                 getMc().displayGuiScreen(new GuiVillagerMain(getMc(), getVillager()));
                 break;
             case 2:
+                Jedis j = JedisConnexion.initJedis().getResource();
+                j.select(1);
+                j.set("constructor","farm");
                 getMc().player.sendMessage(new TextComponentString("Construction d'une ferme"));
                 break;
             case 3:
+                Jedis j2 = JedisConnexion.initJedis().getResource();
+                j2.select(1);
+                j2.set("constructor","house");
                 getMc().player.sendMessage(new TextComponentString("Construction d'une maison"));
                 break;
         }
