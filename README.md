@@ -5,10 +5,6 @@
 Le projet Villager est un mod Minecraft 1.12.2 visant à recréer un petit village géré par des IA que le joueur pourra
 aider pour le faire grandir et se développer. Il devra également le défendre lors d'attaques de monstres.
 
-## Fonctionnalités
-
-WIP
-
 ## Installation client
 
 Pour une installation normale du mod, il vous faudra :
@@ -53,5 +49,5 @@ Pour une installation normale du mod, il vous faudra :
     
     - Pour pouvoir exporter le mod il faudra le build hors IDE, en allant à la racine du projet et en utilisant `.\gradlew build`
 
-## Capture d'écran
-
+## Captures d'écran
+- WIP -
