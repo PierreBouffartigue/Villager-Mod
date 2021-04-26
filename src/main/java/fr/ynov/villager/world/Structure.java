@@ -47,11 +47,6 @@ public class Structure {
                 initialPos = new BlockPos(x + Integer.parseInt(parts[0]) - 1, y + Integer.parseInt(parts[1]), z + Integer.parseInt(parts[2]) + 1);
                 world.setBlockState(initialPos, blkState);
             }
-
-            initialPos = new BlockPos(x - 1, y, z + 6);
-            Block blk = BlocksMod.silver_chest;
-            IBlockState blkState = blk.getDefaultState();
-            world.setBlockState(initialPos, blkState);
         }
     }
 
@@ -87,11 +82,6 @@ public class Structure {
                 initialPos = new BlockPos(x + Integer.parseInt(parts[0]) - 1, y + Integer.parseInt(parts[1]), z + Integer.parseInt(parts[2]) + 1);
                 world.setBlockState(initialPos, blkState);
             }
-
-            initialPos = new BlockPos(x - 1, y, z + 6);
-            Block blk = BlocksMod.silver_chest;
-            IBlockState blkState = blk.getDefaultState();
-            world.setBlockState(initialPos, blkState);
         }
     }
 }

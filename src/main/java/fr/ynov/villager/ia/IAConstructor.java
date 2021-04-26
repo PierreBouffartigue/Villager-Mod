@@ -67,7 +67,6 @@ public class IAConstructor extends EntityAIBase {
             if (timer == 0) {
                 Structure.HouseStructure(this.creature, this.creature.world);
                 timer = 30;
-                j.set("constructor","no");
             } else {
                 timer--;
             }
@@ -75,12 +74,11 @@ public class IAConstructor extends EntityAIBase {
         //Cweep
         if(bzc.equals("farm")) {
             this.creature.getNavigator().tryMoveToXYZ(this.randPosX, this.randPosY, this.randPosZ - 6, this.speed);
-            this.creature.getNavigator().tryMoveToXYZ(this.randPosX - 6, this.randPosY, this.randPosZ -6, this.speed);
+            this.creature.getNavigator().tryMoveToXYZ(this.randPosX - 10, this.randPosY, this.randPosZ -6, this.speed);
             this.creature.getNavigator().noPath();
             if (timer == 0) {
-                Structure.HouseStructure(this.creature, this.creature.world);
+                Structure.FarmStructure(this.creature, this.creature.world);
                 timer = 30;
-                j.set("constructor","no");
             } else {
                 timer--;
             }

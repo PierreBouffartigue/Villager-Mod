@@ -49,12 +49,20 @@ public class GuiVillagerBuild extends GuiVillager {
                 Jedis j = JedisConnexion.initJedis().getResource();
                 j.select(1);
                 j.set("constructor","farm");
+                String stn = j.get("stone");
+                int stone = Integer.parseInt(stn);
+                int stoneBuyInt = stone - 50;
+                j.set("stone", Integer.toString(stoneBuyInt));
                 getMc().player.sendMessage(new TextComponentString("Construction d'une ferme"));
                 break;
             case 3:
                 Jedis j2 = JedisConnexion.initJedis().getResource();
                 j2.select(1);
                 j2.set("constructor","house");
+                String stn2 = j2.get("stone");
+                int stone2 = Integer.parseInt(stn2);
+                int stoneBuyInt2 = stone2 - 50;
+                j2.set("stone", Integer.toString(stoneBuyInt2));
                 getMc().player.sendMessage(new TextComponentString("Construction d'une maison"));
                 break;
         }
