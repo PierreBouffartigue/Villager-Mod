@@ -2,11 +2,13 @@ package fr.ynov.villager.ia;
 
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import fr.ynov.villager.bdd.JedisConnexion;
 import fr.ynov.villager.bdd.MongoConnexion;
 import fr.ynov.villager.world.Structure;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.ai.EntityAIBase;
 import org.bson.Document;
+import redis.clients.jedis.Jedis;
 
 public class IAConstructor extends EntityAIBase {
     protected final EntityCreature creature;
@@ -54,10 +56,19 @@ public class IAConstructor extends EntityAIBase {
 
 
     public void startExecuting() {
-        //this.creature.getNavigator().tryMoveToXYZ(this.randPosX, this.randPosY, this.randPosZ - 6, this.speed);
-        //this.creature.getNavigator().tryMoveToXYZ(this.randPosX, this.randPosY, this.randPosZ - 12, this.speed);
-        //this.creature.getNavigator().noPath();
-        if(this.creature.posZ == randPosZ - 12) {
+        Jedis j = JedisConnexion.initJedis().getResource();
+        j.select(1);
+        String bzc = j.get("constructor");
+        if(bzc.equals("house")) {
+            this.creature.getNavigator().tryMoveToXYZ(this.randPosX, this.randPosY, this.randPosZ - 6, this.speed);
+            this.creature.getNavigator().tryMoveToXYZ(this.randPosX, this.randPosY, this.randPosZ - 12, this.speed);
+            this.creature.getNavigator().noPath();
+            Structure.HouseStructure(this.creature, this.creature.world);
+        }
+        if(bzc.equals("farm")) {
+            this.creature.getNavigator().tryMoveToXYZ(this.randPosX, this.randPosY, this.randPosZ - 6, this.speed);
+            this.creature.getNavigator().tryMoveToXYZ(this.randPosX, this.randPosY, this.randPosZ - 12, this.speed);
+            this.creature.getNavigator().noPath();
             Structure.HouseStructure(this.creature, this.creature.world);
         }
     }

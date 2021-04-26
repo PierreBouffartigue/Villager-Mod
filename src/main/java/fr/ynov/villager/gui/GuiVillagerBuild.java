@@ -32,7 +32,7 @@ public class GuiVillagerBuild extends GuiVillager {
         buttonList.add(new GuiCustomButton(1, getGuiLeft() + 6, getGuiTop() + 6, 100, 20, "Retour", 0, 0));
         buttonList.add(new GuiCustomButton(2, getGuiLeft() + 77, getGuiTop() + 50, 100, 20, "Construire ferme", 0, 0));
         buttonList.add(new GuiCustomButton(3, getGuiLeft() + 77, getGuiTop() + 80, 100, 20, "Construire maison", 0, 0));
-        buttonList.get(2).enabled = bronze >= 50;
+        buttonList.get(2).enabled = stone >= 50;
         buttonList.get(3).enabled = stone >= 50;
     }
 

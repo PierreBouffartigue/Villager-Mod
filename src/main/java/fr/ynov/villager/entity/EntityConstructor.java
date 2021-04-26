@@ -43,12 +43,7 @@ public class EntityConstructor extends EntityCreature {
 
     @Override
     protected void initEntityAI() {
-        Jedis j = JedisConnexion.initJedis().getResource();
-        j.select(1);
-        String bzc = j.get("constructor");
-        if(!bzc.equals("no")) {
-            this.tasks.addTask(6, new IAConstructor(this, 0.25D));
-        }
+        this.tasks.addTask(6, new IAConstructor(this, 0.25D));
         this.applyEntityAI();
     }
 }
