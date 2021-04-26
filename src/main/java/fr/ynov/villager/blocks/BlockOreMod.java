@@ -18,12 +18,6 @@ public class BlockOreMod extends BlockOre {
     private static int minDrop;
     private static int maxDrop;
 
-    public BlockOreMod(String name, int harvestLevel) {
-        setUnlocalizedName(name);
-        setRegistryName(name);
-        setHarvestLevel("pickaxe", harvestLevel);
-    }
-
     public BlockOreMod(String name, int harvestLevel, int minDrop, int maxDrop) {
         setUnlocalizedName(name);
         setRegistryName(name);
