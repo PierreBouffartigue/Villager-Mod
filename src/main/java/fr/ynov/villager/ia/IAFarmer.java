@@ -16,6 +16,7 @@ public class IAFarmer extends EntityAIBase {
     protected int randPosY;
     protected int randPosZ;
     protected int count = 0;
+    protected int timer = 180;
     MongoDatabase villagerDB = MongoConnexion.initMongo().getDatabase("villager");
     MongoCollection<Document> villager = villagerDB.getCollection("villager");
     Document vivi = villager.find().first();
@@ -47,23 +48,27 @@ public class IAFarmer extends EntityAIBase {
         return true;
     }
 
-    public void goToPos(){
-        this.creature.getNavigator().tryMoveToXYZ(this.randPosX, this.randPosY, this.randPosZ - 6, this.speed);
-        this.creature.getNavigator().tryMoveToXYZ(this.randPosX, this.randPosY, this.randPosZ - 12, this.speed);
-        this.creature.getNavigator().noPath();
-    }
-
-
     public void startExecuting() {
         Jedis j = JedisConnexion.initJedis().getResource();
         j.select(1);
         String stn = j.get("stone");
         int stone = Integer.parseInt(stn);
-        this.creature.getNavigator().tryMoveToXYZ(this.randPosX, this.randPosY, this.randPosZ - 6, this.speed);
-        this.creature.getNavigator().tryMoveToXYZ(this.randPosX + 6, this.randPosY, this.randPosZ - 6, this.speed);
-        int stoneBuyInt = stone + 2;
-        j.set("stone", Integer.toString(stoneBuyInt));
-        goToPos();
+        timer--;
+        if (timer > 120) {
+
+            this.creature.getNavigator().tryMoveToXYZ(this.randPosX - 16, this.randPosY, this.randPosZ - 7, this.speed);
+        }
+        else if (timer > 60) {
+            this.creature.getNavigator().tryMoveToXYZ(this.randPosX - 16, this.randPosY, this.randPosZ - 14, this.speed);
+        }
+        else if (timer > 0) {
+            this.creature.getNavigator().tryMoveToXYZ(this.randPosX, this.randPosY, this.randPosZ, this.speed);
+        }
+        else {
+            timer = 180;
+            int stoneBuyInt = stone + 2;
+            j.set("stone", Integer.toString(stoneBuyInt));
+        }
     }
 
 
