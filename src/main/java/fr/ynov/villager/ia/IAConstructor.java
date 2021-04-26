@@ -25,7 +25,19 @@ public class IAConstructor extends EntityAIBase {
     }
 
     protected boolean findPath() {
-        return false;
+
+        String ViviX = vivi.get("x").toString();
+        String ViviY = vivi.get("y").toString();
+        String ViviZ = vivi.get("z").toString();
+        int ViviX2 = Integer.parseInt(ViviX);
+        int ViviY2 = Integer.parseInt(ViviY);
+        int ViviZ2 = Integer.parseInt(ViviZ);
+
+        this.randPosX = ViviX2;
+        this.randPosY = ViviY2;
+        this.randPosZ = ViviZ2;
+
+        return true;
     }
 
 
