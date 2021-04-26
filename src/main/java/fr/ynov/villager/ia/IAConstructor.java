@@ -1,7 +1,12 @@
 package fr.ynov.villager.ia;
 
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import fr.ynov.villager.bdd.MongoConnexion;
+import fr.ynov.villager.world.Structure;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.ai.EntityAIBase;
+import org.bson.Document;
 
 public class IAConstructor extends EntityAIBase {
     protected final EntityCreature creature;
@@ -23,6 +28,7 @@ public class IAConstructor extends EntityAIBase {
 
         return this.findPath();
     }
+
 
     protected boolean findPath() {
 
