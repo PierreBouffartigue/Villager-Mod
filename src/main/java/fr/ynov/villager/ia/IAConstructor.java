@@ -46,6 +46,12 @@ public class IAConstructor extends EntityAIBase {
         return true;
     }
 
+    public void goToPos(){
+        this.creature.getNavigator().tryMoveToXYZ(this.randPosX, this.randPosY, this.randPosZ - 6, this.speed);
+        this.creature.getNavigator().tryMoveToXYZ(this.randPosX, this.randPosY, this.randPosZ - 12, this.speed);
+        this.creature.getNavigator().noPath();
+    }
+
 
     public void startExecuting() {
         //this.creature.getNavigator().tryMoveToXYZ(this.randPosX, this.randPosY, this.randPosZ - 6, this.speed);
@@ -59,6 +65,7 @@ public class IAConstructor extends EntityAIBase {
 
     public boolean shouldContinueExecuting() {
         return !this.creature.getNavigator().noPath();
+
     }
 
 }

@@ -37,6 +37,7 @@ public class GuiVillagerBuild extends GuiVillager {
     }
 
     public void actionPerformed(GuiButton button) {
+
         switch (button.id) {
             case 0:
                 getMc().displayGuiScreen(null);
