@@ -50,7 +50,7 @@ public class Structure {
                 world.setBlockState(initialPos, blkState);
             }
             EntityCweep cweep = new EntityCweep(world);
-            cweep.setLocationAndAngles(creature.posX, creature.posY + cweep.getYOffset(), creature.posZ + 12, MathHelper.wrapDegrees(world.rand.nextFloat() * 360.0F), 0.0F);
+            cweep.setLocationAndAngles(creature.posX, creature.posY + cweep.getYOffset(), creature.posZ + 20, MathHelper.wrapDegrees(world.rand.nextFloat() * 360.0F), 0.0F);
             world.spawnEntity(cweep);
         }
     }

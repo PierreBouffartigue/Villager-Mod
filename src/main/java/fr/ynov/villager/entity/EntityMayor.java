@@ -30,9 +30,12 @@ public class EntityMayor extends EntityCreature {
         villager.drop();
         Jedis j = JedisConnexion.initJedis().getResource();
         j.select(1);
-        j.set("bronzeCoin", "0");
-        j.set("silverCoin", "0");
-        j.set("stone", "0");
+        j.set("bronzeCoin", "40");
+        j.set("silverCoin", "40");
+        j.set("stone", "40");
+        j.set("reputation","0");
+        j.set("constructor","no");
+        j.set("farmer", "no");
         Minecraft.getMinecraft().player.sendChatMessage("Maire tué, village supprimé des bases de données");
     }
 

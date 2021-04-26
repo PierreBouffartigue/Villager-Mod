@@ -60,6 +60,7 @@ public class IAConstructor extends EntityAIBase {
             if (timer == 0) {
                 Structure.HouseStructure(this.creature, this.creature.world);
                 timer = 30;
+                j.set("constructor","rest");
             } else {
                 timer--;
             }
@@ -71,6 +72,7 @@ public class IAConstructor extends EntityAIBase {
             if (timer == 0) {
                 Structure.FarmStructure(this.creature, this.creature.world);
                 timer = 30;
+                j.set("constructor","rest");
             } else {
                 timer--;
             }
