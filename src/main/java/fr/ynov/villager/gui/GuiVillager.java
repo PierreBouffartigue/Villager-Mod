@@ -8,10 +8,12 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -57,10 +59,43 @@ public class GuiVillager extends GuiScreen {
     }
 
     public void buttonHoveringText(GuiButton button, int mouseX, int mouseY, String[] text, int posX, int posY) {
-        if (button.visible && mouseX >= button.x && mouseY >= button.y && mouseX < button.x + button.width && mouseY < button.y + this.height) {
+        if (button.visible && mouseX >= button.x && mouseY >= button.y && mouseX < button.x + button.width && mouseY < button.y + button.height) {
             List<String> temp = Arrays.asList(text);
             drawHoveringText(temp, posX, posY);
         }
+    }
+
+    public List<Integer> getInventoryItemId(ItemStack itemStack) {
+        List<Integer> coinId = new ArrayList<>();
+        for (int i = 0; i < getMc().player.inventory.getSizeInventory(); i++) {
+            if (getMc().player.inventory.getStackInSlot(i).getItem() == itemStack.getItem()) {
+                coinId.add(i);
+            }
+        }
+        return coinId;
+    }
+
+    public int getInventoryItemCount(List<Integer> itemId) {
+        int count = 0;
+        for (int i = 0; i < itemId.size(); i++) {
+            count += getMc().player.inventory.getStackInSlot(itemId.get(i)).getCount();
+        }
+        return count;
+    }
+
+    public boolean decreaseInventoryItem(ItemStack itemStack, int nb) {
+        List<Integer> itemId = getInventoryItemId(itemStack);
+        for (int i = 0; i < itemId.size(); i++) {
+            if (nb < getMc().player.inventory.getStackInSlot(itemId.get(i)).getCount()) {
+                getMc().player.inventory.decrStackSize(itemId.get(i), nb);
+                return true;
+            }
+            else {
+                nb -= getMc().player.inventory.getStackInSlot(itemId.get(i)).getCount();
+                getMc().player.inventory.removeStackFromSlot(itemId.get(i));
+            }
+        }
+        return false;
     }
 
     public ResourceLocation getBackground() {

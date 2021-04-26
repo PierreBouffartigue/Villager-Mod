@@ -42,7 +42,6 @@ public class GuiVillagerBuild extends GuiVillager {
                 getMc().displayGuiScreen(null);
                 break;
             case 1:
-                getMc().player.sendMessage(new TextComponentString("Retour"));
                 getMc().displayGuiScreen(new GuiVillagerMain(getMc(), getVillager()));
                 break;
             case 2:
@@ -59,5 +58,8 @@ public class GuiVillagerBuild extends GuiVillager {
         drawBackgroundImage(getBackground());
         drawString(fontRenderer, "Développer le village : ", getGuiLeft() + 128, getGuiTop() + 30, Color.BLACK.getRGB(), true, false);
         super.drawScreen(mouseX, mouseY, partialTicks);
+
+        buttonHoveringText(buttonList.get(2), mouseX, mouseY, new String[]{"Nécessite 50 pièces de bronze"}, mouseX, mouseY);
+        buttonHoveringText(buttonList.get(3), mouseX, mouseY, new String[]{"Nécessite 50 pierres"}, mouseX, mouseY);
     }
 }

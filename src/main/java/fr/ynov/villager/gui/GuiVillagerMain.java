@@ -4,7 +4,6 @@ import fr.ynov.villager.bdd.JedisConnexion;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import redis.clients.jedis.Jedis;
@@ -34,15 +33,12 @@ public class GuiVillagerMain extends GuiVillager {
                 getMc().setIngameFocus();
                 break;
             case 1:
-                getMc().player.sendMessage(new TextComponentString("Acheter"));
                 getMc().displayGuiScreen(new GuiVillagerBuy(getMc(), getVillager()));
                 break;
             case 2:
-                getMc().player.sendMessage(new TextComponentString("Vendre"));
                 getMc().displayGuiScreen(new GuiVillagerSell(getMc(), getVillager()));
                 break;
             case 3:
-                getMc().player.sendMessage(new TextComponentString("Construire"));
                 getMc().displayGuiScreen(new GuiVillagerBuild(getMc(), getVillager()));
                 break;
         }

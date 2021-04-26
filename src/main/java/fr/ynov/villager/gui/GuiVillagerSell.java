@@ -2,12 +2,10 @@ package fr.ynov.villager.gui;
 
 import fr.ynov.villager.bdd.JedisConnexion;
 import fr.ynov.villager.init.ItemsMod;
-import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.fml.relauncher.Side;
@@ -15,7 +13,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import redis.clients.jedis.Jedis;
 
 import java.awt.*;
-import java.util.Objects;
 
 @SideOnly(Side.CLIENT)
 public class GuiVillagerSell extends GuiVillager {
@@ -42,7 +39,6 @@ public class GuiVillagerSell extends GuiVillager {
                 getMc().setIngameFocus();
                 break;
             case 1:
-                getMc().player.sendMessage(new TextComponentString("Retour"));
                 getMc().displayGuiScreen(new GuiVillagerMain(getMc(), getVillager()));
                 break;
             case 2:
@@ -51,14 +47,13 @@ public class GuiVillagerSell extends GuiVillager {
                 int bronze = Integer.parseInt(bzc);
                 int stone = Integer.parseInt(stn);
 
-                if (bronze >= 1 && getMc().player.inventory.hasItemStack(new ItemStack(Objects.requireNonNull(Blocks.STONE), 5))) {
+                if (bronze >= 1 && getInventoryItemCount(getInventoryItemId(new ItemStack(Blocks.STONE))) >= 5) {
                     int bronzeBuyInt = bronze - 1;
                     int stoneBuyInt = stone + 5;
                     j.set("stone", Integer.toString(stoneBuyInt));
                     j.set("bronzeCoin", Integer.toString(bronzeBuyInt));
-                    getMc().player.addItemStackToInventory(new ItemStack(Objects.requireNonNull(ItemsMod.copper_coin), 1));
-                    int itemId = getMc().player.inventory.getSlotFor(new ItemStack(Objects.requireNonNull(Block.getBlockFromName("stone"))));
-                    getMc().player.inventory.decrStackSize(itemId, 5);
+                    getMc().player.addItemStackToInventory(new ItemStack(ItemsMod.copper_coin, 1));
+                    decreaseInventoryItem(new ItemStack(Blocks.STONE), 5);
                     break;
                 }else {
                     getMc().player.sendMessage(new TextComponentString("Action impossible manque de ressources ou d argent"));
@@ -73,14 +68,13 @@ public class GuiVillagerSell extends GuiVillager {
                 int silver = Integer.parseInt(svc);
 
 
-                    if (bronze2 >= 1 && getMc().player.inventory.hasItemStack(new ItemStack(Objects.requireNonNull(ItemsMod.silver_coin)))) {
+                    if (bronze2 >= 1 && getInventoryItemCount(getInventoryItemId(new ItemStack(ItemsMod.silver_coin))) >= 1) {
                         int bronzeBuyInt2 = bronze2 - 1;
                         int silverBuyInt = silver + 1;
                         j.set("silverCoin", Integer.toString(silverBuyInt));
                         j.set("bronzeCoin", Integer.toString(bronzeBuyInt2));
-                        getMc().player.addItemStackToInventory(new ItemStack(Objects.requireNonNull(ItemsMod.copper_coin), 1));
-                        int itemId2 = getMc().player.inventory.getSlotFor(new ItemStack(Objects.requireNonNull(ItemsMod.silver_coin)));
-                        getMc().player.inventory.decrStackSize(itemId2, 1);
+                        getMc().player.addItemStackToInventory(new ItemStack(ItemsMod.copper_coin, 1));
+                        decreaseInventoryItem(new ItemStack(ItemsMod.silver_coin), 1);
                         break;
                     } else {
                         getMc().player.sendMessage(new TextComponentString("Action impossible manque de ressources ou d argent"));
@@ -93,9 +87,7 @@ public class GuiVillagerSell extends GuiVillager {
 
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         drawBackgroundImage(getBackground());
-
         drawString(fontRenderer, "Vendre : ", getGuiLeft() + 128, getGuiTop() + 30, Color.BLACK.getRGB(), true, false);
-
         super.drawScreen(mouseX, mouseY, partialTicks);
 
         buttonHoveringText(buttonList.get(2), mouseX, mouseY, new String[]{"5 Pierres", "", "Gain : 1 Pièce de cuivre"}, mouseX, mouseY);
